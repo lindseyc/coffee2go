@@ -17,6 +17,7 @@
         }
         button {
             box-shadow: 0 4px #999;
+            padding:10px;
         }
 	</style>
 	<title> Start an order </title>
