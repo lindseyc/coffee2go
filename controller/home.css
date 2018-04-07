@@ -1,13 +1,8 @@
 button {
-	font-size: 24px;
-	border-radius: 50%;
-	width: 50%;
 	text-align: center;
-	padding: 15px 25px;
 	cursor: pointer;
-	box-shadow: 0 9px #999;
+	border-radius: 50%;
 	color:white;
-
 }
 
 body {
@@ -20,6 +15,6 @@ body {
 	text-align: center;
 }
 
-.elements{
+.brown{
 	background-color: rgb(97, 75, 75);
 }
