@@ -1,5 +1,4 @@
 button {
-	background-color: rgb(97, 75, 75);
 	font-size: 24px;
 	border-radius: 50%;
 	width: 50%;
@@ -8,14 +7,19 @@ button {
 	cursor: pointer;
 	box-shadow: 0 9px #999;
 	color:white;
-	/*display: inline-block*/
 
 }
 
 body {
 	background:cornsilk;
+	font-family: Helvetica, Arial, sans-serif;
+	padding:10px;
 }
 
 .buttonWrap {
 	text-align: center;
+}
+
+.elements{
+	background-color: rgb(97, 75, 75);
 }
