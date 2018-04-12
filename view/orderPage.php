@@ -21,15 +21,18 @@
         }
 	</style>
 	<title> Start an order </title>
-	<link href="home.css" type="text/css" rel="stylesheet"/>
+	<link href="main.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
-    <h1>Order some coffee</h1>
+    <h1>Order some coffee!</h1>
     <form id="order">
         <fieldset>
             <legend>Customer information</legend>
             Name: <input type="text" placeholder="First and Last"></input>
+            <br/>
+            Phone number: <input type="phone" placeholder="(909) 555-5555"></input>
+            Carrier: <input type="text" placeholder="to receive texts"></input>
         </fieldset>
         <fieldset>
             <legend>Drink</legend>
