@@ -15,14 +15,19 @@
 	        font-family: "Palatino", "Garamond", "Times", serif;
         }
 	</style>
-	<title> Submitted orders </title>
+	<title> Pending orders </title>
 	<link href="main.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
-    <h1> Your orders </h1>
+    <h1> Pending orders </h1>
     <p>View orders that have been submitted. </p>
     <table>
+        <tr>
+            <th>Customer name</th>
+            <th>Drink</th>
+            <th>Time</th>
+        </tr>
         <tr>
             <td>a</td>
             <td>b</td>

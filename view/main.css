@@ -25,3 +25,11 @@ header, footer {
 	clear: left;
 	text-align: center;
 }
+
+td, th {
+	padding:10px;
+	border:1px solid grey;
+}
+table {
+	border-collapse: collapse;
+}
