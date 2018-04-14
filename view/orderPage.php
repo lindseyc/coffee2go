@@ -21,7 +21,7 @@
 
 <body>
     <h1>Order some coffee!</h1>
-    <form id="order">
+    <form id="order" action="checkout.php">
         <fieldset>
             <legend>Customer information</legend>
             Name: <input type="text" placeholder="First and Last"></input>
@@ -35,7 +35,7 @@
 
         </fieldset>
         <p></p>
-        <button class="brown" type="submit" value="submit">Order!</button>
+        <button class="brown" type="submit" value="submit">Check out!</button>
     </form>
     <p>Thank you for your order!</p>
 
