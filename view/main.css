@@ -18,3 +18,10 @@ body {
 .brown{
 	background-color: rgb(97, 75, 75);
 }
+
+header, footer {
+	padding: 1em;
+	
+	clear: left;
+	text-align: center;
+}
