@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS motely;
-CREATE DATABASE motely;
+DROP DATABASE IF EXISTS motley;
+CREATE DATABASE motley;
 USE motley;
 
 -- Create the tables

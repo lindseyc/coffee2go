@@ -1,4 +1,4 @@
-<? php
+<?php
 	
 	include_once("model/model.php");
 	include_once("view/view.php");

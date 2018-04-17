@@ -21,7 +21,10 @@
 
 <body>
     <h1>Order some coffee!</h1>
-    <form id="order" action="checkout.php">
+    <form id="order" type="POST" action="checkout.php"> 
+    <!-- redirect to the controller, which will redirect to the right view 
+    make sure form -->
+
         <fieldset>
             <legend>Customer information</legend>
             Name: <input type="text" placeholder="First and Last"></input>

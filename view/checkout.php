@@ -15,18 +15,34 @@ if(!isset($_SESSION['cart'])) {
 }
 
 //if submit has been clicked then destroy session
-if(isset($_POST['submit'])) {
+if(isset($_POST['order'])) { // has to receive from the controller
 	unset($_SESSION);
 	session_destroy();
 }
 
 ?>
-
 <html lang="en">
 
 <head>
+	<style> /*style for header and footer*/
+		header, footer {
+			padding: 1em;
+    		
+    		clear: left;
+    		text-align: center;
+        }
+        button {
+            box-shadow: 0 4px #999;
+            padding:10px;
+        }
+        .motto {
+            font-family: "Palatino", "Garamond", "Times", serif
+        }
+	</style>
+	<link href="main.css" type="text/css" rel="stylesheet"/>
 	<title> Checkout </title>
 </head>
+
 <body>
 	<h2> Checkout </h2>
 
@@ -35,3 +51,7 @@ if(isset($_POST['submit'])) {
 	<!-- Display order and customer info -->
 	<?php
 	?>
+
+</body>
+
+</html>
