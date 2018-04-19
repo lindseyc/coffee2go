@@ -36,11 +36,17 @@
             Carrier: <input type="text" placeholder="to receive texts"></input>
         </fieldset>
         <fieldset>
-            <legend>Drink</legend>
-
+            <legend>Order</legend>
+            <select>
+                <option value="coffee">Coffee</option>
+                <option value="tea">Tea</option>
+                <option value="smoothie">Smoothie</option>
+            </select>
+            <p><span id="drinklist">Drinks will be inserted here</span></p>
         </fieldset>
+        
         <p></p>
-        <button class="brown" type="submit" value="submit">Check out!</button>
+        <button class="brown" type="submit" value="submit">Go to cart</button>
     </form>
     <p>Thank you for your order!</p>
 
