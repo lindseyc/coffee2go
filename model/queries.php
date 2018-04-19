@@ -26,9 +26,9 @@ $insertCustomDrink = $connection-prepare($query);
 $insertCustomDrink-> bind_param("iiif");
 
 // Insert into DrinkType
-$query = "INSERT INTO DrinkType(name, price)
-          VALUES(?, ?);";
+$query = "INSERT INTO DrinkType(type_id, name, price)
+          VALUES(?, ?, ?);";
 $insertDrinkType = $connection-prepare($query);
-$insertDrinkType-> bind_param("sf");
+$insertDrinkType-> bind_param("isf");
 
 ?>

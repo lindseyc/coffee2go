@@ -32,12 +32,13 @@ CREATE TABLE CustomDrink (
   type_id INT UNSIGNED NOT NULL,
   quantity INT UNSIGNED NOT NULL,
   price FLOAT,
+  -- add ons
   FOREIGN KEY (order_id) REFERENCES order(id),
   FOREIGN KEY (type_id) REFERENCES DrinkType(id)
 );
 
 CREATE TABLE DrinkType (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(64),
-  price FLOAT NOT NULL
+  type_id INT UNSIGNED NOT NULL PRIMARY KEY, --1 for coffee, 2 for tea, 3 for smoothie
+  name VARCHAR(64), --Latte
+  price FLOAT NOT NULL --2.35
 );

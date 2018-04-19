@@ -3,7 +3,8 @@
 class ShoppingCart {
 
 	//put the drink types and prices in this array like gsc
-	public static $drinkTypes = Array();
+	public static $drinkTypes = Array(
+);
 
 	private $order;
 
