@@ -1,6 +1,7 @@
 <?php
 
 
+require "../model/cart.php";
 session_start();
 
 ?>
