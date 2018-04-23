@@ -18,7 +18,12 @@
         }
 	</style>
 	<title> Start an order </title>
+    <!-- style sheet CSS -->
 	<link href="main.css" type="text/css" rel="stylesheet"/>
+    
+    <!-- javascript validation -->
+    <script scr="validate.js"></script>
+
 </head>
 
 <body>
@@ -29,11 +34,21 @@
 
         <fieldset>
             <legend>Customer information</legend>
-            Name: <input type="text" placeholder="First and Last"></input>
-            Email: <input type="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="name">
+            Name: <input type="text" id="name" placeholder="First and Last"></input>
+            </legend>
+
+            <legend for="email">
+            Email: <input type="email" id="email" placeholder="@scrippscollege.edu"></input>
+            </legend>
             <br/>
-            Phone number: <input type="phone" placeholder="(909) 555-5555"></input>
-            Carrier: <input type="text" placeholder="to receive texts"></input>
+            <legend for="phone">
+            Phone number: <input type="phone" id="phone" placeholder="(909) 555-5555"></input>
+            </legend>
+
+            <legend for="carrier">
+            Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
+            </legend>
         </fieldset>
         <fieldset>
             <legend>Order</legend>
