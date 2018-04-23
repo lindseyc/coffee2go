@@ -35,41 +35,25 @@
         <fieldset>
 
             <legend>Customer information</legend>
-<<<<<<< HEAD
 
-            <legend for="name">Name: <input type="text" placeholder="First and Last"></input>
+
+           <legend>Order</legend>
+             <legend for="name">Name: <input type="text" id="name" placeholder="First and Last"></input>
             </legend>
 
-            <legend for="email">Email: <input type="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="email">Email: <input type="email" id="email" placeholder="@scrippscollege.edu"></input>
             </legend>
             <br/>
 
-            <legend for="phone">Phone number: <input type="phone" placeholder="xxx xxx xxxx"></input>
+            <legend for="phone">Phone number: <input type="phone" id="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-            <legend for="carrier">Carrier: <input type="text" placeholder="to receive texts"></input>
+            <legend for="carrier">Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
             </legend>
 
-=======
-            <legend for="name">
-            Name: <input type="text" id="name" placeholder="First and Last"></input>
-            </legend>
-
-            <legend for="email">
-            Email: <input type="email" id="email" placeholder="@scrippscollege.edu"></input>
-            </legend>
-            <br/>
-            <legend for="phone">
-            Phone number: <input type="phone" id="phone" placeholder="(909) 555-5555"></input>
-            </legend>
-
-            <legend for="carrier">
-            Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
-            </legend>
->>>>>>> progress
         </fieldset>
         <fieldset>
-            <legend>Order</legend>
+           
             <select>
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
