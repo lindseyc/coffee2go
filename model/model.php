@@ -13,27 +13,26 @@ class Model {
  	  }
   } 
 
-	public function updateCart($type, $quantity)
- 	{
+	public function updateCart($type, $quantity) {
   		
-    $displayName = ShoppingCart::$drinkTypes[$type];
+        $displayName = ShoppingCart::$drinkTypes[$type];
        
-    if ($displayName && is_numeric($quantity) && $quantity > 0) {    
-        $_SESSION["cart"]->order($type, $quantity);
-        $message = "$quantity boxes of $displayName added to shopping cart";
-    }
-    else if (!$displayName) {
-        $message = "invalid, invalid selection";
-    }
-    else if (!is_numeric($quantity)) {
-        $message = "invalid, quantity not numeric";
-    }
-    else if ($quantity < 1) {
-        $message = "invalid, quantity less than 1";
-    }
+        if ($displayName && is_numeric($quantity) && $quantity > 0) {    
+            $_SESSION["cart"]->order($type, $quantity);
+            $message = "$quantity boxes of $displayName added to shopping cart";
+        }
+        else if (!$displayName) {
+            $message = "invalid, invalid selection";
+        }
+        else if (!is_numeric($quantity)) {
+           $message = "invalid, quantity not numeric";
+        }
+        else if ($quantity < 1) {
+            $message = "invalid, quantity less than 1";
+        }
 		
 
-		return $message;
+	       	return $message;
  	}
 
  	public function getCart() {
