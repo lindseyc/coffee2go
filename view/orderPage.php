@@ -23,17 +23,27 @@
 
 <body>
     <h1>Order some coffee!</h1>
-    <form id="order" type="POST" action="checkout.php"> 
+    <form id="order" method="post" action="checkout.php"> 
     <!-- redirect to the controller, which will redirect to the right view 
     make sure form -->
 
         <fieldset>
+
             <legend>Customer information</legend>
-            Name: <input type="text" placeholder="First and Last"></input>
-            Email: <input type="email" placeholder="@scrippscollege.edu"></input>
+
+            <legend for="name">Name: <input type="text" placeholder="First and Last"></input>
+            </legend>
+
+            <legend for="email">Email: <input type="email" placeholder="@scrippscollege.edu"></input>
+            </legend>
             <br/>
-            Phone number: <input type="phone" placeholder="(909) 555-5555"></input>
-            Carrier: <input type="text" placeholder="to receive texts"></input>
+
+            <legend for="phone">Phone number: <input type="phone" placeholder="xxx xxx xxxx"></input>
+            </legend>
+
+            <legend for="carrier">Carrier: <input type="text" placeholder="to receive texts"></input>
+            </legend>
+
         </fieldset>
         <fieldset>
             <legend>Order</legend>
@@ -46,6 +56,7 @@
         </fieldset>
         
         <p></p>
+        <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <button class="brown" type="submit" value="submit">Go to cart</button>
     </form>
     <p>Thank you for your order!</p>
