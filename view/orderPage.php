@@ -28,7 +28,8 @@
 
 <body>
     <h1>Order some coffee!</h1>
-    <form id="order" method="post" action="checkout.php"> 
+    <!-- put the controller in the action? -->
+    <form name="orderfrm" id="order" method="post" action="checkout.php"> 
     <!-- redirect to the controller, which will redirect to the right view 
     make sure form -->
 
@@ -64,7 +65,8 @@
         
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
-        <button class="brown" type="submit" value="submit">Go to cart</button>
+        <button class="brown" type="submit" value="submit" onclick="validateForm(orderfrm)">Go to cart</button>
+        <!-- and invoke onclick -->
     </form>
     <p>Thank you for your order!</p>
 
