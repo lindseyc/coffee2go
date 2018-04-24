@@ -37,24 +37,23 @@
 
             <legend>Customer information</legend>
 
-
-           <legend>Order</legend>
-             <legend for="name">Name: <input type="text" id="name" placeholder="First and Last"></input>
+             <legend for="name">Name: <input type="text" id="email" name="name" placeholder="First and Last"></input>
             </legend>
 
-            <legend for="email">Email: <input type="email" id="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
             </legend>
             <br/>
 
-            <legend for="phone">Phone number: <input type="tel" id="phone" placeholder="xxx xxx xxxx"></input>
+            <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-            <legend for="carrier">Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
+            <legend for="carrier">Carrier: <input type="text" id="carrier" name="carrier" placeholder="to receive texts"></input>
             </legend>
 
         </fieldset>
         <fieldset>
            
+            <legend>Order</legend>
             <select>
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
