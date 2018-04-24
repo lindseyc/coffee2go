@@ -40,7 +40,7 @@ session_start();
             font-family: "Palatino", "Garamond", "Times", serif
         }
 	</style>
-	<link href="main.css" type="text/css" rel="stylesheet"/>
+	<link href="view/main.css" type="text/css" rel="stylesheet"/>
 	<title> Checkout </title>
 </head>
 
@@ -49,6 +49,7 @@ session_start();
 
 	<p>Your Order: </p>
 
+	
 
 	<?php
 	foreach ($shoppingCart as $drink => $price) {
@@ -59,6 +60,7 @@ session_start();
 	<!-- Display order and customer info -->
 	<?php
 	?>
+	<button class="brown" name="confirm" type="submit" value="submit">Confirm</button>
 
 </body>
 
