@@ -23,6 +23,12 @@
     
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
+    <script>
+        function dropSelection(type){
+
+        }
+
+    </script>
 
 </head>
 
@@ -54,7 +60,7 @@
         <fieldset>
            
             <legend>Order</legend>
-            <select>
+            <select id="dropdown" onchange="dropSelection(this);">
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
                 <option value="smoothie">Smoothie</option>

@@ -52,6 +52,14 @@ session_start();
 	<p> your information </p>
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
+	// iff post isset:
+	print_r($_POST);
+	$post = $_POST;
+	unset($post['submit']);
+	foreach($post as $key => $value){
+		echo $key . " is " . $value;
+		echo "<br>";
+	}
 
 	?>
 
@@ -62,17 +70,21 @@ session_start();
 	echo '<tr>';
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
+		echo '<td>Quantity</td>';
 	foreach ($shoppingCart as $drink => $price) {
 		echo '<tr>';
-		echo '<td>';
-		print_r('drink = ' . $drink);
-		echo '</td>';
-		echo '<td>'
-		print_r($price);
-		echo '</td>';
+			echo '<td>';
+			print_r($drink);
+			echo '</td>';
+			echo '<td>';
+			print_r($price);
+			echo '</td>';
+			 echo '<td>';
+			//put quantity box here? or just have confirm, & no 'update of order option'
+			 echo '</td>';
 		echo '</tr>';
 	}
-	echo "</table>"
+	echo "</table>";
 	?>
 
 	
