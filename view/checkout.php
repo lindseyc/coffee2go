@@ -47,6 +47,8 @@ session_start();
 <body>
 	<h2> Checkout </h2>
 
+	<!-- Display order and customer info -->
+
 	<p> your information </p>
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
@@ -57,7 +59,9 @@ session_start();
 	<!-- table for drink order -->
 	<?php
 	echo '<table>';
-
+	echo '<tr>';
+		echo '<td>Drink</td>';
+		echo '<td>Price</td>';
 	foreach ($shoppingCart as $drink => $price) {
 		echo '<tr>';
 		echo '<td>';
@@ -67,16 +71,14 @@ session_start();
 		print_r($price);
 		echo '</td>';
 		echo '</tr>';
-
 	}
+	echo "</table>"
 	?>
 
 	
 
 		
-	<!-- Display order and customer info -->
-	<?php
-	?>
+	
 	<button class="brown" name="confirm" type="submit" value="submit">Confirm</button>
 
 </body>
