@@ -5,7 +5,7 @@
 	<style> /*style for header and footer*/
 		header, footer {
 			padding: 1em;
-    		
+
     		clear: left;
     		text-align: center;
         }
@@ -18,13 +18,13 @@
         }
 	</style>
 	<title> Start an order </title>
- 
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- style sheet CSS -->
 	<link href="view/main.css" type="text/css" rel="stylesheet"/>
-    
+
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
     <script>
@@ -52,7 +52,7 @@
         // selectorder = $('#dropdown').val();
         $('#dropdown').on("change", dropSelection);
         });
-       
+
 
     </script>
 
@@ -61,8 +61,8 @@
 <body>
     <h1>Order some coffee!</h1>
     <!-- put the controller in the action? -->
-    <form name="orderfrm" id="order" method="post"> 
-    <!-- redirect to the controller, which will redirect to the right view 
+    <form name="orderfrm" id="order" method="post">
+    <!-- redirect to the controller, which will redirect to the right view
     make sure form -->
 
         <fieldset>
@@ -74,30 +74,34 @@
 
             <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
             </legend>
-            <br/>
+            <br/>        <!-- emailtextmessages.com -->
 
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-            <legend for="carrier">Carrier: <input type="text" id="carrier" name="carrier" placeholder="to receive texts"></input>
-            </legend>
+            <legend for="carrier">Carrier: 
+            <select>
+            <?php
+                // carrier dropdown here
+            ?></legend>
 
         </fieldset>
         <fieldset>
-           
+
             <legend for="dropdown">Order</legend>
             <select id="dropdown">
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
                 <option value="smoothie">Smoothie</option>
-                
+
             </select>
             <p><span id="drinklist">Drinks will be inserted here</span></p>
         </fieldset>
-        
+
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
+        <!-- emailtextmessages.com -->
         <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
         <!-- and invoke onclick -->
     </form>

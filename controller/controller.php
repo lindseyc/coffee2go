@@ -1,7 +1,8 @@
 <?php
-	
+
 	include_once("model/model.php");
 	include_once("view/view.php");
+
 	if (session_status() != PHP_SESSION_ACTIVE) {
 		session_start();
 	}
@@ -21,7 +22,7 @@
 
 /*
 	if(isset($_POST["submit"])){
-	
+
 		$name = mysqli_real_escape_string($conn, $_POST['name']);
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
 		$phone = mysqli_real_escape_string($conn, $_POST['phone']);
@@ -79,7 +80,7 @@
 			$drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
-			
+
 				print_r('adding to cart');
 				//display the post
 				print_r($_POST);
