@@ -15,7 +15,6 @@
 			$this->view = new View($this->model);
 
 			//call model to load the drinkTypes from the database (Jason)
-			$drinktypes = "SELECT name FROM drinktype";
 
 		}
 

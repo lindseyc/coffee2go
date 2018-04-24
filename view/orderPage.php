@@ -5,7 +5,7 @@
 	<style> /*style for header and footer*/
 		header, footer {
 			padding: 1em;
-    		
+
     		clear: left;
     		text-align: center;
         }
@@ -20,7 +20,7 @@
 	<title> Start an order </title>
     <!-- style sheet CSS -->
 	<link href="view/main.css" type="text/css" rel="stylesheet"/>
-    
+
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
 
@@ -29,8 +29,8 @@
 <body>
     <h1>Order some coffee!</h1>
     <!-- put the controller in the action? -->
-    <form name="orderfrm" id="order" method="post"> 
-    <!-- redirect to the controller, which will redirect to the right view 
+    <form name="orderfrm" id="order" method="post">
+    <!-- redirect to the controller, which will redirect to the right view
     make sure form -->
 
         <fieldset>
@@ -54,7 +54,7 @@
 
         </fieldset>
         <fieldset>
-           
+
             <select>
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
@@ -62,7 +62,7 @@
             </select>
             <p><span id="drinklist">Drinks will be inserted here</span></p>
         </fieldset>
-        
+
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->

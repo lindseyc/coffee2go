@@ -25,10 +25,9 @@ $query = "INSERT INTO CustomDrink(order_id, type_id, quantity, price)
 $insertCustomDrink = $connection-prepare($query);
 $insertCustomDrink-> bind_param("iiif");
 
-// Insert into DrinkType
-$query = "INSERT INTO DrinkType(type_id, name, price)
-          VALUES(?, ?, ?);";
-$insertDrinkType = $connection-prepare($query);
-$insertDrinkType-> bind_param("isf");
+// Select from drinktype
+$query = "SELECT name from girlscout where id=?";
+$selectdrinktype = $connection->prepare($query);
+$selectdrinktype->bind_param('s', $drinktypeid);
 
 ?>
