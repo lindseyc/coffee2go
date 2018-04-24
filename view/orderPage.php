@@ -32,7 +32,7 @@
             Name: <input type="text" placeholder="First and Last"></input>
             Email: <input type="email" placeholder="@scrippscollege.edu"></input>
             <br/>
-            Phone number: <input type="phone" placeholder="(909) 555-5555"></input>
+            Phone number: <input type="tel" placeholder="(909) 555-5555"></input>
             Carrier: <input type="text" placeholder="to receive texts"></input>
         </fieldset>
         <fieldset>
