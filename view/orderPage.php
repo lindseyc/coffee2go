@@ -78,12 +78,12 @@
 
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
-
+<!-- 
             <legend for="carrier">Carrier: 
             <select>
             <?php
                 // carrier dropdown here
-            ?></legend>
+            ?></legend> -->
 
         </fieldset>
         <fieldset>
