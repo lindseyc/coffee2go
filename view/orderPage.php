@@ -74,13 +74,16 @@
 
             <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
             </legend>
-            <br/>
+            <br/>        <!-- emailtextmessages.com -->
 
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-            <legend for="carrier">Carrier: <input type="text" id="carrier" name="carrier" placeholder="to receive texts"></input>
-            </legend>
+            <legend for="carrier">Carrier: 
+            <select>
+            <?php
+                // carrier dropdown here
+            ?></legend>
 
         </fieldset>
         <fieldset>
@@ -98,6 +101,7 @@
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
+        <!-- emailtextmessages.com -->
         <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
         <!-- and invoke onclick -->
     </form>
