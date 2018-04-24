@@ -14,7 +14,7 @@ class carriers {
         "Cellular One" => "mobile.celloneusa.com",
         "Cellular South" => "10digitphonenumber@csouth1.com",
         // skipped some more
-        "CenturyTel" => "messaging.centurytel.net"
+        "CenturyTel" => "messaging.centurytel.net",
         "Clearnet" => "msg.clearnet.com",
         "Comcast" => "comcastpcs.textmsg.com",
         "Corr Wireless Communication" => "corrwireless.net",
@@ -32,8 +32,8 @@ class carriers {
         "Metrocall 2-way" => "my2way.com",
         "Metro PCS" => "mymetropcs.com",
         "Microcell" => "fido.ca",
-        "Midwest Wireless" => "clearlydigital.com"
-        "Mobilcomm" => "mobilecomm.net"
+        "Midwest Wireless" => "clearlydigital.com",
+        "Mobilcomm" => "mobilecomm.net",
         "MTS" => "text.mtsmobility.com",
         "Nextel" => "messaging.nextel.com",
         "OnlineBeep" => "onlinebeep.net",
