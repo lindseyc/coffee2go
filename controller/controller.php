@@ -80,7 +80,7 @@
 			$drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
-			
+
 				print_r('adding to cart');
 				//display the post
 				print_r($_POST);
