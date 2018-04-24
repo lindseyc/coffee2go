@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 <head>
 	<style> /*style for header and footer*/
@@ -16,26 +18,56 @@
         }
 	</style>
 	<title> Start an order </title>
-	<link href="main.css" type="text/css" rel="stylesheet"/>
+    <!-- style sheet CSS -->
+	<link href="view/main.css" type="text/css" rel="stylesheet"/>
+    
+    <!-- javascript validation -->
+    <!-- <script scr="validate.js"></script> -->
+
 </head>
 
 <body>
     <h1>Order some coffee!</h1>
-    <form id="order">
+    <!-- put the controller in the action? -->
+    <form name="orderfrm" id="order" method="post"> 
+    <!-- redirect to the controller, which will redirect to the right view 
+    make sure form -->
+
         <fieldset>
+
             <legend>Customer information</legend>
-            Name: <input type="text" placeholder="First and Last"></input>
-            Email: <input type="email" placeholder="@scrippscollege.edu"></input>
+
+
+           <legend>Order</legend>
+             <legend for="name">Name: <input type="text" id="name" placeholder="First and Last"></input>
+            </legend>
+
+            <legend for="email">Email: <input type="email" id="email" placeholder="@scrippscollege.edu"></input>
+            </legend>
             <br/>
-            Phone number: <input type="phone" placeholder="(909) 555-5555"></input>
-            Carrier: <input type="text" placeholder="to receive texts"></input>
-        </fieldset>
-        <fieldset>
-            <legend>Drink</legend>
+
+            <legend for="phone">Phone number: <input type="phone" id="phone" placeholder="xxx xxx xxxx"></input>
+            </legend>
+
+            <legend for="carrier">Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
+            </legend>
 
         </fieldset>
+        <fieldset>
+           
+            <select>
+                <option value="coffee">Coffee</option>
+                <option value="tea">Tea</option>
+                <option value="smoothie">Smoothie</option>
+            </select>
+            <p><span id="drinklist">Drinks will be inserted here</span></p>
+        </fieldset>
+        
         <p></p>
-        <button class="brown" type="submit" value="submit">Order!</button>
+        <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
+        <!--  onclick="validateForm(orderfrm)" -->
+        <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
+        <!-- and invoke onclick -->
     </form>
     <p>Thank you for your order!</p>
 

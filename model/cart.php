@@ -7,19 +7,31 @@ class ShoppingCart {
 );
 
 	private $order;
+	private $customer;
 
+	//create array for order and customer
 	public function __construct() {
 		$this->order = Array();
+		$this->customer = Array();
 	}
 
 	public function getOrder() {
 		return $this->order;
 	}
 
+	public function getCustomer() {
+		return $this->customer;
+	}
+
 	public function order($type, $quantity) {
 		 $currentQuantity = $this->order[$type];
         $currentQuantity += $quantity;
         $this->order[$type] = $currentQuantity;
+	}
+
+	public function addCustomer($key, $value) {
+		//add information about customer to their customer array (name = "john")
+		$this->customer[$key] = $value;
 	}
 
 	public function updateCart($type, $quantity) {
@@ -32,7 +44,8 @@ class ShoppingCart {
 
      public function display() {
      	$array = $this->order;
-     	print_r($array);
+     	print_r("drink(s) = " . $array);
+     	print_r("customer = " . $this->customer);
      }
 
 }
