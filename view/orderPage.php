@@ -46,7 +46,7 @@
             </legend>
             <br/>
 
-            <legend for="phone">Phone number: <input type="phone" id="phone" placeholder="xxx xxx xxxx"></input>
+            <legend for="phone">Phone number: <input type="tel" id="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
             <legend for="carrier">Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
