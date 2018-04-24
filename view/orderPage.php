@@ -19,7 +19,7 @@
 	</style>
 	<title> Start an order </title>
     <!-- style sheet CSS -->
-	<link href="view/main.css" type="text/css" rel="stylesheet"/>
+	<link href="./main.css" type="text/css" rel="stylesheet"/>
     
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
