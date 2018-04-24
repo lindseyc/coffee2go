@@ -1,7 +1,8 @@
 <?php
-	
+
 	include_once("model/model.php");
 	include_once("view/view.php");
+
 	if (session_status() != PHP_SESSION_ACTIVE) {
 		session_start();
 	}
@@ -14,6 +15,7 @@
 			$this->view = new View($this->model);
 
 			//call model to load the drinkTypes from the database (Jason)
+			$drinktypes = "SELECT name FROM drinktype";
 
 		}
 
@@ -21,7 +23,7 @@
 
 /*
 	if(isset($_POST["submit"])){
-	
+
 		$name = mysqli_real_escape_string($conn, $_POST['name']);
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
 		$phone = mysqli_real_escape_string($conn, $_POST['phone']);

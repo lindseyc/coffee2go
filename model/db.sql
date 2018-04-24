@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS motley;
-CREATE DATABASE motley;
-USE motley;
+DROP DATABASE IF EXISTS motely;
+CREATE DATABASE motely;
+USE motely;
 
 -- Create the tables
 
@@ -18,12 +18,17 @@ CREATE TABLE customer (
   carrier VARCHAR(64) NOT NULL
 );
 
-CREATE TABLE order (
+CREATE TABLE orders (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   customer_id INT UNSIGNED NOT NULL,
   price FLOAT NOT NULL,
-  dateCreated NOT NULL TIMESTAMP,
-  FOREIGN KEY (customer_id) REFERENCES customer(id),
+  dateCreated TIMESTAMP NOT NULL ,
+  FOREIGN KEY (customer_id) REFERENCES customer(id)
+);
+CREATE TABLE drinktype (
+  id INT UNSIGNED NOT NULL,
+  name VARCHAR(64),
+  price FLOAT NOT NULL
 );
 
 CREATE TABLE CustomDrink (
@@ -32,13 +37,14 @@ CREATE TABLE CustomDrink (
   type_id INT UNSIGNED NOT NULL,
   quantity INT UNSIGNED NOT NULL,
   price FLOAT,
-  -- add ons
-  FOREIGN KEY (order_id) REFERENCES order(id),
-  FOREIGN KEY (type_id) REFERENCES DrinkType(id)
+  FOREIGN KEY (order_id) REFERENCES orders(id),
 );
 
-CREATE TABLE DrinkType (
-  type_id INT UNSIGNED NOT NULL PRIMARY KEY, --1 for coffee, 2 for tea, 3 for smoothie
-  name VARCHAR(64), --Latte
-  price FLOAT NOT NULL --2.35
-);
+
+-- Add drink data
+LOAD DATA LOCAL INFILE "/Applications/MAMP/htdocs/coffee2go/model/initialize.csv"
+INTO TABLE drinktype
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;

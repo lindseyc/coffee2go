@@ -6,18 +6,18 @@ if (session_status() != PHP_SESSION_ACTIVE) {
 
 class Model {
 
-	public function __construct()  { 
+	public function __construct()  {
 
     if (!isset($_SESSION['cart'])) {
       	$_SESSION['cart'] = new ShoppingCart();
  	  }
-  } 
+  }
 
 	public function updateCart($type, $quantity) {
-  		
+
         $displayName = ShoppingCart::$drinkTypes[$type];
-       
-        if ($displayName && is_numeric($quantity) && $quantity > 0) {    
+
+        if ($displayName && is_numeric($quantity) && $quantity > 0) {
             $_SESSION["cart"]->order($type, $quantity);
             $message = "$quantity boxes of $displayName added to shopping cart";
         }
@@ -30,7 +30,7 @@ class Model {
         else if ($quantity < 1) {
             $message = "invalid, quantity less than 1";
         }
-		
+
 
 	       	return $message;
  	}
@@ -48,9 +48,9 @@ class Model {
 
  	}
     public function getDrinkTypes () {
-        return ShoppingCart::$drinkTypes;
+        $drinktypes = "SELECT name FROM drinktypes";
     }
- 
+
 }
 
 ?>
