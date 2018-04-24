@@ -19,17 +19,17 @@
 	</style>
 	<title> Start an order </title>
     <!-- style sheet CSS -->
-	<link href="main.css" type="text/css" rel="stylesheet"/>
+	<link href="view/main.css" type="text/css" rel="stylesheet"/>
     
     <!-- javascript validation -->
-    <script scr="validate.js"></script>
+    <!-- <script scr="validate.js"></script> -->
 
 </head>
 
 <body>
     <h1>Order some coffee!</h1>
     <!-- put the controller in the action? -->
-    <form name="orderfrm" id="order" method="post" action="checkout.php"> 
+    <form name="orderfrm" id="order" method="post"> 
     <!-- redirect to the controller, which will redirect to the right view 
     make sure form -->
 
@@ -65,7 +65,8 @@
         
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
-        <button class="brown" type="submit" value="submit" onclick="validateForm(orderfrm)">Go to cart</button>
+        <!--  onclick="validateForm(orderfrm)" -->
+        <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
         <!-- and invoke onclick -->
     </form>
     <p>Thank you for your order!</p>

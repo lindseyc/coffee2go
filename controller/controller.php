@@ -1,7 +1,7 @@
 <?php
 	
-	include_once("../model/model.php");
-	include_once("../view/view.php");
+	include_once("model/model.php");
+	include_once("view/view.php");
 	if (session_status() != PHP_SESSION_ACTIVE) {
 		session_start();
 	}
@@ -12,6 +12,8 @@
 		public function __construct() {
 			$this->model = new Model();
 			$this->view = new View($this->model);
+
+			//call model to load the drinkTypes from the database (Jason)
 
 		}
 
@@ -76,14 +78,25 @@
 			$this->view->renderOrderForm($drinkTypes);
 			$drinkType = $this->model->getDrinkTypes();
 
-			if($_SERVER["REQUEST_METHOD"] == "POST" && $POST_["submit"] != null) {
+			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 			//display checkout
 			//if(isset($_POST("submit"))){
 			//		call model function to add to db
 			//}
+				print_r('adding to cart');
+				print_r($_POST);
 				$quantity = $_POST["quantity"];
 				$type = $_POST["type"];
-				$result = $this->model->updateCart($variety, $quantity);
+				$name = $_POST["name"];
+				$phone = $_POST["phone"];
+				$email = $_POST["email"];
+				$carrier = $_POST["carrier"];
+
+				echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
+
+				$result = $this->model->updateCart($quantity, $quantity);
+
+				// $cust = $this->model->addCustomer();
 
 				if(preg_match('/invalid/', $result)) {
 					echo $result;
@@ -93,6 +106,7 @@
 					$this->view->renderCart($shoppingCart);
 				}
 			}
+			$this->view->renderCart($shoppingCart);
 
 		}
 	}

@@ -39,6 +39,10 @@ class Model {
  		return $_SESSION["cart"]->getOrder();
  	}
 
+    public function getCustomer() {
+        return $_SESSION["cart"]->getCustomer();
+    }
+
  	public function addToCart($type, $quantity) {
  		// todo
 
