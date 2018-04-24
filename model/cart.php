@@ -3,10 +3,19 @@
 class ShoppingCart {
 
 	//put the drink types and prices in this array like gsc
-	public static $drinkTypes = Array(
-		
-	);
-
+	public static $drinkTypes = Array(	"latte" => 3.50, 
+										"black coffee" => 2.00,
+										"espresso" => 4.00,
+									 );
+	public static $teatypes = Array(	"black tea" => 1.50,
+										"irish breakfast" => 1.75,
+										"earl grey" => 1.75,
+										"green tea" => 1.50
+									);
+	public static $smoovtypes = Array(	"strawberry" => 4.00,
+										"straw-nana" => 4.75,
+										"mango" => 5.00
+									);
 	private $order;
 	private $customer;
 

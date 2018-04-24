@@ -40,25 +40,58 @@ session_start();
             font-family: "Palatino", "Garamond", "Times", serif
         }
 	</style>
-	<link href="main.css" type="text/css" rel="stylesheet"/>
+	<link href="view/main.css" type="text/css" rel="stylesheet"/>
 	<title> Checkout </title>
 </head>
 
 <body>
 	<h2> Checkout </h2>
 
-	<p>Your Order: </p>
+	<!-- Display order and customer info -->
 
-
+	<p> your information </p>
+	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
-	foreach ($shoppingCart as $drink => $price) {
-		print_r('drink = ' . $drink);
+	// iff post isset:
+	print_r($_POST);
+	$post = $_POST;
+	unset($post['submit']);
+	foreach($post as $key => $value){
+		echo $key . " is " . $value;
+		echo "<br>";
 	}
 
-		?>
-	<!-- Display order and customer info -->
-	<?php
 	?>
+
+	<p>Your Order: </p>
+	<!-- table for drink order -->
+	<?php
+	echo '<table>';
+	echo '<tr>';
+		echo '<td>Drink</td>';
+		echo '<td>Price</td>';
+		echo '<td>Quantity</td>';
+	foreach ($shoppingCart as $drink => $price) {
+		echo '<tr>';
+			echo '<td>';
+			print_r($drink);
+			echo '</td>';
+			echo '<td>';
+			print_r($price);
+			echo '</td>';
+			 echo '<td>';
+			//put quantity box here? or just have confirm, & no 'update of order option'
+			 echo '</td>';
+		echo '</tr>';
+	}
+	echo "</table>";
+	?>
+
+	
+
+		
+	
+	<button class="brown" name="confirm" type="submit" value="submit">Confirm</button>
 
 </body>
 

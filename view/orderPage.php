@@ -18,11 +18,43 @@
         }
 	</style>
 	<title> Start an order </title>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- style sheet CSS -->
 	<link href="view/main.css" type="text/css" rel="stylesheet"/>
 
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
+    <script>
+       var dropSelection = function() {
+            var radiobutt = $('#dropdown').val();
+            var update = $('#drinklist');
+            console.log(update);
+            console.log(radiobutt);
+            if(radiobutt == "smoothie"){
+                update.html('<p> smoothie was selected</p>');
+                return true;
+            } else if (radiobutt == "tea"){
+                update.html('<p> tea was selected</p>');
+                return true;
+            } else if (radiobutt == "coffee"){
+                update.html('<p> coffee was selected</p>');
+                return true;
+            } else {
+                update.html('<p> none selected </p>');
+                return false;
+            }
+        }
+
+    $(document).ready(function() {
+        // selectorder = $('#dropdown').val();
+        $('#dropdown').on("change", dropSelection);
+        });
+
+
+    </script>
 
 </head>
 
@@ -37,28 +69,28 @@
 
             <legend>Customer information</legend>
 
-
-           <legend>Order</legend>
-             <legend for="name">Name: <input type="text" id="name" placeholder="First and Last"></input>
+             <legend for="name">Name: <input type="text" id="email" name="name" placeholder="First and Last"></input>
             </legend>
 
-            <legend for="email">Email: <input type="email" id="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
             </legend>
             <br/>
 
-            <legend for="phone">Phone number: <input type="phone" id="phone" placeholder="xxx xxx xxxx"></input>
+            <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-            <legend for="carrier">Carrier: <input type="text" id="carrier" placeholder="to receive texts"></input>
+            <legend for="carrier">Carrier: <input type="text" id="carrier" name="carrier" placeholder="to receive texts"></input>
             </legend>
 
         </fieldset>
         <fieldset>
 
-            <select>
+            <legend for="dropdown">Order</legend>
+            <select id="dropdown">
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
                 <option value="smoothie">Smoothie</option>
+
             </select>
             <p><span id="drinklist">Drinks will be inserted here</span></p>
         </fieldset>

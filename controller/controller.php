@@ -80,11 +80,9 @@
 			$drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
-			//display checkout
-			//if(isset($_POST("submit"))){
-			//		call model function to add to db
-			//}
+			
 				print_r('adding to cart');
+				//display the post
 				print_r($_POST);
 				$quantity = $_POST["quantity"];
 				$type = $_POST["type"];
