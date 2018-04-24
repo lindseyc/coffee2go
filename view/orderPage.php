@@ -23,7 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- style sheet CSS -->
-	<link href="view/main.css" type="text/css" rel="stylesheet"/>
+	<link href="main.css" type="text/css" rel="stylesheet"/>
 
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
@@ -78,12 +78,13 @@
 
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
-<!-- 
+
             <legend for="carrier">Carrier: 
             <select>
             <?php
                 // carrier dropdown here
-            ?></legend> -->
+
+            ?></select></legend>
 
         </fieldset>
         <fieldset>
