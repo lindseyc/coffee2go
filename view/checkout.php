@@ -47,16 +47,33 @@ session_start();
 <body>
 	<h2> Checkout </h2>
 
+	<p> your information </p>
+	<!-- customer info (can not edit, maybe in a later feature) -->
+	<?php
+
+	?>
+
 	<p>Your Order: </p>
+	<!-- table for drink order -->
+	<?php
+	echo '<table>';
+
+	foreach ($shoppingCart as $drink => $price) {
+		echo '<tr>';
+		echo '<td>';
+		print_r('drink = ' . $drink);
+		echo '</td>';
+		echo '<td>'
+		print_r($price);
+		echo '</td>';
+		echo '</tr>';
+
+	}
+	?>
 
 	
 
-	<?php
-	foreach ($shoppingCart as $drink => $price) {
-		print_r('drink = ' . $drink);
-	}
-
-		?>
+		
 	<!-- Display order and customer info -->
 	<?php
 	?>
