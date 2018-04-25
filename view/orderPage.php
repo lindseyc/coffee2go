@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<?php
+$path = ('./model/carriersandaddresses.php');
+require_once($path);
+?>
 <html>
 <head>
 	<style> /*style for header and footer*/
@@ -31,8 +34,6 @@
        var dropSelection = function() {
             var radiobutt = $('#dropdown').val();
             var update = $('#drinklist');
-            console.log(update);
-            console.log(radiobutt);
             if(radiobutt == "smoothie"){
                 update.html('<p> smoothie was selected</p>');
                 return true;
@@ -82,18 +83,21 @@
             <legend for="carrier">Carrier: 
             <select>
             <?php
-                // carrier dropdown here
-
-            ?></select></legend>
+                foreach (CellCarriers::$carriers as $carrier => $value){
+                    echo "<option value=\"" . $carrier . "\">" . $carrier;
+                    echo "</option>";
+                };
+            ?>
+            </select></legend>
 
         </fieldset>
         <fieldset>
 
             <legend for="dropdown">Order</legend>
-            <select id="dropdown">
+            <select id="dropdown" name="dropdown">
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
-                <option value="smoothie">Smoothie</option>
+                <option value="smoothie">Smoothies</option>
 
             </select>
             <p><span id="drinklist">Drinks will be inserted here</span></p>
