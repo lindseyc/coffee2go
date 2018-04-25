@@ -1,6 +1,6 @@
 <?php
 
-class carriers {
+class CellCarriers {
     public static $carriers = Array (
         "3 River Wireless" => "sms.3rivers.net",
         "ACS Wireless" => "paging.acswireless.com",
@@ -59,5 +59,7 @@ class carriers {
         "West Central Wireless" => "sms.wcc.net",
         "Western Wireless" => "cellularonewest.com"
         
-    )
-}
+    );
+};
+
+?>
