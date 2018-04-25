@@ -53,10 +53,7 @@ require_once($path);
         // selectorder = $('#dropdown').val();
         $('#dropdown').on("change", dropSelection);
         });
-
-
     </script>
-
 </head>
 
 <body>
@@ -67,7 +64,6 @@ require_once($path);
     make sure form -->
 
         <fieldset>
-
             <legend>Customer information</legend>
 
              <legend for="name">Name: <input type="text" id="email" name="name" placeholder="First and Last"></input>
@@ -81,7 +77,7 @@ require_once($path);
             </legend>
 
             <legend for="carrier">Carrier: 
-            <select>
+            <select id="carrier" name="carrier">
             <?php
                 foreach (CellCarriers::$carriers as $carrier => $value){
                     echo "<option value=\"" . $carrier . "\">" . $carrier;
