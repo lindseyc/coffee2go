@@ -13,7 +13,7 @@ CREATE TABLE employee (
 CREATE TABLE customer (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(256) NOT NULL,
-  phone VARCHAR(64) NOT NULL,
+  phone INT NOT NULL,
   email VARCHAR(64) NOT NULL,
   carrier VARCHAR(64) NOT NULL
 );
@@ -31,12 +31,12 @@ CREATE TABLE drinktype (
   price FLOAT NOT NULL
 );
 
-CREATE TABLE CustomDrink (
+CREATE TABLE customdrink (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   order_id INT UNSIGNED NOT NULL,
   type_id INT UNSIGNED NOT NULL,
   quantity INT UNSIGNED NOT NULL,
-  price FLOAT,
+  price FLOAT NOT NULL,
   FOREIGN KEY (order_id) REFERENCES orders(id),
 );
 

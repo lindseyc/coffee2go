@@ -2,6 +2,7 @@
 <?php
 $path = ('./model/carriersandaddresses.php');
 require_once($path);
+require_once("./controller/controller.php");
 ?>
 <html>
 <head>
@@ -53,13 +54,7 @@ require_once($path);
         // selectorder = $('#dropdown').val();
         $('#dropdown').on("change", dropSelection);
         });
-<<<<<<< HEAD
     </script> -->
-
-		<?php
-			mysqli_stmt_execute($selectdrinktype);
-			$drinktypeid = 0;
-	?>
 
 		<script>
 			 var dropSelection = function() {
@@ -68,15 +63,19 @@ require_once($path);
 						console.log(update);
 						console.log(radiobutt);
 						if(radiobutt == "smoothie"){
-							<?php
-							$selectdrinktype -> fetch();
-							$drinktypeid = 3; ?>
 						} else if (radiobutt == "tea"){
-							<?php $drinktypeid = 2;?>
 						} else if (radiobutt == "coffee"){
-							<?php $drinktypeid = 1; ?>
+							<?php
+							$drinktypeid = 1;
+							mysqli_stmt_execute($selectdrinktype);
+
+							print_r($connection->error);
+							//$selectdrinktype->fetch();
+							//$selectdrinktype->bind_result($name);
+							//mysqli_stmt_close($selectdrinktype);
+
+						?>
 						} else {
-							<?php $drinktypeid = 0; ?>
 						}
 				}
 
@@ -86,15 +85,8 @@ require_once($path);
 				});
 		</script>
 
-<?php
-	mysqli_stmt_close($selectdrinktype);
- ?>
 
 
-
-=======
-    </script>
->>>>>>> master
 </head>
 
 <body>
@@ -117,14 +109,7 @@ require_once($path);
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-<<<<<<< HEAD
-            <!-- <legend for="carrier">Carrier:
-            <select>
-            <?php
-                // carrier dropdown here
-            ?></legend> -->
-=======
-            <legend for="carrier">Carrier: 
+            <legend for="carrier">Carrier:
             <select id="carrier" name="carrier">
             <?php
                 foreach (CellCarriers::$carriers as $carrier => $value){
@@ -133,18 +118,13 @@ require_once($path);
                 };
             ?>
             </select></legend>
->>>>>>> master
 
         </fieldset>
         <fieldset>
 
             <legend for="dropdown">Order</legend>
-<<<<<<< HEAD
             <select id="dropdown">
 								<option value="" selected disabled hidden>Choose here</option>
-=======
-            <select id="dropdown" name="dropdown">
->>>>>>> master
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
                 <option value="smoothie">Smoothies</option>
