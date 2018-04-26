@@ -73,11 +73,12 @@ function createTimeDropDown() {
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
 	// iff post isset:
-	print_r($_POST);
+	//print_r($_POST);
 	$post = $_POST;
-	print_r($post);
 	unset($post['submit']);
 	unset($post['dropdown']);
+	//print_r($post);
+
 	foreach($post as $key => $value){
 		echo "Your " . $key . " is " . $value;
 		echo "<br>";
@@ -95,15 +96,22 @@ function createTimeDropDown() {
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
 		echo '<td>Quantity</td>';
-	foreach ($shoppingCart as $drink => $price) {
+		//I DONT KNOW WHAT THESE ARE / where they came from??
+		unset($shoppingCart['all']);
+		unset($shoppingCart['']);
+		//print_r($shoppingCart);
+	foreach ($shoppingCart as $drink => $quantity) {
 		echo '<tr>';
 			echo '<td>';
-			print_r($drink);
+			echo($drink);
 			echo '</td>';
 			echo '<td>';
-			print_r($price);
+			//price
+			$price = ShoppingCart::$drinktypes[$drink];
+			echo '$' . number_format($price, '2');
 			echo '</td>';
-			 echo '<td>';
+			echo '<td>';
+			echo $quantity;
 			//put quantity box here? or just have confirm, & no 'update of order option'
 			 echo '</td>';
 		echo '</tr>';
@@ -113,8 +121,10 @@ function createTimeDropDown() {
 	// pickup time selection?
 
 	?>
-	<h6>In how many minutes would you like your drink to be ready?</h6>
-	<select id="timeDrop" name="timeDrop" default="in minutes">
+	</fieldset>
+	<fieldset>
+	<legend>In how many minutes would you like your drink to be ready?</legend>
+	<select id="timeDrop" name="timeDrop">
                 <option value="30">30</option>
                 <option value="45">45</option>
                 <option value="60">60</option>

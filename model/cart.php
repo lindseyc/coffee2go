@@ -37,6 +37,7 @@ class ShoppingCart {
 
 	public function order($type, $quantity) {
 		 $currentQuantity = $this->order[$type];
+		 //may need to change
         $currentQuantity += $quantity;
         $this->order[$type] = $currentQuantity;
 	}
@@ -47,7 +48,7 @@ class ShoppingCart {
 	}
 
 	public function updateCart($type, $quantity) {
-		$this->order[$key] = $value;
+		$this->order[$type] = $quantity;
 	}
 
 	public function remove($type) {

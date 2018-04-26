@@ -32,21 +32,29 @@ var validateField = function(fieldElem, infoMessage, validateFn) {
 var validateName = function (elem){
 	var regex = /^[a-z ,.'-]+$/i;
 
-// regex.test(elem);
+// return regex.test(elem);
 	return true;
 };
 
 
 var validatePhone = function (elem) {
+	var regex = /^\(?([0-9]{3})\)?[ . ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+// return regex.test(elem);
+
 	return true;
 }
 
-var validateCarrier = function (elem) {
-	return true;
-}
+// var validateCarrier = function (elem) {
+
+// 	// return regex.test(elem);
+
+// 	return true;
+// }
 
 var validateEmail = function (elem) {
 	var regex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+// return regex.test(elem);
 
 	return true;
 }
@@ -71,22 +79,10 @@ function validateForm(form) {
 
 	// 	 return false;
 	// }
-	// else if (!validateCarrier($('#carrier').val())){
-	// 	alert("enter valid carrier");
-
-	// 	 return false;
-	// }
+	
 
 	return true;
 }
-
-
-
-
-
-
-
-
 
 
 $(document).ready(function() {
@@ -94,19 +90,19 @@ $(document).ready(function() {
 
 	console.log("calling ready function");
 
-	$('#name').on("focusout", function() {
+	$('#name').on("focus", function() {
 		validateField($('#name'), 'Error: please enter a valid name (a-z characters)', validateName);
 	});
-	$('#phone').on("focusout", function() {
+	$('#phone').on("focus", function() {
 		validateField($('#phone'), 'Error: please enter a valid number (xxx xxx xxxx)', validatePhone);
 	});
 
-	$('#email').on("focusout", function() {
-		validateField($('#email'), 'Error: please enter a valid email address', validatePW);
+	$('#email').on("focus", function() {
+		validateField($('#email'), 'Error: please enter a valid email address', validateEmail);
 	});
 
-	$('#carrier').on("focusout", function() {
-		validateField($('#carrier'), 'Error: please enter a valid carrier', validateEmail);
-	});
+	// $('#carrier').on("focusout", function() {
+	// 	validateField($('#carrier'), 'Error: please enter a valid carrier', validateCarrier);
+	// });
 
  });
