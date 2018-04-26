@@ -83,14 +83,21 @@
 								ShoppingCart::$smoovtypes
 							);
 			$this->view->renderOrderForm($drinktypes);
-			print_r($drinktypes);
+			//print_r($drinktypes);
 			$drinkType = $this->model->getDrinkTypes();
+
+
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
-				print_r('adding to cart');
+				//validate form here
+
+
+
+
+				//print_r('adding to cart');
 				//display the post
-				print_r($_POST);
+				//print_r($_POST);
 				//$quantity = $_POST["quantity"];
 				//$type = $_POST["type"];
 				$name = $_POST["name"];
@@ -98,16 +105,16 @@
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
-				echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
-
+				//echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
+				echo '<br/>';
 				//if($drinkSelected){
 					$type = trim($_POST["dropdown"]);
 					$quantity = trim($_POST["quantity"]);
 					//TODO
-					$quantity = 2;
+					//$quantity = 2;
 					$message = "";
 					//TODOOO
-					$displayname = ShoppingCart::$drinktypes["latte"];
+					$displayname = "latte"; //ShoppingCart::$drinktypes[0];
 					if($displayname && is_numeric($quantity) && $quantity > 0){
 						$_SESSION['cart']->order($type, $quantity);
 

@@ -48,7 +48,7 @@ class ShoppingCart {
 	}
 
 	public function updateCart($type, $quantity) {
-		$this->order[$key] = $value;
+		$this->order[$type] = $quantity;
 	}
 
 	public function remove($type) {

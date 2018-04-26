@@ -99,7 +99,7 @@ function createTimeDropDown() {
 		//I DONT KNOW WHAT THESE ARE / where they came from??
 		unset($shoppingCart['all']);
 		unset($shoppingCart['']);
-		print_r($shoppingCart);
+		//print_r($shoppingCart);
 	foreach ($shoppingCart as $drink => $quantity) {
 		echo '<tr>';
 			echo '<td>';
@@ -108,7 +108,7 @@ function createTimeDropDown() {
 			echo '<td>';
 			//price
 			$price = ShoppingCart::$drinktypes[$drink];
-			echo number_format($price, '2');
+			echo '$' . number_format($price, '2');
 			echo '</td>';
 			echo '<td>';
 			echo $quantity;

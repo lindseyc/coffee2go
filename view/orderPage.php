@@ -22,7 +22,6 @@ include_once('./model/cart.php');
         }
 	</style>
 	<title> Start an order </title>
-    <p>can i see <?php  $drinktypes ?> </p>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -158,7 +157,7 @@ include_once('./model/cart.php');
                             echo '</td>';
                             echo '<td>';
                             //price
-                            echo ($price);
+                            echo '$' . number_format($price, '2');
                             echo '</td>';
                             echo '<td>';
                             echo 'Add to Cart:

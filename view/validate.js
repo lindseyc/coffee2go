@@ -90,14 +90,14 @@ $(document).ready(function() {
 
 	console.log("calling ready function");
 
-	$('#name').on("focusout", function() {
+	$('#name').on("focus", function() {
 		validateField($('#name'), 'Error: please enter a valid name (a-z characters)', validateName);
 	});
-	$('#phone').on("focusout", function() {
+	$('#phone').on("focus", function() {
 		validateField($('#phone'), 'Error: please enter a valid number (xxx xxx xxxx)', validatePhone);
 	});
 
-	$('#email').on("focusout", function() {
+	$('#email').on("focus", function() {
 		validateField($('#email'), 'Error: please enter a valid email address', validateEmail);
 	});
 
