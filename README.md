@@ -18,5 +18,8 @@ The files are structured in model-view-controller style, where the controller ac
 * `db.sql` stores the SQL queries themselves, used to interact directly with the SQL database, primarily when creating the database if not already created.
 * `cart.php` works with the customer's ordering process to add, remove, or modify drinks, or to submit them, display drink prices, etc. in conjunction with the view.
 
+### The 'controller'
+* `contoller.php` executes communication between the view and model by tracking what is submitted through the post by the user and using information from the model to display the view pages
+
 ## Other information
 This project was created as a class project for CS135 at Claremont Mckenna College by LC, BK, and JB.
