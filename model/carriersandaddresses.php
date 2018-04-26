@@ -1,6 +1,6 @@
 <?php
 
-class carriers {
+class CellCarriers {
     public static $carriers = Array (
         "3 River Wireless" => "sms.3rivers.net",
         "ACS Wireless" => "paging.acswireless.com",
@@ -14,7 +14,7 @@ class carriers {
         "Cellular One" => "mobile.celloneusa.com",
         "Cellular South" => "10digitphonenumber@csouth1.com",
         // skipped some more
-        "CenturyTel" => "messaging.centurytel.net"
+        "CenturyTel" => "messaging.centurytel.net",
         "Clearnet" => "msg.clearnet.com",
         "Comcast" => "comcastpcs.textmsg.com",
         "Corr Wireless Communication" => "corrwireless.net",
@@ -32,8 +32,8 @@ class carriers {
         "Metrocall 2-way" => "my2way.com",
         "Metro PCS" => "mymetropcs.com",
         "Microcell" => "fido.ca",
-        "Midwest Wireless" => "clearlydigital.com"
-        "Mobilcomm" => "mobilecomm.net"
+        "Midwest Wireless" => "clearlydigital.com",
+        "Mobilcomm" => "mobilecomm.net",
         "MTS" => "text.mtsmobility.com",
         "Nextel" => "messaging.nextel.com",
         "OnlineBeep" => "onlinebeep.net",
@@ -42,6 +42,7 @@ class carriers {
         "Public Service Cellular" => "sms.pscel.com",
         "Qwest" => "qwestmp.com",
         "Rogers" => "pcs.rogers.com",
+        "Solo Mobile" => "txt.bell.ca",
         "Southwestern Bell" => "email.swbw.com",
         "Sprint" => "messaging.sprint.com",
         "Suncom" => "tms.suncom.com",
@@ -52,12 +53,13 @@ class carriers {
         "Triton" => "tms.suncom.com",
         "Unicel" => "utext.com",
         "US Cellular" => "email.uscc.net",
-        "Solo Mobile" => "txt.bell.ca",
         "Verizon" => "vtext.com",
         "Virgin Mobile" => "vmobl.com",
         "Virgin Mobile Canada" => "vmobile.ca",
         "West Central Wireless" => "sms.wcc.net",
         "Western Wireless" => "cellularonewest.com"
         
-    )
-}
+    );
+};
+
+?>

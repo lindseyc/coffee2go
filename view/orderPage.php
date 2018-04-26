@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<?php
+$path = ('./model/carriersandaddresses.php');
+require_once($path);
+?>
 <html>
 <head>
 	<style> /*style for header and footer*/
@@ -23,7 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- style sheet CSS -->
-	<link href="view/main.css" type="text/css" rel="stylesheet"/>
+	<link href="main.css" type="text/css" rel="stylesheet"/>
 
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
@@ -31,8 +34,6 @@
        var dropSelection = function() {
             var radiobutt = $('#dropdown').val();
             var update = $('#drinklist');
-            console.log(update);
-            console.log(radiobutt);
             if(radiobutt == "smoothie"){
                 update.html('<p> smoothie was selected</p>');
                 return true;
@@ -52,6 +53,7 @@
         // selectorder = $('#dropdown').val();
         $('#dropdown').on("change", dropSelection);
         });
+<<<<<<< HEAD
     </script> -->
 
 		<?php
@@ -90,6 +92,9 @@
 
 
 
+=======
+    </script>
+>>>>>>> master
 </head>
 
 <body>
@@ -100,7 +105,6 @@
     make sure form -->
 
         <fieldset>
-
             <legend>Customer information</legend>
 
              <legend for="name">Name: <input type="text" id="email" name="name" placeholder="First and Last"></input>
@@ -113,30 +117,46 @@
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
+<<<<<<< HEAD
             <!-- <legend for="carrier">Carrier:
             <select>
             <?php
                 // carrier dropdown here
             ?></legend> -->
+=======
+            <legend for="carrier">Carrier: 
+            <select id="carrier" name="carrier">
+            <?php
+                foreach (CellCarriers::$carriers as $carrier => $value){
+                    echo "<option value=\"" . $carrier . "\">" . $carrier;
+                    echo "</option>";
+                };
+            ?>
+            </select></legend>
+>>>>>>> master
 
         </fieldset>
         <fieldset>
 
             <legend for="dropdown">Order</legend>
+<<<<<<< HEAD
             <select id="dropdown">
 								<option value="" selected disabled hidden>Choose here</option>
+=======
+            <select id="dropdown" name="dropdown">
+>>>>>>> master
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
-                <option value="smoothie">Smoothie</option>
+                <option value="smoothie">Smoothies</option>
 
             </select>
-            <p><span id="drinklist">Drinks will be inserted here</span></p>
+            <p><span id="drinklist">Drinks will be inserted here</span>
+            </p>
         </fieldset>
 
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
-        <!-- emailtextmessages.com -->
         <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
         <!-- and invoke onclick -->
     </form>

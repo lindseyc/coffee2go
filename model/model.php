@@ -14,8 +14,10 @@ class Model {
   }
 
 	public function updateCart($type, $quantity) {
-
-        $displayName = ShoppingCart::$drinkTypes[$type];
+        //for now hardcode in type
+        $type = "latte";
+        $quantity = 1;
+        $displayName = ShoppingCart::$drinktypes[$type];
 
         if ($displayName && is_numeric($quantity) && $quantity > 0) {
             $_SESSION["cart"]->order($type, $quantity);
@@ -44,7 +46,9 @@ class Model {
     }
 
  	public function addToCart($type, $quantity) {
- 		// todo
+ 		$currentQuantity = $this->order[$type];
+        $currentQuantity += $quantity;
+        $this->order[$type] = $currentQuantity;
 
  	}
     public function getDrinkTypes () {
