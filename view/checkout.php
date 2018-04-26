@@ -95,15 +95,16 @@ function createTimeDropDown() {
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
 		echo '<td>Quantity</td>';
-	foreach ($shoppingCart as $drink => $price) {
+	foreach ($shoppingCart as $drink => $quantity) {
 		echo '<tr>';
 			echo '<td>';
-			print_r($drink);
+			echo($drink);
 			echo '</td>';
 			echo '<td>';
-			print_r($price);
+			echo ShoppingCart::drinktypes[$drink];
 			echo '</td>';
-			 echo '<td>';
+			echo '<td>';
+			echo $quantity;
 			//put quantity box here? or just have confirm, & no 'update of order option'
 			 echo '</td>';
 		echo '</tr>';
