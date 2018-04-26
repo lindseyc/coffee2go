@@ -20,7 +20,8 @@ class Model {
         $displayName = ShoppingCart::$drinktypes[$type];
 
         if ($displayName && is_numeric($quantity) && $quantity > 0) {
-            $_SESSION["cart"]->order($type, $quantity);
+            $_SESSION["cart"]->updateCart($type, $quantity);
+            //$_SESSION["cart"]->order($type, $quantity);
             $message = "$quantity boxes of $displayName added to shopping cart";
         }
         else if (!$displayName) {

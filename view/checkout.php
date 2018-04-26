@@ -73,11 +73,12 @@ function createTimeDropDown() {
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
 	// iff post isset:
-	print_r($_POST);
+	//print_r($_POST);
 	$post = $_POST;
-	print_r($post);
 	unset($post['submit']);
 	unset($post['dropdown']);
+	//print_r($post);
+
 	foreach($post as $key => $value){
 		echo "Your " . $key . " is " . $value;
 		echo "<br>";
@@ -95,6 +96,9 @@ function createTimeDropDown() {
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
 		echo '<td>Quantity</td>';
+		//I DONT KNOW WHAT THESE ARE / where they came from??
+		unset($shoppingCart['all']);
+		unset($shoppingCart['']);
 		print_r($shoppingCart);
 	foreach ($shoppingCart as $drink => $quantity) {
 		echo '<tr>';

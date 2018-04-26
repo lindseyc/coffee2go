@@ -13,7 +13,7 @@ class View {
 	}
 
 	//display the order page
-	public function renderOrderForm($drinkTypes){
+	public function renderOrderForm($drinktypes){
 		include_once("orderpage.php");
 	}
 

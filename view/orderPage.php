@@ -2,6 +2,7 @@
 <?php
 $path = ('./model/carriersandaddresses.php');
 require_once($path);
+include_once('./model/cart.php');
 ?>
 <html>
 <head>
@@ -21,27 +22,66 @@ require_once($path);
         }
 	</style>
 	<title> Start an order </title>
+    <p>can i see <?php  $drinktypes ?> </p>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- style sheet CSS -->
-	<link href="main.css" type="text/css" rel="stylesheet"/>
+	<link href="./view/main.css" type="text/css" rel="stylesheet"/>
 
     <!-- javascript validation -->
-    <!-- <script scr="validate.js"></script> -->
+    <script scr="./view/validate.js"></script>
+
+<?php
+    $smoothies = ShoppingCart::$smoovtypes;
+
+    $cart_info_json = json_encode($smoothies);
+    $tea = ShoppingCart::$teatypes;
+    $cart_info_json = json_encode($smoothies);
+
+    $coffee = ShoppingCart::$drinktypes;
+    $cart_info_json = json_encode($smoothies);
+
+?>
+
     <script>
-       var dropSelection = function() {
+
+
+        var dropSelection = function() {
+
             var radiobutt = $('#dropdown').val();
             var update = $('#drinklist');
             if(radiobutt == "smoothie"){
                 update.html('<p> smoothie was selected</p>');
+                // <?php 
+                //     echo ShoppingCart::$smoovtypes;
+                //  ?>
+                <?php
+                echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
+                ?>
+                update.html(smoove);
+
                 return true;
             } else if (radiobutt == "tea"){
                 update.html('<p> tea was selected</p>');
+                // <?php
+                // echo ShoppingCart::$teatypes;
+                // ?>
+                <?php
+                echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
+                ?>                update.html(smoove);
                 return true;
             } else if (radiobutt == "coffee"){
                 update.html('<p> coffee was selected</p>');
+                // <?php
+                // echo ShoppingCart::$drinktypes;
+                // ?>
+                <?php
+                echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
+                ?>               
+                update.html(smoove);
+
                 return true;
             } else {
                 update.html('<p> none selected </p>');
@@ -91,20 +131,54 @@ require_once($path);
 
             <legend for="dropdown">Order</legend>
             <select id="dropdown" name="dropdown">
+                <option value="all">All</option>
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
-                <option value="smoothie">Smoothies</option>
+                <option value="smoothie">Smoothie</option>
 
             </select>
-            <p><span id="drinklist">Drinks will be inserted here</span>
+            <!-- add some space -->
+            <br/><br/> 
+
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Drink Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- hardcoded drinks array of coffee into orderpage with add to cart button: -->
+                <?php
+                    foreach(ShoppingCart::$drinktypes as $type => $price){
+                        echo '<tr>';
+                            echo '<td>';
+                            echo($type);
+                            echo '</td>';
+                            echo '<td>';
+                            //price
+                            echo ($price);
+                            echo '</td>';
+                            echo '<td>';
+                            echo 'Add to Cart:
+                                <input type="number" placeholder="0" min="0" max="5">';
+                            echo '</td>';
+                        echo '</tr>';
+                    }
+                 ?>
+                </tbody>
+            </table>
+<!--             <p><span id="drinklist">Drinks will be inserted here</span>
+ -->
+
             </p>
         </fieldset>
 
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
-        <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
-        <!-- and invoke onclick -->
+        <button class="brown" name="submit" type="submit" value="submit"onclick='return validateForm(orderfrm);'>Go to cart</button>
     </form>
     <p>Thank you for your order!</p>
 
