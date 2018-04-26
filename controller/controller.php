@@ -76,7 +76,7 @@
 
 
 		public function invoke() {
-			$this->view->renderOrderForm($drinkTypes);
+			$this->view->renderOrderForm($drinktypes);
 			$drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {

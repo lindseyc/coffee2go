@@ -95,13 +95,14 @@ function createTimeDropDown() {
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
 		echo '<td>Quantity</td>';
+		print_r($shoppingCart);
 	foreach ($shoppingCart as $drink => $price) {
 		echo '<tr>';
 			echo '<td>';
 			print_r($drink);
 			echo '</td>';
 			echo '<td>';
-			print_r($price);
+			print_r('$' . $price);
 			echo '</td>';
 			 echo '<td>';
 			//put quantity box here? or just have confirm, & no 'update of order option'
@@ -113,7 +114,9 @@ function createTimeDropDown() {
 	// pickup time selection?
 
 	?>
-	<h6>In how many minutes would you like your drink to be ready?</h6>
+	</fieldset>
+	<fieldset>
+	<legend>In how many minutes would you like your drink to be ready?</legend>
 	<select id="timeDrop" name="timeDrop" default="in minutes">
                 <option value="30">30</option>
                 <option value="45">45</option>
