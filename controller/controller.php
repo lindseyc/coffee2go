@@ -2,6 +2,10 @@
 
 	include_once("model/model.php");
 	include_once("view/view.php");
+	include_once("model/queries.php");
+	include_once("dbconn.php");
+
+	$connection = connect_to_db("motley");
 
 	if (session_status() != PHP_SESSION_ACTIVE) {
 		session_start();

@@ -27,7 +27,7 @@
 
     <!-- javascript validation -->
     <!-- <script scr="validate.js"></script> -->
-    <script>
+    <!-- <script>
        var dropSelection = function() {
             var radiobutt = $('#dropdown').val();
             var update = $('#drinklist');
@@ -52,9 +52,43 @@
         // selectorder = $('#dropdown').val();
         $('#dropdown').on("change", dropSelection);
         });
+    </script> -->
+
+		<?php
+			mysqli_stmt_execute($selectdrinktype);
+			$drinktypeid = 0;
+	?>
+
+		<script>
+			 var dropSelection = function() {
+						var radiobutt = $('#dropdown').val();
+						var update = $('#drinklist');
+						console.log(update);
+						console.log(radiobutt);
+						if(radiobutt == "smoothie"){
+							<?php
+							$selectdrinktype -> fetch();
+							$drinktypeid = 3; ?>
+						} else if (radiobutt == "tea"){
+							<?php $drinktypeid = 2;?>
+						} else if (radiobutt == "coffee"){
+							<?php $drinktypeid = 1; ?>
+						} else {
+							<?php $drinktypeid = 0; ?>
+						}
+				}
+
+		$(document).ready(function() {
+				// selectorder = $('#dropdown').val();
+				$('#dropdown').on("change", dropSelection);
+				});
+		</script>
+
+<?php
+	mysqli_stmt_close($selectdrinktype);
+ ?>
 
 
-    </script>
 
 </head>
 
@@ -79,17 +113,18 @@
             <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
-            <legend for="carrier">Carrier: 
+            <!-- <legend for="carrier">Carrier:
             <select>
             <?php
                 // carrier dropdown here
-            ?></legend>
+            ?></legend> -->
 
         </fieldset>
         <fieldset>
 
             <legend for="dropdown">Order</legend>
             <select id="dropdown">
+								<option value="" selected disabled hidden>Choose here</option>
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
                 <option value="smoothie">Smoothie</option>

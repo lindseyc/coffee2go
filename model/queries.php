@@ -4,7 +4,7 @@
 // Insert into employee
 $query = "INSERT INTO employee(name)
           VALUES(?);";
-$insertEmployee = $connection-prepare($query);
+$insertEmployee = $connection->prepare($query);
 $insertEmployee-> bind_param("s", $name);
 
 // Insert into customer
@@ -14,7 +14,7 @@ $insertCustomer = $connection-prepare($query);
 $insertCustomer-> bind_param("ssss");
 
 // Insert into order
-$query = "INSERT INTO order(customer_id, price, dateCreated)
+$query = "INSERT INTO orders(customer_id, price, dateCreated)
           VALUES(?, ?, now());";
 $insertOrder = $connection-prepare($query);
 $insertOrder-> bind_param("ifs");
@@ -26,8 +26,8 @@ $insertCustomDrink = $connection-prepare($query);
 $insertCustomDrink-> bind_param("iiif");
 
 // Select from drinktype
-$query = "SELECT name from girlscout where id=?";
+$query = "SELECT name from drinktype where id=?";
 $selectdrinktype = $connection->prepare($query);
-$selectdrinktype->bind_param('s', $drinktypeid);
+$selectdrinktype->bind_param('i', $drinktypeid);
 
 ?>
