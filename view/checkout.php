@@ -103,7 +103,8 @@ function createTimeDropDown() {
 			echo '</td>';
 			echo '<td>';
 			//price
-			echo ShoppingCart::drinktypes[$drink];
+			$price = ShoppingCart::$drinktypes[$drink];
+			echo number_format($price, '2');
 			echo '</td>';
 			echo '<td>';
 			echo $quantity;
@@ -119,7 +120,7 @@ function createTimeDropDown() {
 	</fieldset>
 	<fieldset>
 	<legend>In how many minutes would you like your drink to be ready?</legend>
-	<select id="timeDrop" name="timeDrop" default="in minutes">
+	<select id="timeDrop" name="timeDrop">
                 <option value="30">30</option>
                 <option value="45">45</option>
                 <option value="60">60</option>
