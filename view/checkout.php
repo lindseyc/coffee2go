@@ -21,6 +21,26 @@ session_start();
 // 	session_destroy();
 // }
 
+function createTimeDropDown() {
+	$hours = $minutes = $ampm = $optString = '';
+	$i = 0;
+	for($i = 540; $i <= 1260; $i += 30){
+		   $hours = floor($i / 60);
+           $minutes = $i % 60;
+           if ($minutes < 10){
+               $minutes = '0' . $minutes; // adding leading zero
+           }
+           $ampm = $hours % 24 < 12 ? 'AM' : 'PM';
+           $hours = $hours % 12;
+           if ($hours === 0){
+               $hours = 12;
+           }
+           $text =$hours.':'.$minutes.' '.$ampm;
+           $optString .='<option value="'.$i.'">'.$text.'</option>';
+	}
+	return $optString;
+}
+
 ?>
 <html lang="en">
 
@@ -48,22 +68,26 @@ session_start();
 	<h2> Checkout </h2>
 
 	<!-- Display order and customer info -->
-
-	<p> your information </p>
+	<fieldset>
+	<legend> Your Information: </legend>
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
 	// iff post isset:
 	print_r($_POST);
 	$post = $_POST;
+	print_r($post);
 	unset($post['submit']);
+	unset($post['dropdown']);
 	foreach($post as $key => $value){
-		echo $key . " is " . $value;
+		echo "Your " . $key . " is " . $value;
 		echo "<br>";
 	}
 
 	?>
+	</fieldset>
 
-	<p>Your Order: </p>
+	<fieldset>
+	<legend> Your Order: </legend>
 	<!-- table for drink order -->
 	<?php
 	echo '<table>';
@@ -85,13 +109,25 @@ session_start();
 		echo '</tr>';
 	}
 	echo "</table>";
+
+	// pickup time selection?
+
 	?>
+	<h6>In how many minutes would you like your drink to be ready?</h6>
+	<select id="timeDrop" name="timeDrop" default="in minutes">
+                <option value="30">30</option>
+                <option value="45">45</option>
+                <option value="60">60</option>
+                <option value="75">75</option>
+                <option value="90">90</option>
+                <option value="105">105</option>
+                <option value="120">120</option>
+     </select>
 
-	
+	</fieldset>
 
-		
-	
-	<button class="brown" name="confirm" type="submit" value="submit">Confirm</button>
+	<br>
+	<button text-align="right" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
 
 </body>
 

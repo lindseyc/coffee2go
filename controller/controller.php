@@ -108,5 +108,15 @@
 			$this->view->renderCart($shoppingCart);
 
 		}
+
+		public function confirm() {
+			$this->view->renderCart($shoppingCart);
+
+			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["confirm"] != null) {
+				// form has been confirmed, send order to employee
+				//email customer
+				//store customer/order/drink info in db
+			}
+		}
 	}
 ?>

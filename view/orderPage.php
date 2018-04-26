@@ -96,7 +96,8 @@ require_once($path);
                 <option value="smoothie">Smoothies</option>
 
             </select>
-            <p><span id="drinklist">Drinks will be inserted here</span></p>
+            <p><span id="drinklist">Drinks will be inserted here</span>
+            </p>
         </fieldset>
 
         <p></p>
