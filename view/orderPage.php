@@ -103,7 +103,6 @@ require_once($path);
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
-        <!-- emailtextmessages.com -->
         <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
         <!-- and invoke onclick -->
     </form>
