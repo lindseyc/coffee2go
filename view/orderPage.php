@@ -2,11 +2,7 @@
 <?php
 $path = ('./model/carriersandaddresses.php');
 require_once($path);
-<<<<<<< HEAD
-require_once("./controller/controller.php");
-=======
 include_once('./model/cart.php');
->>>>>>> master
 ?>
 <html>
 <head>
@@ -34,11 +30,6 @@ include_once('./model/cart.php');
 	<link href="./view/main.css" type="text/css" rel="stylesheet"/>
 
     <!-- javascript validation -->
-<<<<<<< HEAD
-    <!-- <script scr="validate.js"></script> -->
-    <!-- <script>
-       var dropSelection = function() {
-=======
     <script scr="./view/validate.js"></script>
 
 <?php
@@ -58,12 +49,11 @@ include_once('./model/cart.php');
 
         var dropSelection = function() {
 
->>>>>>> master
             var radiobutt = $('#dropdown').val();
             var update = $('#drinklist');
             if(radiobutt == "smoothie"){
                 update.html('<p> smoothie was selected</p>');
-                // <?php 
+                // <?php
                 //     echo ShoppingCart::$smoovtypes;
                 //  ?>
                 <?php
@@ -88,7 +78,7 @@ include_once('./model/cart.php');
                 // ?>
                 <?php
                 echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
-                ?>               
+                ?>
                 update.html(smoove);
 
                 return true;
@@ -104,7 +94,7 @@ include_once('./model/cart.php');
         });
     </script> -->
 
-		<script>
+		<!-- <script>
 			 var dropSelection = function() {
 						var radiobutt = $('#dropdown').val();
 						var update = $('#drinklist');
@@ -114,10 +104,9 @@ include_once('./model/cart.php');
 						} else if (radiobutt == "tea"){
 						} else if (radiobutt == "coffee"){
 							<?php
-							$drinktypeid = 1;
-							mysqli_stmt_execute($selectdrinktype);
+							// $drinktypeid = 1;
+							// mysqli_stmt_execute($selectdrinktype);
 
-							print_r($connection->error);
 							//$selectdrinktype->fetch();
 							//$selectdrinktype->bind_result($name);
 							//mysqli_stmt_close($selectdrinktype);
@@ -131,7 +120,7 @@ include_once('./model/cart.php');
 				// selectorder = $('#dropdown').val();
 				$('#dropdown').on("change", dropSelection);
 				});
-		</script>
+		</script> -->
 
 
 
@@ -171,20 +160,15 @@ include_once('./model/cart.php');
         <fieldset>
 
             <legend for="dropdown">Order</legend>
-<<<<<<< HEAD
             <select id="dropdown">
 								<option value="" selected disabled hidden>Choose here</option>
-=======
-            <select id="dropdown" name="dropdown">
-                <option value="all">All</option>
->>>>>>> master
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
                 <option value="smoothie">Smoothie</option>
 
             </select>
             <!-- add some space -->
-            <br/><br/> 
+            <br/><br/>
 
             <table id="table">
                 <thead>

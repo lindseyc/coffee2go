@@ -2,15 +2,10 @@
 
 	include_once("model/model.php");
 	include_once("view/view.php");
-<<<<<<< HEAD
 	include_once("dbconn.php");
 	//
 	$connection = connect_to_db("motley");
 	require_once("model/queries.php");
-	echo "hi";
-=======
-	include_once("model/cart.php");
->>>>>>> master
 
 	if (session_status() != PHP_SESSION_ACTIVE) {
 		session_start();
@@ -86,55 +81,26 @@
 
 		public function invoke() {
 
-			$drinktypes = Array(ShoppingCart::$drinktypes,
-								ShoppingCart::$teatypes,
-								ShoppingCart::$smoovtypes
-							);
-			$this->view->renderOrderForm($drinktypes);
-			//print_r($drinktypes);
+			// call to model to get drink types
+
+			$this->view->renderOrderForm($drinkTypes);
 			$drinkType = $this->model->getDrinkTypes();
-
-
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
-				//validate form here
-
-
-
-
-				//print_r('adding to cart');
+				print_r('adding to cart');
 				//display the post
-				//print_r($_POST);
-				//$quantity = $_POST["quantity"];
-				//$type = $_POST["type"];
+				print_r($_POST);
+				$quantity = $_POST["quantity"];
+				$type = $_POST["type"];
 				$name = $_POST["name"];
 				$phone = $_POST["phone"];
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
-				//echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
-				echo '<br/>';
-				//if($drinkSelected){
-					$type = trim($_POST["dropdown"]);
-					$quantity = trim($_POST["quantity"]);
-					//TODO
-					//$quantity = 2;
-					$message = "";
-					//TODOOO
-					$displayname = "latte"; //ShoppingCart::$drinktypes[0];
-					if($displayname && is_numeric($quantity) && $quantity > 0){
-						$_SESSION['cart']->order($type, $quantity);
+				echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
 
-						$message = "Your $quantity drink(s) added to shopping cart";
-					}
-					else if(!$displayname){
-						$message = "error";
-					}
-				//}
-
-				//add to the cart not update: change once this can be called on the model
-				$result = $this->model->updateCart($type, $quantity);
+				$result = $this->model->updateCart($quantity, $quantity);
 
 				// $cust = $this->model->addCustomer();
 
@@ -146,19 +112,14 @@
 					$this->view->renderCart($shoppingCart);
 				}
 			}
-			//$this->view->renderCart($shoppingCart);
+			$this->view->renderCart($shoppingCart);
 
 		}
 
-
-
-		//want to edit the post if there have been updates in the cart
 		public function confirm() {
 			$this->view->renderCart($shoppingCart);
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["confirm"] != null) {
-				//update the cart
-				//$this->model->updateCart
 				// form has been confirmed, send order to employee
 				//email customer
 				//store customer/order/drink info in db
