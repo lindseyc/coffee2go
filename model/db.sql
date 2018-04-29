@@ -42,9 +42,12 @@ CREATE TABLE customdrink (
 
 
 -- Add drink data
-LOAD DATA LOCAL INFILE "/Applications/MAMP/htdocs/coffee2go/model/initialize.csv"
+LOAD DATA LOCAL INFILE "model/initialize.csv"
 INTO TABLE drinktype
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+
+-- /Applications/MAMP/Library/bin/mysql --host=localhost -u root -proot
