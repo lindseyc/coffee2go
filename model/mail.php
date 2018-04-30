@@ -14,9 +14,13 @@ $pickup_time = $_POST['timeDrop'];
 $email_subject="Order confirmation";
 $email_message="Your order is confirmed. It will be ready for pickup \
 in " . $pickup_time . 'minutes.';
+<<<<<<< HEAD
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n" .
 "From: noreply <noreply@scrippscollege.edu>\r\n".
+=======
+$headers = "From: noreply@scrippscollege.edu\r\n".
+>>>>>>> master
 "Reply-To: noreply\r\n'" .
 "X-Mailer: PHP/" . phpversion();
 mail($email_to, $email_subject, $email_message, $headers);  

@@ -1,9 +1,15 @@
+<!DOCTYPE html>
+<?php
+$path = ('./model/carriersandaddresses.php');
+require_once($path);
+include_once('./model/cart.php');
+?>
 <html>
 <head>
 	<style> /*style for header and footer*/
 		header, footer {
 			padding: 1em;
-    		
+
     		clear: left;
     		text-align: center;
         }
@@ -16,9 +22,12 @@
         }
 	</style>
 	<title> Start an order </title>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	<link href="main.css" type="text/css" rel="stylesheet"/>
 =======
+=======
+>>>>>>> master
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -43,6 +52,7 @@
 
     <script>
 
+<<<<<<< HEAD
 function printTable(display) {
     var table = document.getElementById("table");
     var i = 1;
@@ -62,6 +72,27 @@ function printTable(display) {
 
 
 }        
+=======
+// function printTable(display) {
+//     var table = document.getElementById("table");
+//     var i = 1;
+//     for(var k in display){
+//         var tr = document.createElement("tr");
+//         var td = document.createElement("td");
+//         var txt = document.createTextNode(k);
+//         var td2 = document.createElement("td");
+//         var txt2 = document.createTextNode(display[k]);
+        
+//         td.appendChild(txt);
+//         td2.appendChild(txt2);
+//         tr.appendChild(td);
+//         tr.appendChild(td2);
+//         table.appendChild(tr);
+//         }
+
+
+// }        
+>>>>>>> master
 
 
 
@@ -130,25 +161,50 @@ function printTable(display) {
     //     $
     // })
     </script>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> master
 </head>
 
 <body>
     <h1>Order some coffee!</h1>
-    <form id="order">
+    <!-- put the controller in the action? -->
+    <form name="orderfrm" id="order" method="post">
+    <!-- redirect to the controller, which will redirect to the right view
+    make sure form -->
+
         <fieldset>
             <legend>Customer information</legend>
-            Name: <input type="text" placeholder="First and Last"></input>
-            Email: <input type="email" placeholder="@scrippscollege.edu"></input>
-            <br/>
-            Phone number: <input type="phone" placeholder="(909) 555-5555"></input>
-            Carrier: <input type="text" placeholder="to receive texts"></input>
+
+             <legend for="name">Name: <input type="text" id="email" name="name" placeholder="First and Last"></input>
+            </legend>
+
+            <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
+            </legend>
+            <br/>        <!-- emailtextmessages.com -->
+
+            <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
+            </legend>
+
+            <legend for="carrier">Carrier: 
+            <select id="carrier" name="carrier">
+            <?php
+                foreach (CellCarriers::$carriers as $carrier => $value){
+                    echo "<option value=\"" . $carrier . "\">" . $carrier;
+                    echo "</option>";
+                };
+            ?>
+            </select></legend>
+
         </fieldset>
         <fieldset>
-            <legend>Drink</legend>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> master
             <legend for="dropdown">Order</legend>
             <select id="dropdown" name="dropdown">
                 <option id="all" value="all">All</option>
@@ -179,6 +235,7 @@ function printTable(display) {
                 $totalPrice = 0;
                     foreach($toDisplay as $type => $price){
                         $totalPrice += $price;
+<<<<<<< HEAD
                         if (in_array($type, ShoppingCart::$drinktypes)){
                             $drinkclass = "coffee";
                         }
@@ -191,6 +248,8 @@ function printTable(display) {
                         else {
                             echo $type;
                         }
+=======
+>>>>>>> master
                         echo "<tr>";
                             echo "<td>";
                             echo($type);
@@ -201,7 +260,11 @@ function printTable(display) {
                             echo "</td>";
                             echo "<td>";
                             echo "Add to Cart:
+<<<<<<< HEAD
                                 <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
+=======
+                                <input type='number' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
+>>>>>>> master
                             echo "</td>";
                         echo "</tr>";
                     }
@@ -212,10 +275,16 @@ function printTable(display) {
  
 
             </p>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> master
         </fieldset>
+
         <p></p>
-        <button class="brown" type="submit" value="submit">Order!</button>
+        <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
+        <!--  onclick="validateForm(orderfrm)" -->
+        <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
     </form>
     <p>Thank you for your order!</p>
 
