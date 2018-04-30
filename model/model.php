@@ -1,5 +1,8 @@
 <?php
 require_once("model/cart.php");
+include_once("dbconn.php");
+$connection = connect_to_db("motley");
+print_r($connection->error);
 if (session_status() != PHP_SESSION_ACTIVE) {
     session_start();
 }
@@ -11,6 +14,10 @@ class Model {
     if (!isset($_SESSION['cart'])) {
       	$_SESSION['cart'] = new ShoppingCart();
  	  }
+
+    $_SESSION['conn'] = connect_to_db("motley");
+
+
   }
 
 	public function updateCart($type, $quantity) {
@@ -53,9 +60,33 @@ class Model {
         }
 
  	}
-    // public function getDrinkTypes () {
-    //     $drinktypes = "SELECT name FROM drinktypes";
-    // }
+
+  public function addCustomer($name,$phone,$email,$carrier ) {
+
+
+      $connection = $_SESSION['conn'];
+      include("model/queries.php");
+      mysqli_stmt_execute($selectCustomer);
+      print_r($connection->error);
+      echo "---starting selectcustomer query--- <br />";
+      $selectCustomer -> bind_result($customerId);
+      // Existing customer in database
+      if ($selectCustomer -> fetch() ) {
+        echo "Thanks for shopping again customer $customerId! <br />";
+      }
+      else {
+        // Add to DB if new customer
+        mysqli_stmt_execute($insertCustomer);
+        $customerId = mysqli_stmt_insert_id($insertCustomer);
+        print_r($connection->error);
+        echo "Thanks for being a new customer!
+        You are customer #$customerId. <br />";
+      }
+      // end statements
+      echo "---ending customer table---";
+      mysqli_stmt_close($selectCustomer);
+      mysqli_stmt_close($insertCustomer);
+}
 
 }
 

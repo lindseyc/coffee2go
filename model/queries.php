@@ -10,19 +10,30 @@
 $query = "INSERT INTO customer(name, phone, email, carrier)
           VALUES( ?, ?, ?, ?)";
 $insertCustomer = $connection->prepare($query);
+if (!$insertCustomer) {
+  print_r($connection->error);
+}else {
 $insertCustomer-> bind_param("siss", $name, $phone,
-                              $email, $carrier);
+                              $email, $carrier);}
 
 // Select customer
 $query = "SELECT id FROM customer WHERE name=?";
 $selectCustomer = $connection->prepare($query);
-$selectCustomer->bind_param("s", $name);
+if (!$selectCustomer) {
+  print_r($connection->error);
+}
+else {
+  $selectCustomer->bind_param("s", $name);}
 
 // Insert into order
-// $query = "INSERT INTO orders(id, customer_id, price, dateCreated)
-//           VALUES(?, ?, ?, now())";
-// $insertOrder = $connection->prepare($query);
-// $insertOrder-> bind_param("iidd", $orderid, $customerId, $orderPrice, $date);
+$query = "INSERT INTO orders(id, customer_id, price, dateCreated)
+          VALUES(?, ?, ?, now())";
+$insertOrder = $connection->prepare($query);
+if (!$insertOrder) {
+  print_r($connection->error);
+}
+$insertOrder-> bind_param("iidd", $orderid, $customerId, $orderPrice, $date);
+
 
 // Select from drinktype
 // $query = "SELECT name FROM drinktype WHERE id=?";

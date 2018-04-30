@@ -121,10 +121,12 @@
 				echo "name = " . $name . " email = " . $email . " phone = " .
 				$phone . " carrier = " . $carrier . "<br /> <br />" ;
 
+				$this->model->addCustomer($name,$phone,$email,$carrier  );
+
 				$result = $this->model->updateCart($quantity, $quantity);
 
 
-						$_SESSION['cart']->order($type, $quantity);
+				$_SESSION['cart']->order($type, $quantity);
 				$post = $_POST;
 				unset($post['dropdown']);
 				unset($post['submit']);
@@ -142,37 +144,9 @@
 							$_SESSION['cart']->order($key, $value);
 						}
 					}
-
-
 				}
 
-					$connection = connect_to_db("motley");
-					require_once("model/queries.php");
 
-
-				if (isset($_POST)) {
-						mysqli_stmt_execute($selectCustomer);
-						echo "---starting selectcustomer query--- <br />";
-						$selectCustomer -> bind_result($customerId);
-						// Existing customer in database
-						if ($selectCustomer -> fetch() ) {
-							echo "Thanks for shopping again customer $customerId! <br />";
-						}
-						else {
-							// Add to DB if new customer
-							mysqli_stmt_execute($insertCustomer);
-							$customerId = mysqli_stmt_insert_id($insertCustomer);
-							echo "Thanks for being a new customer!
-							You are customer #$customerId. <br />";
-						}
-						// end statements
-						echo "---ending customer table---";
-						mysqli_stmt_close($selectCustomer);
-						mysqli_stmt_close($insertCustomer);
-					}
-					else {
-						echo "Select customer query failed";
-					}
 
 				// foreach(ShoppingCart::$alltypes as $type => $quantity){
 				// 	if (is_numeric($quantity) && $quantity > 0){
