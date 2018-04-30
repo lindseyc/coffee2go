@@ -4,8 +4,11 @@ $path = ('./model/carriersandaddresses.php');
 require_once($path);
 include_once('./model/cart.php');
 ?>
-<html>
+<html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<style> /*style for header and footer*/
 		header, footer {
 			padding: 1em;
@@ -141,8 +144,10 @@ include_once('./model/cart.php');
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
-        <button class="brown" name="submit" type="submit"
-				value="submit">Go to cart</button>
+        <button id='submit' class="brown" name="submit" type="submit" value="submit">Go to cart</button>
+        <span id="submiterror" style="color:red; display:none;">
+            Error. Please make sure all elements are filled out correctly.
+          </span>
     </form>
 
 
