@@ -37,11 +37,12 @@ session_start();
 <body>
 	<h2> Checkout </h2>
 
-	<!-- Display order and customer info -->
-	<fieldset>
+	
  	
  	<form name="confirmation" id="confirmation" method="post">
 
+ 	<!-- Display order and customer info -->
+	<fieldset>
 	<legend> Your Information: </legend>
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
