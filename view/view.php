@@ -17,7 +17,7 @@ class View {
 		include_once("orderpage.php");
 	}
 
-	public function renderConfirmation() {
+	public function renderConfirmation($postTime) {
 		include_once("confirmation.php");
 	}
 }
