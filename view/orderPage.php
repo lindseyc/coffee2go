@@ -170,6 +170,7 @@ function printTable(display) {
                             echo "<td>";
                             echo "Add to Cart:
                                 <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' min='0' max='5'>";
+
                             echo "</td>";
                         echo "</tr>";
                     }

@@ -33,6 +33,17 @@ class ShoppingCart {
 										"black coffee" => 2.00,
 										"espresso" => 4.00
 									);
+	public static $displaynames = Array(	"strawberry" => "strawberry",
+											"straw-nana" => "straw-nana",
+											"mango" => "mango",
+											"black_tea" => "black tea",
+											"irish_breakfast" => "irish breakfast",
+											"earl_grey" => "earl grey",
+											"green_tea" => "green tea",
+											"latte" => "latte", 
+											"black_coffee" => "black coffee",
+											"espresso" => "espresso"
+									);
 
 	private $order;
 	private $customer;
@@ -51,11 +62,11 @@ class ShoppingCart {
 		return $this->customer;
 	}
 
-	public function order($type, $quantity) {
-		 $currentQuantity = $this->order[$type];
+	public function order($type, $price) {
+		 $currentPrice = $this->order[$type];
 		 //may need to change
-        $currentQuantity += $quantity;
-        $this->order[$type] = $currentQuantity;
+        $currentPrice = $price;
+        $this->order[$type] = $currentPrice;
 	}
 
 	public function addCustomer($key, $value) {
