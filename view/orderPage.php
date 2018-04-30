@@ -46,92 +46,50 @@ include_once('./model/cart.php');
 
     <script>
 
-// function printTable(display) {
-//     var table = document.getElementById("table");
-//     var i = 1;
-//     for(var k in display){
-//         var tr = document.createElement("tr");
-//         var td = document.createElement("td");
-//         var txt = document.createTextNode(k);
-//         var td2 = document.createElement("td");
-//         var txt2 = document.createTextNode(display[k]);
+function printTable(display) {
+    var table = document.getElementById("table");
+    var i = 1;
+    for(var k in display){
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        var txt = document.createTextNode(k);
+        var td2 = document.createElement("td");
+        var txt2 = document.createTextNode(display[k]);
 
-//         td.appendChild(txt);
-//         td2.appendChild(txt2);
-//         tr.appendChild(td);
-//         tr.appendChild(td2);
-//         table.appendChild(tr);
-//         }
-
-
-// }
+        td.appendChild(txt);
+        td2.appendChild(txt2);
+        tr.appendChild(td);
+        tr.appendChild(td2);
+        table.appendChild(tr);
+        }
 
 
-
-    // $(document).ready(function() {
-    //     $('#dropdown').on("click", function() {
-    //         var radiobutt = $('#dropdown').val();
-    //         console.log(radiobutt);
-
-    //         var toDisplay;
-    //         <?php
-    //             $all = array_merge(ShoppingCart::$drinktypes,
-    //                                     ShoppingCart::$teatypes,
-    //                                     ShoppingCart::$smoovtypes);
-    //             $jsall = json_encode($all);
-
-    //             echo 'var javascript_all = ' . $jsall . ';';
-
-    //             $phpcoffee = ShoppingCart::$drinktypes;
-    //             $jscoffee = json_encode($phpcoffee);
-
-    //           echo 'var javascript_coffee = ' . $jscoffee . ';';
-
-    //           $phptea = ShoppingCart::$teatypes;
-    //             $jstea = json_encode($phptea);
-
-    //           echo 'var javascript_tea = ' . $jstea . ';';
-
-    //           $phpsmoov = ShoppingCart::$smoovtypes;
-    //             $jssmoove = json_encode($phpsmoov);
-
-    //           echo 'var javascript_smoov = ' . $jssmoove . ';';
-    //         ?>
+}
 
 
 
-    //         var update = $('#drinklist');
-    //         if(radiobutt == "smoothie"){
-    //             update.html('<p> smoothie was selected</p>');
-    //             toDisplay = javascript_smoov;
-
-
-    //         } else if (radiobutt == "tea"){
-    //             update.html('<p> tea was selected</p>');
-    //             toDisplay = javascript_tea;
-
-    //         } else if (radiobutt == "coffee"){
-    //             update.html('<p> coffee was selected</p>');
-    //             toDisplay = javascript_coffee;
-
-    //          } else if (radiobutt == "all"){
-    //             update.html('<p> all were selected</p>');
-
-    //             toDisplay = javascript_all;
-    //             console.log('in the last if else');
-
-    //          }
-    //           else {
-    //             update.html('<p> none selected </p>');
-    //         }
-    //         printTable(toDisplay);
-    //     });
-    // });
-
-
-    // $('#dropdown').change(function() {
-    //     $
-    // })
+    $(document).ready(function() {
+        $('#dropdown').on("change", function() {
+            var radiobutt = $('#dropdown').val();
+            var drinks = ['coffee', 'tea', 'smoothie']
+            if (radiobutt == 'all'){
+                update.html('<p> all were selected</p>');
+            }
+            else {
+                for (var i = 0; i < drinks.length; i++){
+                    var current = "." + drinks[i]
+                    if (drinks[i] == radiobutt){
+                        $(current).show();
+                    }
+                    else {
+                        $(current).hide();
+                    }
+                }
+                update.html('<p>' + radiobutt + ' was selected</p>')
+            }
+            printTable(toDisplay);
+        });
+    });
     </script>
 </head>
 
@@ -193,14 +151,15 @@ include_once('./model/cart.php');
                     <!-- hardcoded drinks array of coffee into orderpage with add to cart button: -->
                 <?php
                 echo "the menu: ";
-                $toDisplay = array_merge(ShoppingCart::$drinktypes,
-                                        ShoppingCart::$teatypes,
-                                        ShoppingCart::$smoovtypes);
-                print_r($toDisplay);
                 $totalPrice = 0;
-                    foreach($toDisplay as $type => $price){
+                $merged = Array ('coffee' => ShoppingCart::$drinktypes,
+                'tea' => ShoppingCart::$teatypes,
+                'smoothie' => ShoppingCart::$smoovtypes);
+                print_r($merged);
+                foreach ($merged as $drinkclass => $drinks){
+                    foreach($drinks as $type => $price){
                         $totalPrice += $price;
-                        echo "<tr>";
+                        echo "<tr class='$drinkclass'>";
                             echo "<td>";
                             echo($type);
                             echo "</td>";
@@ -210,17 +169,14 @@ include_once('./model/cart.php');
                             echo "</td>";
                             echo "<td>";
                             echo "Add to Cart:
-                                <input type='number' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
+                                <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' min='0' max='5'>";
                             echo "</td>";
                         echo "</tr>";
                     }
+                }
                  ?>
                 </tbody>
             </table>
-             <p><span id="drinklist">Drinks will be inserted here</span>
-
-
-            </p>
         </fieldset>
 
         <p></p>
