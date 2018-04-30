@@ -3,7 +3,7 @@
 	include_once("model/model.php");
 	include_once("view/view.php");
 	include_once("dbconn.php");
-	//
+
 	$connection = connect_to_db("motley");
 	require_once("model/queries.php");
 
@@ -80,23 +80,22 @@
 
 
 		public function invoke() {
-
 			// call to model to get drink types
 
-			$this->view->renderOrderForm($drinkTypes);
-			$drinkType = $this->model->getDrinkTypes();
+
+			$this->view->renderOrderForm();
+			// $this->view->renderOrderForm($drinkTypes);
+			// $drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
-<<<<<<< HEAD
 				print_r('adding to cart');
 				//display the post
 				print_r($_POST);
 				$quantity = $_POST["quantity"];
 				$type = $_POST["type"];
-=======
-				//validate form here??
 
+				//validate form here??
 
 
 				//mysqli sttmnts?
@@ -107,20 +106,19 @@
 				print_r($_POST);
 				//$quantity = $_POST["quantity"];
 				//$type = $_POST["type"];
->>>>>>> master
+
 				$name = $_POST["name"];
 				$phone = $_POST["phone"];
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
-<<<<<<< HEAD
 				echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
 
 				$result = $this->model->updateCart($quantity, $quantity);
-=======
+
 				foreach(ShoppingCart::$alltypes as $type => $quantity){
 					if (is_numeric($quantity) && $quantity > 0){
-						
+
 						$_SESSION['cart']->order($type, $quantity);
 
 					}
@@ -148,7 +146,7 @@
 
 				//add to the cart not update: change once this can be called on the model
 				$result = $this->model->updateCart($type, $quantity);
->>>>>>> master
+
 
 				// $cust = $this->model->addCustomer();
 
@@ -160,8 +158,6 @@
 					$this->view->renderCart($shoppingCart);
 				}
 			}
-			$this->view->renderCart($shoppingCart);
-
 		}
 
 		public function confirm() {

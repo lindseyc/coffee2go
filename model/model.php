@@ -25,16 +25,14 @@ class Model {
             $message = "$quantity boxes of $displayName added to shopping cart";
         }
         else if (!$displayName) {
-            $message = "invalid, invalid selection";
+            $message = "Invalid selection";
         }
         else if (!is_numeric($quantity)) {
-           $message = "invalid, quantity not numeric";
+           $message = "Invalid; quantity not numeric";
         }
         else if ($quantity < 1) {
-            $message = "invalid, quantity less than 1";
+            $message = "Invalid; quantity less than 1";
         }
-
-
 	       	return $message;
  	}
 
@@ -52,9 +50,9 @@ class Model {
         $this->order[$type] = $currentQuantity;
 
  	}
-    public function getDrinkTypes () {
-        $drinktypes = "SELECT name FROM drinktypes";
-    }
+    // public function getDrinkTypes () {
+    //     $drinktypes = "SELECT name FROM drinktypes";
+    // }
 
 }
 

@@ -46,86 +46,6 @@ include_once('./model/cart.php');
 
     <script>
 
-<<<<<<< HEAD
-
-        var dropSelection = function() {
-
-            var radiobutt = $('#dropdown').val();
-            var update = $('#drinklist');
-            if(radiobutt == "smoothie"){
-                update.html('<p> smoothie was selected</p>');
-                // <?php
-                //     echo ShoppingCart::$smoovtypes;
-                //  ?>
-                <?php
-                echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
-                ?>
-                update.html(smoove);
-
-                return true;
-            } else if (radiobutt == "tea"){
-                update.html('<p> tea was selected</p>');
-                // <?php
-                // echo ShoppingCart::$teatypes;
-                // ?>
-                <?php
-                echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
-                ?>                update.html(smoove);
-                return true;
-            } else if (radiobutt == "coffee"){
-                update.html('<p> coffee was selected</p>');
-                // <?php
-                // echo ShoppingCart::$drinktypes;
-                // ?>
-                <?php
-                echo 'var smoove = JSON.parse("<?= $cart_info_json; ?>");'
-                ?>
-                update.html(smoove);
-
-                return true;
-            } else {
-                update.html('<p> none selected </p>');
-                return false;
-            }
-        }
-
-    $(document).ready(function() {
-        // selectorder = $('#dropdown').val();
-        $('#dropdown').on("change", dropSelection);
-        });
-    </script> -->
-
-		<!-- <script>
-			 var dropSelection = function() {
-						var radiobutt = $('#dropdown').val();
-						var update = $('#drinklist');
-						console.log(update);
-						console.log(radiobutt);
-						if(radiobutt == "smoothie"){
-						} else if (radiobutt == "tea"){
-						} else if (radiobutt == "coffee"){
-							<?php
-							// $drinktypeid = 1;
-							// mysqli_stmt_execute($selectdrinktype);
-
-							//$selectdrinktype->fetch();
-							//$selectdrinktype->bind_result($name);
-							//mysqli_stmt_close($selectdrinktype);
-
-						?>
-						} else {
-						}
-				}
-
-		$(document).ready(function() {
-				// selectorder = $('#dropdown').val();
-				$('#dropdown').on("change", dropSelection);
-				});
-		</script> -->
-
-
-
-=======
 // function printTable(display) {
 //     var table = document.getElementById("table");
 //     var i = 1;
@@ -135,7 +55,7 @@ include_once('./model/cart.php');
 //         var txt = document.createTextNode(k);
 //         var td2 = document.createElement("td");
 //         var txt2 = document.createTextNode(display[k]);
-        
+
 //         td.appendChild(txt);
 //         td2.appendChild(txt2);
 //         tr.appendChild(td);
@@ -144,7 +64,7 @@ include_once('./model/cart.php');
 //         }
 
 
-// }        
+// }
 
 
 
@@ -152,7 +72,7 @@ include_once('./model/cart.php');
     //     $('#dropdown').on("click", function() {
     //         var radiobutt = $('#dropdown').val();
     //         console.log(radiobutt);
-            
+
     //         var toDisplay;
     //         <?php
     //             $all = array_merge(ShoppingCart::$drinktypes,
@@ -164,18 +84,18 @@ include_once('./model/cart.php');
 
     //             $phpcoffee = ShoppingCart::$drinktypes;
     //             $jscoffee = json_encode($phpcoffee);
-             
+
     //           echo 'var javascript_coffee = ' . $jscoffee . ';';
 
     //           $phptea = ShoppingCart::$teatypes;
     //             $jstea = json_encode($phptea);
-             
+
     //           echo 'var javascript_tea = ' . $jstea . ';';
 
     //           $phpsmoov = ShoppingCart::$smoovtypes;
     //             $jssmoove = json_encode($phpsmoov);
-             
-    //           echo 'var javascript_smoov = ' . $jssmoove . ';'; 
+
+    //           echo 'var javascript_smoov = ' . $jssmoove . ';';
     //         ?>
 
 
@@ -189,11 +109,11 @@ include_once('./model/cart.php');
     //         } else if (radiobutt == "tea"){
     //             update.html('<p> tea was selected</p>');
     //             toDisplay = javascript_tea;
-                
+
     //         } else if (radiobutt == "coffee"){
     //             update.html('<p> coffee was selected</p>');
     //             toDisplay = javascript_coffee;
-                
+
     //          } else if (radiobutt == "all"){
     //             update.html('<p> all were selected</p>');
 
@@ -213,7 +133,6 @@ include_once('./model/cart.php');
     //     $
     // })
     </script>
->>>>>>> master
 </head>
 
 <body>
@@ -225,15 +144,17 @@ include_once('./model/cart.php');
 
         <fieldset>
             <legend>Customer information</legend>
-
-             <legend for="name">Name: <input type="text" id="email" name="name" placeholder="First and Last"></input>
+             <legend for="name">Name: <input type="text" id="email"
+							 name="name" placeholder="First and Last"></input>
             </legend>
 
-            <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="email">Email: <input type="email" id="email"
+							name="email" placeholder="@scrippscollege.edu"></input>
             </legend>
             <br/>        <!-- emailtextmessages.com -->
 
-            <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxx xxx xxxx"></input>
+            <legend for="phone">Phone number: <input type="tel" id="phone"
+							name="phone" placeholder="xxx xxx xxxx"></input>
             </legend>
 
             <legend for="carrier">Carrier:
@@ -244,25 +165,17 @@ include_once('./model/cart.php');
                     echo "</option>";
                 };
             ?>
-            </select></legend>
-
+            </select>
+					</legend>
         </fieldset>
         <fieldset>
 
             <legend for="dropdown">Order</legend>
-<<<<<<< HEAD
-            <select id="dropdown">
-								<option value="" selected disabled hidden>Choose here</option>
-                <option value="coffee">Coffee</option>
-                <option value="tea">Tea</option>
-                <option value="smoothie">Smoothie</option>
-=======
             <select id="dropdown" name="dropdown">
                 <option id="all" value="all">All</option>
                 <option id="2" value="coffee">Coffee</option>
                 <option id="1" value="tea">Tea</option>
                 <option id="0" value="smoothie">Smoothie</option>
->>>>>>> master
 
             </select>
             <!-- add some space -->
@@ -305,7 +218,7 @@ include_once('./model/cart.php');
                 </tbody>
             </table>
              <p><span id="drinklist">Drinks will be inserted here</span>
- 
+
 
             </p>
         </fieldset>
