@@ -24,7 +24,8 @@ include_once('./model/cart.php');
 	<title> Start an order </title>
 
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/
+		jquery.min.js"></script>
 
     <!-- style sheet CSS -->
 	<link href="./view/main.css" type="text/css" rel="stylesheet"/>
@@ -148,7 +149,8 @@ function printTable(display) {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- hardcoded drinks array of coffee into orderpage with add to cart button: -->
+                    <!-- hardcoded drinks array of coffee into orderpage
+										with add to cart button: -->
                 <?php
                 echo "the menu: ";
                 $totalPrice = 0;
@@ -169,7 +171,9 @@ function printTable(display) {
                             echo "</td>";
                             echo "<td>";
                             echo "Add to Cart:
-                                <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' min='0' max='5'>";
+                                <input type='number' class='" . $drinkclass
+																. "' value='0' id='quantity' name='$type'
+																min='0' max='5'>";
 
                             echo "</td>";
                         echo "</tr>";
@@ -183,14 +187,16 @@ function printTable(display) {
         <p></p>
         <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
         <!--  onclick="validateForm(orderfrm)" -->
-        <button class="brown" name="submit" type="submit" value="submit">Go to cart</button>
+        <button class="brown" name="submit" type="submit"
+				value="submit">Go to cart</button>
     </form>
-    <p>Thank you for your order!</p>
+
 
     <footer>
         <hr/>
         <p class='motto' style="font-weight:bold;">The Motley Coffeehouse</p>
-        <p class="motto"> - an intersectional, political, and feminist coffeehouse run by the students of Scripps College - </p>
+        <p class="motto"> - an intersectional, political, and
+					feminist coffeehouse run by the students of Scripps College - </p>
         <p>345 E. 9th Street <br/> Scripps College <br/> Claremont, CA 91711</p>
         <p>(909) 607-3967 </p>
     </footer>

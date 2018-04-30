@@ -8,7 +8,8 @@ session_start();
 
 <!DOCTYPE html>
 
-<?php 
+
+<?php
 
 // //if session is starting then store an empty cart in it
 // if(!isset($_SESSION['cart'])) {
@@ -49,7 +50,7 @@ function createTimeDropDown() {
 	<style> /*style for header and footer*/
 		header, footer {
 			padding: 1em;
-    		
+
     		clear: left;
     		text-align: center;
         }
@@ -76,6 +77,7 @@ function createTimeDropDown() {
 	// iff post isset:
 	//print_r($_POST);
 	$post = $_POST;
+
 	unset($post['submit']);
 	unset($post['dropdown']);
 	//print_r($post);
@@ -125,7 +127,7 @@ function createTimeDropDown() {
 				//need to get from $displaynames b/c irish bfast is irish_bfast in post array
 				$price = ShoppingCart::$alltypes[ShoppingCart::$displaynames[$drink]];
 				$price =  $quantity * $price;
-				
+
 				echo '$' . number_format($price, '2', '.', ',');
 				$totalPrice += $price;
 				echo '</td>';

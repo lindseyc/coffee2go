@@ -14,22 +14,22 @@ require "queries.php";
 //////////
 
 // Customer information:
-  mysqli_stmt_execute($selectCustomer);
-  $selectCustomer -> bind_result($customer_id);
-  // Existing customer in database
-  if ($selectCustomer -> fetch() ) {
-    echo "Thanks for shopping again customer $customer_id! <br />";
-  }
-  else {
-    // Add to DB if new customer
-    mysqli_stmt_execute($insertCustomer);
-    $customerId = mysqli_stmt_insert_id($insertCustomer);
-    echo "Thanks for being a new customer!
-    You are customer #$customer_id. <br />";
-  }
-  // end statements
-  mysqli_stmt_close($selectCustomer);
-  mysqli_stmt_close($insertCustomer);
+  // mysqli_stmt_execute($selectCustomer);
+  // $selectCustomer -> bind_result($customer_id);
+  // // Existing customer in database
+  // if ($selectCustomer -> fetch() ) {
+  //   echo "Thanks for shopping again customer $customer_id! <br />";
+  // }
+  // else {
+  //   // Add to DB if new customer
+  //   mysqli_stmt_execute($insertCustomer);
+  //   $customerId = mysqli_stmt_insert_id($insertCustomer);
+  //   echo "Thanks for being a new customer!
+  //   You are customer #$customer_id. <br />";
+  // }
+  // // end statements
+  // mysqli_stmt_close($selectCustomer);
+  // mysqli_stmt_close($insertCustomer);
 
   // // Girlscout info
   // mysqli_stmt_execute($selectGirlscout);

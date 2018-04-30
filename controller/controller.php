@@ -89,7 +89,7 @@
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
-				print_r('adding to cart');
+				print_r('adding to cart: ');
 				//display the post
 				print_r($_POST);
 				$quantity = $_POST["quantity"];
@@ -103,7 +103,7 @@
 
 				//print_r('adding to cart');
 				//display the post
-				echo "(in controller) The post is: ";
+				echo "<br /><br />(in controller) The post is: ";
 				print_r($_POST);
 				//$quantity = $_POST["quantity"];
 				//$type = $_POST["type"];
@@ -113,7 +113,36 @@
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
-				echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
+
+				if (isset($_POST)) {
+						mysqli_stmt_execute($selectCustomer);
+						echo "starting selectcustomer query";
+						$selectCustomer -> bind_result($customerId);
+						// Existing customer in database
+						if ($selectCustomer -> fetch() ) {
+							echo "Thanks for shopping again customer $customerId! <br />";
+						}
+						else {
+							// Add to DB if new customer
+							mysqli_stmt_execute($insertCustomer);
+							echo "a";
+							$customerId = mysqli_stmt_insert_id($insertCustomer);
+							echo "b";
+							echo "Thanks for being a new customer!
+							You are customer #$customerId. <br />";
+						}
+						// end statements
+						mysqli_stmt_close($selectCustomer);
+						mysqli_stmt_close($insertCustomer);
+					}
+					else {
+						echo "Select customer query failed";
+					}
+
+
+
+				echo "name = " . $name . " email = " . $email . " phone = " .
+				$phone . " carrier = " . $carrier;
 
 				$result = $this->model->updateCart($quantity, $quantity);
 
