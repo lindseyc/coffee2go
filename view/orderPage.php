@@ -46,25 +46,25 @@ include_once('./model/cart.php');
 
     <script>
 
-// function printTable(display) {
-//     var table = document.getElementById("table");
-//     var i = 1;
-//     for(var k in display){
-//         var tr = document.createElement("tr");
-//         var td = document.createElement("td");
-//         var txt = document.createTextNode(k);
-//         var td2 = document.createElement("td");
-//         var txt2 = document.createTextNode(display[k]);
+function printTable(display) {
+    var table = document.getElementById("table");
+    var i = 1;
+    for(var k in display){
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        var txt = document.createTextNode(k);
+        var td2 = document.createElement("td");
+        var txt2 = document.createTextNode(display[k]);
         
-//         td.appendChild(txt);
-//         td2.appendChild(txt2);
-//         tr.appendChild(td);
-//         tr.appendChild(td2);
-//         table.appendChild(tr);
-//         }
+        td.appendChild(txt);
+        td2.appendChild(txt2);
+        tr.appendChild(td);
+        tr.appendChild(td2);
+        table.appendChild(tr);
+        }
 
 
-// }        
+}        
 
 
 
@@ -198,6 +198,18 @@ include_once('./model/cart.php');
                 $totalPrice = 0;
                     foreach($toDisplay as $type => $price){
                         $totalPrice += $price;
+                        if (in_array($type, ShoppingCart::$drinktypes)){
+                            $drinkclass = "coffee";
+                        }
+                        else if (in_array($type, ShoppingCart::$teatypes)){
+                            $drinkclass = "tea";
+                        }
+                        else if (in_array($type, ShoppingCart::$smoovtypes)){
+                            $drinkclass = "smoothie";
+                        }
+                        else {
+                            echo $type;
+                        }
                         echo "<tr>";
                             echo "<td>";
                             echo($type);
@@ -208,7 +220,7 @@ include_once('./model/cart.php');
                             echo "</td>";
                             echo "<td>";
                             echo "Add to Cart:
-                                <input type='number' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
+                                <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
                             echo "</td>";
                         echo "</tr>";
                     }
