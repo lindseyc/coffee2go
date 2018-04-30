@@ -1,6 +1,5 @@
 <?php
 // PDO statements
-echo "connected to DB";
 // Insert into employee
 // $query = "INSERT INTO employee(id, name)
 //           VALUES(?, ?);";
@@ -11,13 +10,13 @@ echo "connected to DB";
 $query = "INSERT INTO customer(name, phone, email, carrier)
           VALUES( ?, ?, ?, ?)";
 $insertCustomer = $connection->prepare($query);
-$insertCustomer-> bind_param("siss", $customerName, $phone,
+$insertCustomer-> bind_param("siss", $name, $phone,
                               $email, $carrier);
 
 // Select customer
 $query = "SELECT id FROM customer WHERE name=?";
 $selectCustomer = $connection->prepare($query);
-$selectCustomer->bind_param("s", $customerName);
+$selectCustomer->bind_param("s", $name);
 
 // Insert into order
 // $query = "INSERT INTO orders(id, customer_id, price, dateCreated)
@@ -37,6 +36,6 @@ $selectCustomer->bind_param("s", $customerName);
 // $insertCustomDrink->bind_param("iiiid", $customDrinkId, $orderid, $drinktypeid,
 //                                 $quantity, $price);
 
-echo "<br />queries pass";
+echo "queries pass<br />";
 
 ?>

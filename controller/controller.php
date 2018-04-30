@@ -4,8 +4,6 @@
 	include_once("view/view.php");
 	include_once("dbconn.php");
 
-	$connection = connect_to_db("motley");
-	require_once("model/queries.php");
 
 	if (session_status() != PHP_SESSION_ACTIVE) {
 		session_start();
@@ -120,36 +118,8 @@
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
-
-				if (isset($_POST)) {
-						mysqli_stmt_execute($selectCustomer);
-						echo "starting selectcustomer query";
-						$selectCustomer -> bind_result($customerId);
-						// Existing customer in database
-						if ($selectCustomer -> fetch() ) {
-							echo "Thanks for shopping again customer $customerId! <br />";
-						}
-						else {
-							// Add to DB if new customer
-							mysqli_stmt_execute($insertCustomer);
-							echo "a";
-							$customerId = mysqli_stmt_insert_id($insertCustomer);
-							echo "b";
-							echo "Thanks for being a new customer!
-							You are customer #$customerId. <br />";
-						}
-						// end statements
-						mysqli_stmt_close($selectCustomer);
-						mysqli_stmt_close($insertCustomer);
-					}
-					else {
-						echo "Select customer query failed";
-					}
-
-
-
 				echo "name = " . $name . " email = " . $email . " phone = " .
-				$phone . " carrier = " . $carrier;
+				$phone . " carrier = " . $carrier . "<br /> <br />" ;
 
 				$result = $this->model->updateCart($quantity, $quantity);
 
@@ -175,6 +145,34 @@
 
 
 				}
+
+					$connection = connect_to_db("motley");
+					require_once("model/queries.php");
+
+
+				if (isset($_POST)) {
+						mysqli_stmt_execute($selectCustomer);
+						echo "---starting selectcustomer query--- <br />";
+						$selectCustomer -> bind_result($customerId);
+						// Existing customer in database
+						if ($selectCustomer -> fetch() ) {
+							echo "Thanks for shopping again customer $customerId! <br />";
+						}
+						else {
+							// Add to DB if new customer
+							mysqli_stmt_execute($insertCustomer);
+							$customerId = mysqli_stmt_insert_id($insertCustomer);
+							echo "Thanks for being a new customer!
+							You are customer #$customerId. <br />";
+						}
+						// end statements
+						echo "---ending customer table---";
+						mysqli_stmt_close($selectCustomer);
+						mysqli_stmt_close($insertCustomer);
+					}
+					else {
+						echo "Select customer query failed";
+					}
 
 				// foreach(ShoppingCart::$alltypes as $type => $quantity){
 				// 	if (is_numeric($quantity) && $quantity > 0){
