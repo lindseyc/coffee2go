@@ -91,10 +91,10 @@ include_once('./model/cart.php');
 
             <legend for="dropdown">Order</legend>
             <select id="dropdown" name="dropdown">
-                <option id="all" value="all">All</option>
-                <option id="2" value="coffee">Coffee</option>
-                <option id="1" value="tea">Tea</option>
-                <option id="0" value="smoothie">Smoothie</option>
+                <option value="all">All</option>
+                <option value="coffee">Coffee</option>
+                <option value="tea">Tea</option>
+                <option value="smoothie">Smoothie</option>
 
             </select>
             <!-- add some space -->
