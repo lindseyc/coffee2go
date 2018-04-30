@@ -17,4 +17,7 @@ class View {
 		include_once("orderpage.php");
 	}
 
+	public function renderConfirmation() {
+		include_once("confirmation.php");
+	}
 }

@@ -99,6 +99,7 @@
 
 				//print_r('adding to cart');
 				//display the post
+				echo "(in controller) The post is: ";
 				print_r($_POST);
 				//$quantity = $_POST["quantity"];
 				//$type = $_POST["type"];
@@ -164,6 +165,7 @@
 				// form has been confirmed, send order to employee
 				//email customer
 				//store customer/order/drink info in db
+				$this->view->renderConfirmation();
 			}
 		}
 	}
