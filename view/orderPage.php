@@ -32,18 +32,6 @@ include_once('./model/cart.php');
     <!-- javascript validation -->
     <script scr="./view/validate.js"></script>
 
-<!-- <?php
-    // $smoothies = ShoppingCart::$smoovtypes;
-
-    // $cart_info_json = json_encode($smoothies);
-    // $tea = ShoppingCart::$teatypes;
-    // $cart_info_json = json_encode($smoothies);
-
-    // $coffee = ShoppingCart::$drinktypes;
-    // $cart_info_json = json_encode($smoothies);
-
-?> -->
-
     <script>
 
 function printTable(display) {
