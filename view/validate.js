@@ -1,5 +1,5 @@
 var usernameRequirements = "At least 3 alpha characters";
-var emailReq = "Formatted in ***@***.edu/gov/com/org";
+var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
@@ -52,45 +52,29 @@ var info = function infoAppend (fieldElem, infoMessage){
 };
 var usernameFn = function usernameValidate(text){
     if (text===""){ return "empty";}
-    if (text.match(/^[A-Za-z\s]{3,}$/)) {return true;}
-    else { return false;}
-};
-
-var stateFn = function stateValidate(text){
-    if (text===""){ return "empty";}
-    if (text.match(/^[A-Z]{2}$/)) {return true;}
+    else if (text.match(/^[A-Za-z\s]{3,}$/)) {return true;}
     else { return false;}
 };
 
 var phone = function Phone(text){
     if (text===""){ return "empty";}
-    if (text.match(/^[0-9]{3}[0-9]{3}[0-9]{4}$/)){return true;}
+    else if (text.match(/^[0-9]{3}[0-9]{3}[0-9]{4}$/)){return true;}
     else { return false; }
 };
 
 var email = function Email(text){
     if (text===""){ return "empty";}
-    if (text.match(/^[a-zA-Z0-9]*@[a-zA-Z]*\.(gov|com|edu|org)$/)){
+    else if (text.match(/^[a-zA-Z0-9]*@[a-zA-Z]*\.(gov|net|com|edu|org)$/)){
         return true;}
     else { return false; }
 };
 
-var selected = function Selected(errorElem, type, minimum){
-    var selectionLength = $("input[type=" + type + "]:checked");
-    if (selectionLength.length >= minimum){
-        $(errorElem).hide();
-        return true;}
-    else {
-        $(errorElem).show();
-        return false;}
-};
-
 var validateAll = function Submit(){
     //username = validateField(":text:first", usernameRequirements, name);
-    var username = validateField("#inputusername", usernameRequirements, usernameFn);
-    var emailStatus = validateField("#inputemail", emailReq, email);
-    var phoneStatus = validateField("#inputphone", phoneReq, phone);
-    if (!(username && addressStatus && cityStatus && stateStatus && zipStatus && emailStatus && phoneStatus && troopStatus && gsStatus)){
+    var username = validateField("#name", usernameRequirements, usernameFn);
+    var emailStatus = validateField("#email", emailReq, email);
+    var phoneStatus = validateField("#phone", phoneReq, phone);
+    if (!(username && emailStatus && phoneStatus)){
         $("#submiterror").show();
         event.preventDefault();
     }
