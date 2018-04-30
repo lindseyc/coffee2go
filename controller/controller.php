@@ -86,8 +86,6 @@
 			//print_r($drinktypes);
 			//$drinkType = $this->model->getDrinkTypes();
 
-
-
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
 				//validate form here??
@@ -174,8 +172,11 @@
 			//$this->view->renderCart($shoppingCart);
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["confirm"] != null) {
-				//update the cart
-				//$this->model->updateCart
+				
+				//to be implemented
+				/*
+					
+				*/
 				// form has been confirmed, send order to employee
 				//email customer
 				//store customer/order/drink info in db
