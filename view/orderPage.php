@@ -53,6 +53,9 @@ include_once('./model/cart.php');
     <script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 function printTable(display) {
     var table = document.getElementById("table");
     var i = 1;
@@ -62,6 +65,7 @@ function printTable(display) {
         var txt = document.createTextNode(k);
         var td2 = document.createElement("td");
         var txt2 = document.createTextNode(display[k]);
+<<<<<<< HEAD
         
         td.appendChild(txt);
         td2.appendChild(txt2);
@@ -160,6 +164,43 @@ function printTable(display) {
     // $('#dropdown').change(function() {
     //     $
     // })
+=======
+        
+        td.appendChild(txt);
+        td2.appendChild(txt2);
+        tr.appendChild(td);
+        tr.appendChild(td2);
+        table.appendChild(tr);
+        }
+
+
+}        
+
+
+
+    $(document).ready(function() {
+        $('#dropdown').on("change", function() {
+            var radiobutt = $('#dropdown').val();
+            var drinks = ['coffee', 'tea', 'smoothie']
+            if (radiobutt == 'all'){
+                update.html('<p> all were selected</p>');
+            }
+            else {
+                for (var i = 0; i < drinks.length; i++){
+                    var current = "." + drinks[i]
+                    if (drinks[i] == radiobutt){
+                        $(current).show();
+                    }
+                    else {
+                        $(current).hide();
+                    }
+                }
+                update.html('<p>' + radiobutt + ' was selected</p>')
+            }
+            printTable(toDisplay);
+        });
+    });
+>>>>>>> master
     </script>
 <<<<<<< HEAD
 >>>>>>> Stashed changes
@@ -228,13 +269,15 @@ function printTable(display) {
                     <!-- hardcoded drinks array of coffee into orderpage with add to cart button: -->
                 <?php
                 echo "the menu: ";
-                $toDisplay = array_merge(ShoppingCart::$drinktypes,
-                                        ShoppingCart::$teatypes,
-                                        ShoppingCart::$smoovtypes);
-                print_r($toDisplay);
                 $totalPrice = 0;
-                    foreach($toDisplay as $type => $price){
+                $merged = Array ('coffee' => ShoppingCart::$drinktypes,
+                'tea' => ShoppingCart::$teatypes,
+                'smoothie' => ShoppingCart::$smoovtypes);
+                print_r($merged);
+                foreach ($merged as $drinkclass => $drinks){
+                    foreach($drinks as $type => $price){
                         $totalPrice += $price;
+<<<<<<< HEAD
 <<<<<<< HEAD
                         if (in_array($type, ShoppingCart::$drinktypes)){
                             $drinkclass = "coffee";
@@ -251,6 +294,9 @@ function printTable(display) {
 =======
 >>>>>>> master
                         echo "<tr>";
+=======
+                        echo "<tr class='$drinkclass'>";
+>>>>>>> master
                             echo "<td>";
                             echo($type);
                             echo "</td>";
@@ -261,22 +307,30 @@ function printTable(display) {
                             echo "<td>";
                             echo "Add to Cart:
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
 =======
                                 <input type='number' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
 >>>>>>> master
+=======
+                                <input type='number' class='" . $drinkclass . "' value='0' id='quantity' name='$type' min='0' max='5'>";
+>>>>>>> master
                             echo "</td>";
                         echo "</tr>";
                     }
+                }
                  ?>
                 </tbody>
             </table>
+<<<<<<< HEAD
              <p><span id="drinklist">Drinks will be inserted here</span>
  
 
             </p>
 <<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> master
 =======
 >>>>>>> master
         </fieldset>
