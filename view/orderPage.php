@@ -31,62 +31,22 @@ include_once('./model/cart.php');
 	<link href="./view/main.css" type="text/css" rel="stylesheet"/>
 
     <!-- javascript validation -->
-    <script scr="./view/validate.js"></script>
 
-<!-- <?php
-    // $smoothies = ShoppingCart::$smoovtypes;
-
-    // $cart_info_json = json_encode($smoothies);
-    // $tea = ShoppingCart::$teatypes;
-    // $cart_info_json = json_encode($smoothies);
-
-    // $coffee = ShoppingCart::$drinktypes;
-    // $cart_info_json = json_encode($smoothies);
-
-?> -->
+    <script src="./view/validate.js"></script>
 
     <script>
-
-function printTable(display) {
-    var table = document.getElementById("table");
-    var i = 1;
-    for(var k in display){
-        var tr = document.createElement("tr");
-        var td = document.createElement("td");
-        var txt = document.createTextNode(k);
-        var td2 = document.createElement("td");
-        var txt2 = document.createTextNode(display[k]);
-
-        td.appendChild(txt);
-        td2.appendChild(txt2);
-        tr.appendChild(td);
-        tr.appendChild(td2);
-        table.appendChild(tr);
-        }
-
-
-}
-
-
-
     $(document).ready(function() {
         $('#dropdown').on("change", function() {
             var radiobutt = $('#dropdown').val();
             var drinks = ['coffee', 'tea', 'smoothie']
-            if (radiobutt == 'all'){
-                update.html('<p> all were selected</p>');
-            }
-            else {
-                for (var i = 0; i < drinks.length; i++){
-                    var current = "." + drinks[i]
-                    if (drinks[i] == radiobutt){
-                        $(current).show();
-                    }
-                    else {
-                        $(current).hide();
-                    }
+            for (var i = 0; i < drinks.length; i++){
+                var current = "." + drinks[i]
+                if (drinks[i] == radiobutt || radiobutt == 'all'){
+                    $(current).show();
                 }
-                update.html('<p>' + radiobutt + ' was selected</p>')
+                else {
+                    $(current).hide();
+                }
             }
             printTable(toDisplay);
         });
@@ -98,22 +58,20 @@ function printTable(display) {
     <h1>Order some coffee!</h1>
     <!-- put the controller in the action? -->
     <form name="orderfrm" id="order" method="post">
-    <!-- redirect to the controller, which will redirect to the right view
-    make sure form -->
-
         <fieldset>
             <legend>Customer information</legend>
-             <legend for="name">Name: <input type="text" id="email"
-							 name="name" placeholder="First and Last"></input>
+
+             <legend for="name">Name: <input type="text" id="name" name="name" placeholder="First and Last"></input>
+            <span></span>
             </legend>
 
-            <legend for="email">Email: <input type="email" id="email"
-							name="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
+            <span></span>
             </legend>
             <br/>        <!-- emailtextmessages.com -->
 
-            <legend for="phone">Phone number: <input type="tel" id="phone"
-							name="phone" placeholder="xxx xxx xxxx"></input>
+            <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxxyyyzzzz"></input>
+            <span></span>
             </legend>
 
             <legend for="carrier">Carrier:
@@ -164,16 +122,12 @@ function printTable(display) {
                         echo "<tr class='$drinkclass'>";
                             echo "<td>";
                             echo($type);
-                            echo "</td>";
-                            echo "<td>";
+                            echo "</td><td>";
                             //price
                             echo "$" . number_format($price, '2');
-                            echo "</td>";
-                            echo "<td>";
+                            echo "</td><td>";
                             echo "Add to Cart:
-                                <input type='number' class='" . $drinkclass
-																. "' value='0' id='quantity' name='$type'
-																min='0' max='5'>";
+                                <input type='number' value='0' id='quantity' name='$type' min='0' max='5'>";
 
                             echo "</td>";
                         echo "</tr>";

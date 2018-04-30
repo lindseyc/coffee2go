@@ -62,11 +62,11 @@ class ShoppingCart {
 		return $this->customer;
 	}
 
-	public function order($type, $price) {
-		 $currentPrice = $this->order[$type];
+	public function order($type, $quantity) {
+		 $currentQuantity = $this->order[$type];
 		 //may need to change
-        $currentPrice = $price;
-        $this->order[$type] = $currentPrice;
+        $currentQuantity = $quantity;
+        $this->order[$type] = $currentQuantity;
 	}
 
 	public function addCustomer($key, $value) {

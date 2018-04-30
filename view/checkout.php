@@ -71,6 +71,9 @@ function createTimeDropDown() {
 
 	<!-- Display order and customer info -->
 	<fieldset>
+ 	
+ 	<form name="confirmation" id="confirmation" method="post">
+
 	<legend> Your Information: </legend>
 	<!-- customer info (can not edit, maybe in a later feature) -->
 	<?php
@@ -156,12 +159,12 @@ function createTimeDropDown() {
                 <option value="105">105</option>
                 <option value="120">120</option>
      </select>
-
-	</fieldset>
+	
 
 	<br>
 	<button text-align="right" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
-
+	</form>
+	</fieldset>
 </body>
 
 </html>

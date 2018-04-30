@@ -80,12 +80,15 @@
 
 
 		public function invoke() {
-			// call to model to get drink types
 
 
-			$this->view->renderOrderForm();
-			// $this->view->renderOrderForm($drinkTypes);
-			// $drinkType = $this->model->getDrinkTypes();
+			$drinktypes = Array(ShoppingCart::$drinktypes,
+								ShoppingCart::$teatypes,
+								ShoppingCart::$smoovtypes
+							);
+			$this->view->renderOrderForm($drinktypes);
+			//print_r($drinktypes);
+			//$drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
@@ -95,8 +98,10 @@
 				$quantity = $_POST["quantity"];
 				$type = $_POST["type"];
 
-				//validate form here??
 
+					echo "retrieve cart from model : ";
+				print_r($this->model->getCart());
+				echo "<br/>";
 
 				//mysqli sttmnts?
 
@@ -105,6 +110,8 @@
 				//display the post
 				echo "<br /><br />(in controller) The post is: ";
 				print_r($_POST);
+				echo "<br/>";
+				// $post = $_POST
 				//$quantity = $_POST["quantity"];
 				//$type = $_POST["type"];
 
@@ -146,54 +153,71 @@
 
 				$result = $this->model->updateCart($quantity, $quantity);
 
-				foreach(ShoppingCart::$alltypes as $type => $quantity){
-					if (is_numeric($quantity) && $quantity > 0){
 
 						$_SESSION['cart']->order($type, $quantity);
+				$post = $_POST;
+				unset($post['dropdown']);
+				unset($post['submit']);
 
+
+				foreach($post as $key => $value) {
+					if($key == "name" || $key == "carrier" || $key == "phone" || $key == "email"){
+						echo "adding $key and $value to customer <br/>";
+						$_SESSION['cart']->addCustomer($key, $value);
 					}
+					else {
+						$key = ShoppingCart::$displaynames[$key];
+						if($value > 0){
+							echo "adding $key and $value to drinkOrder <br/>";
+							$_SESSION['cart']->order($key, $value);
+						}
+					}
+
+
 				}
 
-				//echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
-				echo '<br/>';
-				//if($drinkSelected){
-					//$type = trim($_POST["dropdown"]);
-					//$quantity = trim($_POST["quantity"]);
-					//TODO
-					//$quantity = 2;
-					// $message = "";
-					// //TODOOO
-					// $displayname = "latte"; //ShoppingCart::$drinktypes[0];
-					// if($displayname && is_numeric($quantity) && $quantity > 0){
-					// 	$_SESSION['cart']->order($type, $quantity);
+				// foreach(ShoppingCart::$alltypes as $type => $quantity){
+				// 	if (is_numeric($quantity) && $quantity > 0){
 
-					// 	$message = "Your $quantity drink(s) added to shopping cart";
-					// }
-					// else if(!$displayname){
-					// 	$message = "error";
-					// }
-				//}
+				// 		$_SESSION['cart']->order($type, $quantity);
+
+				// 	}
+
+				// }
+
+				echo '<br/>';
+
 
 				//add to the cart not update: change once this can be called on the model
-				$result = $this->model->updateCart($type, $quantity);
+
+					//echo "adding $key and $value to model";
+					//$result = $this->model->updateCart($key, $value);
+					$result = "nothing right now";
 
 
-				// $cust = $this->model->addCustomer();
+				echo "retrieve cart from model : ";
+				print_r($this->model->getCart());
 
 				if(preg_match('/invalid/', $result)) {
 					echo $result;
 				}
 				else {
 					$shoppingCart = $this->model->getCart();
+					//replace the view instead of rendering it at the bottom
 					$this->view->renderCart($shoppingCart);
 				}
 			}
 		}
 
 		public function confirm() {
-			$this->view->renderCart($shoppingCart);
+			//$this->view->renderCart($shoppingCart);
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["confirm"] != null) {
+
+				//to be implemented
+				/*
+
+				*/
 				// form has been confirmed, send order to employee
 				//email customer
 				//store customer/order/drink info in db
@@ -201,4 +225,5 @@
 			}
 		}
 	}
+
 ?>
