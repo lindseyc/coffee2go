@@ -21,6 +21,7 @@ session_start();
 // 	session_destroy();
 // }
 
+//function to generate a time stamp for the user's order
 function createTimeDropDown() {
 	$hours = $minutes = $ampm = $optString = '';
 	$i = 0;
@@ -82,6 +83,11 @@ function createTimeDropDown() {
 	foreach($post as $key => $value){
 		echo "Your " . $key . " is " . $value;
 		echo "<br>";
+		//all info is in the post, so need to break before it reaches
+		//the drinks and quantities
+		if($key == "carrier"){
+			break;
+		}
 	}
 
 	?>
@@ -91,35 +97,50 @@ function createTimeDropDown() {
 	<legend> Your Order: </legend>
 	<!-- table for drink order -->
 	<?php
+	unset($post['name']);
+	unset($post['email']);
+	unset($post['phone']);
+	unset($post['carrier']);
+
 	echo '<table>';
 	echo '<tr>';
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
 		echo '<td>Quantity</td>';
 		//I DONT KNOW WHAT THESE ARE / where they came from??
-		unset($shoppingCart['all']);
-		unset($shoppingCart['']);
+		//unset($shoppingCart['all']);
+		//unset($shoppingCart['']);
+		//print_r($post);
 		//print_r($shoppingCart);
-	foreach ($shoppingCart as $drink => $quantity) {
-		echo '<tr>';
-			echo '<td>';
-			echo($drink);
-			echo '</td>';
-			echo '<td>';
-			//price
-			$price = ShoppingCart::$drinktypes[$drink];
-			echo '$' . number_format($price, '2');
-			echo '</td>';
-			echo '<td>';
-			echo $quantity;
-			//put quantity box here? or just have confirm, & no 'update of order option'
-			 echo '</td>';
-		echo '</tr>';
+		$totalPrice =  0;
+		$totalQuantity = 0;
+	foreach ($post as $drink => $quantity) {
+		if($quantity > 0){
+			echo '<tr>';
+				echo '<td>';
+				echo ShoppingCart::$displaynames[$drink];
+				echo '</td>';
+				echo '<td>';
+				//price
+				//need to get from $displaynames b/c irish bfast is irish_bfast in post array
+				$price = ShoppingCart::$alltypes[ShoppingCart::$displaynames[$drink]];
+				$price =  $quantity * $price;
+				
+				echo '$' . number_format($price, '2', '.', ',');
+				$totalPrice += $price;
+				echo '</td>';
+				echo '<td>';
+				echo $quantity;
+				$totalQuantity += $quantity;
+				//put quantity box here? or just have confirm, & no 'update of order option'
+				echo '</td>';
+			echo '</tr>';
+		}
 	}
 	echo "</table>";
+	echo "Your total is $" . number_format($totalPrice, '2', '.', ',') . " for $totalQuantity drink(s)";
 
-	// pickup time selection?
-
+	// pickup time selection
 	?>
 	</fieldset>
 	<fieldset>

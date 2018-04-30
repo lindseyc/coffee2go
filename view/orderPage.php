@@ -208,7 +208,7 @@ include_once('./model/cart.php');
                             echo "</td>";
                             echo "<td>";
                             echo "Add to Cart:
-                                <input type='number' id='quantity' name='$type' placeholder='0' min='0' max='5'>";
+                                <input type='number' id='quantity' value='0' name='$type' min='0' max='5'>";
                             echo "</td>";
                         echo "</tr>";
                     }
