@@ -160,6 +160,7 @@ function createTimeDropDown() {
 	
 
 	<br>
+	<input type="hidden" name="confirm"/>
 	<button text-align="right" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
 	</form>
 	</fieldset>

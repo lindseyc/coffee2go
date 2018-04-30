@@ -159,6 +159,7 @@
 					$shoppingCart = $this->model->getCart();
 					//replace the view instead of rendering it at the bottom
 					$this->view->renderCart($shoppingCart);
+					//$this->_redirect('./view/checkout.php');
 				}
 			}
 			//$this->view->renderCart($shoppingCart);
@@ -172,7 +173,7 @@
 			//$this->view->renderCart($shoppingCart);
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["confirm"] != null) {
-				
+				echo "in the confirm";
 				//to be implemented
 				/*
 					

@@ -59,9 +59,14 @@ class ShoppingCart {
 	}
 
 	public function order($type, $quantity) {
-		 $currentQuantity = $this->order[$type];
-		 //may need to change
-        $currentQuantity = $quantity;
+		//the order already has this drink in it
+		$currentQuantity = 0; 
+		if(isset($this->order[$type])){
+			$currentQuantity = $this->order[$type];
+
+		}
+		 //may need to change, need to make sure this doesn't increase upon a refresh***
+        $currentQuantity += $quantity;
         $this->order[$type] = $currentQuantity;
 	}
 
@@ -70,6 +75,7 @@ class ShoppingCart {
 		$this->customer[$key] = $value;
 	}
 
+	//to be used once editing of the order is implemented as a feature
 	public function updateCart($type, $quantity) {
 		$this->order[$type] = $quantity;
 	}
