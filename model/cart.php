@@ -6,7 +6,7 @@ class ShoppingCart {
 
 	public static $drinktypes = Array(	"latte" => 3.50, 
 										"black coffee" => 2.00,
-										"espresso" => 4.00,	
+										"espresso" => 4.00	
 									 );
 	public static $teatypes = Array(	"black tea" => 1.50,
 										"irish breakfast" => 1.75,
@@ -16,6 +16,18 @@ class ShoppingCart {
 	public static $smoovtypes = Array(	"strawberry" => 4.00,
 										"straw-nana" => 4.75,
 										"mango" => 5.00
+									);
+
+	public static $alltypes = Array(	"strawberry" => 4.00,
+										"straw-nana" => 4.75,
+										"mango" => 5.00,
+										"black tea" => 1.50,
+										"irish breakfast" => 1.75,
+										"earl grey" => 1.75,
+										"green tea" => 1.50,
+										"latte" => 3.50, 
+										"black coffee" => 2.00,
+										"espresso" => 4.00
 									);
 
 	private $order;

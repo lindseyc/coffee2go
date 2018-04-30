@@ -88,19 +88,67 @@
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] != null) {
 
+<<<<<<< HEAD
 				print_r('adding to cart');
 				//display the post
 				print_r($_POST);
 				$quantity = $_POST["quantity"];
 				$type = $_POST["type"];
+=======
+				//validate form here??
+
+
+
+				//mysqli sttmnts?
+
+
+				//print_r('adding to cart');
+				//display the post
+				print_r($_POST);
+				//$quantity = $_POST["quantity"];
+				//$type = $_POST["type"];
+>>>>>>> master
 				$name = $_POST["name"];
 				$phone = $_POST["phone"];
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
+<<<<<<< HEAD
 				echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
 
 				$result = $this->model->updateCart($quantity, $quantity);
+=======
+				foreach(ShoppingCart::$alltypes as $type => $quantity){
+					if (is_numeric($quantity) && $quantity > 0){
+						
+						$_SESSION['cart']->order($type, $quantity);
+
+					}
+				}
+
+				//echo "name = " . $name . " email = " . $email . " phone = " . $phone . " carrier = " . $carrier;
+				echo '<br/>';
+				//if($drinkSelected){
+					//$type = trim($_POST["dropdown"]);
+					//$quantity = trim($_POST["quantity"]);
+					//TODO
+					//$quantity = 2;
+					// $message = "";
+					// //TODOOO
+					// $displayname = "latte"; //ShoppingCart::$drinktypes[0];
+					// if($displayname && is_numeric($quantity) && $quantity > 0){
+					// 	$_SESSION['cart']->order($type, $quantity);
+
+					// 	$message = "Your $quantity drink(s) added to shopping cart";
+					// }
+					// else if(!$displayname){
+					// 	$message = "error";
+					// }
+				//}
+
+				//add to the cart not update: change once this can be called on the model
+				$result = $this->model->updateCart($type, $quantity);
+>>>>>>> master
 
 				// $cust = $this->model->addCustomer();
 

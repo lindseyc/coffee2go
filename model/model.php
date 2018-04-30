@@ -15,8 +15,8 @@ class Model {
 
 	public function updateCart($type, $quantity) {
         //for now hardcode in type
-        $type = "latte";
-        $quantity = 1;
+        //$type = "latte";
+        //$quantity = 1;
         $displayName = ShoppingCart::$drinktypes[$type];
 
         if ($displayName && is_numeric($quantity) && $quantity > 0) {
