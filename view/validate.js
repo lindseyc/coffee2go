@@ -1,5 +1,5 @@
 var usernameRequirements = "At least 3 alpha characters";
-var emailReq = "Formatted in ***@***.edu/gov/com/org";
+var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
@@ -64,7 +64,7 @@ var phone = function Phone(text){
 
 var email = function Email(text){
     if (text===""){ return "empty";}
-    else if (text.match(/^[a-zA-Z0-9]*@[a-zA-Z]*\.(gov|com|edu|org)$/)){
+    else if (text.match(/^[a-zA-Z0-9]*@[a-zA-Z]*\.(gov|net|com|edu|org)$/)){
         return true;}
     else { return false; }
 };
