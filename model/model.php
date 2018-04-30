@@ -13,6 +13,14 @@ class Model {
  	  }
   }
 
+ 
+  //public function  to clear Cart() (not unset)
+  public function clearCart(){
+    $_SESSION = Array();
+  }
+
+
+
 	public function updateCart($type, $quantity) {
         //for now hardcode in type
         //$type = "latte";
@@ -44,6 +52,14 @@ class Model {
 
     public function getCustomer() {
         return $_SESSION["cart"]->getCustomer();
+    }
+
+    public function addCustomer($key, $value){
+        $_SESSION['cart']->addCustomer($key, $value);
+    }
+
+    public function order($drink, $quantity){
+        $_SESSION['cart']->order($drink, $quantity);
     }
 
  	public function addToCart($type, $quantity) {

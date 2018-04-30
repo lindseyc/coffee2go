@@ -8,6 +8,8 @@
 		session_start();
 	}
 
+	//if the cart is not there, call create cart function from model
+
 	class Controller {
 		public $model, $view;
 
@@ -94,17 +96,12 @@
 				print_r($this->model->getCart());
 				echo "<br/>";
 
-				//mysqli sttmnts?
 
-
-				//print_r('adding to cart');
 				//display the post
 				echo "(in controller) The post is: ";
 				print_r($_POST);
 				echo "<br/>";
-				// $post = $_POST
-				//$quantity = $_POST["quantity"];
-				//$type = $_POST["type"];
+				
 				$name = $_POST["name"];
 				$phone = $_POST["phone"];
 				$email = $_POST["email"];
@@ -118,32 +115,23 @@
 				foreach($post as $key => $value) {
 					if($key == "name" || $key == "carrier" || $key == "phone" || $key == "email"){
 						echo "adding $key and $value to customer <br/>";
-						$_SESSION['cart']->addCustomer($key, $value);
+						$this->model->addCustomer($key,$value);
+						//$_SESSION['cart']->addCustomer($key, $value);
 					}
 					else {
 						$key = ShoppingCart::$displaynames[$key];
 						if($value > 0){
 							echo "adding $key and $value to drinkOrder <br/>";
-							$_SESSION['cart']->order($key, $value);
+							$this->model->order($key, $value);
+							//$_SESSION['cart']->order($key, $value);
 						}
 					}
-
-
 				}
 
-				// foreach(ShoppingCart::$alltypes as $type => $quantity){
-				// 	if (is_numeric($quantity) && $quantity > 0){
-						
-				// 		$_SESSION['cart']->order($type, $quantity);
-
-				// 	}
-
-				// }
+		
 
 				echo '<br/>';
 				
-
-				//add to the cart not update: change once this can be called on the model
 				
 					//echo "adding $key and $value to model";
 					//$result = $this->model->updateCart($key, $value);
@@ -151,6 +139,7 @@
 
 				echo "retrieve cart from model : ";
 				print_r($this->model->getCart());
+
 
 				if(preg_match('/invalid/', $result)) {
 					echo $result;
@@ -162,6 +151,7 @@
 					//$this->_redirect('./view/checkout.php');
 				}
 			}
+			//render it anyways (for testing)
 			//$this->view->renderCart($shoppingCart);
 
 		}
@@ -185,6 +175,8 @@
 				//email customer
 				//store customer/order/drink info in db
 				$this->view->renderConfirmation($post);
+				$this->model->clearCart();
+				//print_r($this->model->getCart());
 			}
 		}
 	}

@@ -8,41 +8,7 @@ session_start();
 
 <!DOCTYPE html>
 
-<?php 
 
-// //if session is starting then store an empty cart in it
-// if(!isset($_SESSION['cart'])) {
-// 	$_SESSION['cart'] = new ShoppingCart();
-// }
-
-// //if submit has been clicked then destroy session
-// if(isset($_POST['order'])) { // has to receive from the controller
-// 	unset($_SESSION);
-// 	session_destroy();
-// }
-
-//function to generate a time stamp for the user's order
-function createTimeDropDown() {
-	$hours = $minutes = $ampm = $optString = '';
-	$i = 0;
-	for($i = 540; $i <= 1260; $i += 30){
-		   $hours = floor($i / 60);
-           $minutes = $i % 60;
-           if ($minutes < 10){
-               $minutes = '0' . $minutes; // adding leading zero
-           }
-           $ampm = $hours % 24 < 12 ? 'AM' : 'PM';
-           $hours = $hours % 12;
-           if ($hours === 0){
-               $hours = 12;
-           }
-           $text =$hours.':'.$minutes.' '.$ampm;
-           $optString .='<option value="'.$i.'">'.$text.'</option>';
-	}
-	return $optString;
-}
-
-?>
 <html lang="en">
 
 <head>
@@ -160,7 +126,9 @@ function createTimeDropDown() {
 	
 
 	<br>
+	<!-- timestamp -->
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
+	<!-- naming of the $_POST as "confirm"  -->
 	<input type="hidden" name="confirm"/>
 	<button text-align="right" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
 	</form>

@@ -51,7 +51,11 @@ class ShoppingCart {
 	}
 
 	public function getOrder() {
+		if(isset($this->order)){
 		return $this->order;
+		}
+		else
+			echo "emptyyyy";
 	}
 
 	public function getCustomer() {
