@@ -1,4 +1,4 @@
-var usernameRequirements = "At least 3 alpha characters";
+var usernameRequirements = "At least 4 characters separated by space";
 var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
@@ -53,7 +53,7 @@ var info = function infoAppend (fieldElem, infoMessage){
 };
 var usernameFn = function usernameValidate(text){
     if (text===""){ return "empty";}
-    else if (text.match(/^[A-Za-z\s]{3,}$/)) {return true;}
+    else if (text.match(/^[A-Za-z-]{2,}\s{1}[A-Za-z-]{2,}$/)) {return true;}
     else { return false;}
 };
 
