@@ -38,13 +38,13 @@ $insertOrder-> bind_param("iiddi", $orderid, $customerId,
             $orderPrice, $date, $timedrop);
 
 // Insert into drinks
-$query = "INSERT INTO drinks(name, orderId, quantity)
+$query = "INSERT INTO drinks(orderId, name, quantity)
           VALUES (?, ?, ?)";
 $insertDrink = $connection->prepare($query);
 if (!$insertDrink) {
   print_r($connection->error);
 }
-$insertDrink-> bind_param("sii", $drinkName, $order, $quantity);
+$insertDrink-> bind_param("isi", $orderid, $drinkname, $quantity);
 
 
 // Select from drinktype
@@ -59,6 +59,6 @@ $insertDrink-> bind_param("sii", $drinkName, $order, $quantity);
 // $insertCustomDrink->bind_param("iiiid", $customDrinkId, $orderid, $drinktypeid,
 //                                 $quantity, $price);
 
-echo "queries pass<br />";
+echo "<br /><br />queries pass<br /><br />";
 
 ?>

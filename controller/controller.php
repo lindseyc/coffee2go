@@ -35,11 +35,10 @@
 				print_r('adding to cart: ');
 				//display the post
 				print_r($_POST);
-				$quantity = $_POST["quantity"];
 				$type = $_POST["type"];
 
 
-					echo "retrieve cart from model : ";
+				echo "retrieve cart from model : ";
 				print_r($this->model->getCart());
 				echo "<br/>";
 
@@ -81,6 +80,7 @@
 						if($value > 0){
 							echo "adding $key and $value to drinkOrder <br/>";
 							$this->model->order($key, $value);
+							$this->model->addDrinktoDb($key, $value);
 							//$_SESSION['cart']->order($key, $value);
 						}
 					}
@@ -150,7 +150,7 @@
 				//$this->view->renderConfirmation("view/confirmation.php");
 				//echo "redirected...";
 
-				//clear the cart 
+				//clear the cart
 				$this->model->clearCart();
 				//print_r($this->model->getCart());
 			}

@@ -84,24 +84,31 @@ class Model {
       $selectCustomer -> bind_result($customerId);
       // Existing customer in database
       if ($selectCustomer -> fetch() ) {
-        echo "Thanks for shopping again customer $customerId! <br />";
+        echo "<br /><br />Thanks for shopping again customer $customerId!
+         <br /><br />";
       }
       else {
         // Add to DB if new customer
         mysqli_stmt_execute($insertCustomer);
         $customerId = mysqli_stmt_insert_id($insertCustomer);
         print_r($connection->error);
-        echo "Thanks for being a new customer!
-        You are customer #$customerId. <br />";
+        echo "<br /><br />Thanks for being a new customer!
+        You are customer #$customerId. <br /><br />";
       }
       // end statements
-      echo "---ending customer table---";
       mysqli_stmt_close($selectCustomer);
       mysqli_stmt_close($insertCustomer);
 }
 
-  public function addDrinktoDb() {
-    
+  public function addDrinktoDb($drinkname, $quantity) {
+    $connection = $_SESSION['conn'];
+    include("model/queries.php");
+    mysqli_stmt_execute($insertDrink);
+    echo "<br /><br /> start add drink <br /><br />";
+    print_r($connection->error);
+    $orderid = mysqli_stmt_insert_id($insertDrink);
+    echo "<br /><br />ending add drink<br /><br />";
+    mysqli_stmt_close($insertDrink);
   }
 
 // public function getCustId ($name, $email) {
@@ -121,7 +128,7 @@ public function addOrdertoDb($customerId, $orderPrice, $date, $timedrop) {
     include("model/queries.php");
     mysqli_stmt_execute($insertOrder);
     print_r($connection->error);
-    echo "---starting insertOrder query--- <br />";
+    echo "<br /><br />---starting insertOrder query--- <br /><br />";
     $insertOrder -> bind_result($orderid);
     // Add to DB if new customer
     $orderid = mysqli_stmt_insert_id($insertOrder);

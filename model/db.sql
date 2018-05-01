@@ -17,13 +17,20 @@ CREATE TABLE customer (
   carrier VARCHAR(64) NOT NULL
 );
 
+CREATE TABLE drinks (
+  orderId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(64) NOT NULL,
+  quantity INT NOT NULL
+);
+
 CREATE TABLE orders (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INT UNSIGNED NOT NULL,
   customer_id INT UNSIGNED NOT NULL,
   price FLOAT NOT NULL,
   dateCreated TIMESTAMP NOT NULL,
   timedrop INT UNSIGNED NOT NULL,
-  FOREIGN KEY (customer_id) REFERENCES customer(id)
+  FOREIGN KEY (customer_id) REFERENCES customer(id),
+  FOREIGN KEY (id) REFERENCES drinks(orderId)
 );
 
 -- CREATE TABLE drinktype (
@@ -31,13 +38,6 @@ CREATE TABLE orders (
 --   name VARCHAR(64),
 --   price FLOAT NOT NULL,
 -- );
-
-CREATE TABLE drinks (
-  name VARCHAR(64) NOT NULL,
-  orderId INT UNSIGNED NOT NULL,
-  quantity INT NOT NULL,
-  FOREIGN KEY (orderId) REFERENCES orders(id)
-);
 
 -- CREATE TABLE customdrink (
 --   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
