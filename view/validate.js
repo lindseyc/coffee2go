@@ -72,7 +72,7 @@ var email = function Email(text){
 
 function ordercounts(){
     var currentselection = $('#dropdown').val();
-    total = 0
+    var total = 0
     if (currentselection != 'all'){
         var all = $('.drink.' + currentselection);
     }
