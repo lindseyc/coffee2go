@@ -149,7 +149,6 @@ class Model {
   public function addAlltoDb($name1, $phone1, $email1, $carrier1,
         $date1, $timedrop1) {
 
-        echo "heeloo?";
         $name = $name1;
         $phone = $phone1;
         $email = $email1;
@@ -185,7 +184,6 @@ class Model {
       //lets close the connections here:
         mysqli_stmt_close($selectCustomer);
         mysqli_stmt_close($insertCustomer);
-        echo $customerId;
         
         //needs to be here, to calculate total order price so it can be
         //given to the order table
@@ -204,25 +202,25 @@ class Model {
       //insert order needs: $orderid, $customerId, $orderPrice, $date, $timedrop
       mysqli_stmt_execute($insertOrder);
       $orderid = mysqli_stmt_insert_id($insertOrder);
-      echo "order id is " . $orderid . "<br>";
+      echo "<p>Your order id is " . $orderid . ".</p>";
       mysqli_stmt_close($insertOrder);
 
       //orderid doesnt work --- this is the key !!it's all about the order 
       //the variables need to be introcuced before the executes are called b/c they expect these variables with the correct names
           //insert $drinks : orderId, name, quantity, customerId, price
-          echo print_r($myCart);
+          //echo print_r($myCart);
           foreach ($myCart as $drink => $q) {
             $name = $drink;
             $quantity = $q;
             $price = ShoppingCart::$alltypes[$name];
-            echo "name: $name    quantity: $quantity   orderid: $orderid  customerid: $customerId   price: $price ";
+            //echo "name: $name    quantity: $quantity   orderid: $orderid  customerid: $customerId   price: $price ";
             //$orderPrice += $price;
             mysqli_stmt_execute($insertDrink);
-            print_r("error" . $connection->error);
+            //print_r("error" . $connection->error);
           }
           // end statements
             mysqli_stmt_close($insertDrink);
-          echo "drinks inserted ";
+          //echo "drinks inserted ";
 
       
     
