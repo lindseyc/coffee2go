@@ -117,26 +117,36 @@ session_start();
 	?>
 	</fieldset>
 	<fieldset>
-	<legend>In how many minutes would you like your drink to be ready?</legend>
-	<select id="timeDrop" name="timeDrop">
-                <option value="30">30</option>
-                <option value="45">45</option>
-                <option value="60">60</option>
-                <option value="75">75</option>
-                <option value="90">90</option>
-                <option value="105">105</option>
-                <option value="120">120</option>
-     </select>
-	
+	<legend>Confirmation</legend>
+	<p>
+		Have my drink ready in:
+		<select id="timeDrop" name="timeDrop">
+			<option value="30">30</option>
+			<option value="45">45</option>
+			<option value="60">60</option>
+			<option value="75">75</option>
+			<option value="90">90</option>
+			<option value="105">105</option>
+			<option value="120">120</option>
+		</select> minutes.
+	</p>
 
-	<br>
+	<p>
+		Receive confirmation by: <select name="confirmtype">
+			<option value="email">Email</option>
+			<option value="text">Text</option>
+			<option value="both">Both</option>
+			<option value="none">None</option>
+		</select>
+	</p>
 	<!-- timestamp -->
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
 	<!-- naming of the $_POST as "confirm"  -->
 	<input type="hidden" name="confirm"/>
-	<button text-align="right" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
 	</form>
 	</fieldset>
+	<button class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
+
 </body>
 
 </html>
