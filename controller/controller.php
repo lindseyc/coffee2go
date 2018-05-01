@@ -121,7 +121,7 @@
 				echo "name = " . $name . " email = " . $email . " phone = " .
 				$phone . " carrier = " . $carrier . "<br /> <br />" ;
 
-				$this->model->addCustomer($name,$phone,$email,$carrier  );
+				$this->model->addCustomer($name, $phone, $email, $carrier);
 
 				$result = $this->model->updateCart($quantity, $quantity);
 
