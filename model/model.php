@@ -1,5 +1,6 @@
 <?php
 require_once("model/cart.php");
+require_once("model/mail.php");
 include_once("dbconn.php");
 $connection = connect_to_db("motley");
 
@@ -73,7 +74,7 @@ class Model {
             $currentQuantity += $quantity;
             $this->order[$type] = $currentQuantity;
         }
- 	}
+     }
 
 //   public function addCustomertoDb($name, $phone, $email, $carrier) {
 //       $connection = $_SESSION['conn'];

@@ -121,18 +121,6 @@ session_start();
 	</fieldset>
 	<fieldset>
 
-	<legend>In how many minutes would you like your drink to be ready?</legend>
-	<select id="timeDrop" name="timeDrop">
-                <option value="30">30</option>
-                <option value="45">45</option>
-                <option value="60">60</option>
-                <option value="75">75</option>
-                <option value="90">90</option>
-                <option value="105">105</option>
-                <option value="120">120</option>
-     </select>
-
-
 	<br>
 
 	<legend>Confirmation</legend>
