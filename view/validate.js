@@ -1,4 +1,4 @@
-var usernameRequirements = "At least 2 characters separated by space";
+var usernameRequirements = "At least 4 characters separated by space";
 var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
