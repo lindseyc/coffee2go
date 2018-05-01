@@ -31,7 +31,7 @@ class ShoppingCart {
 										"green tea" => 1.50,
 										"latte" => 3.50,
 										"black coffee" => 2.00,
-										"espresso" => 4.00
+										"espresso" => 1.00
 									);
 	public static $displaynames = Array(	"strawberry" => "strawberry",
 											"straw-nana" => "straw-nana",
@@ -52,6 +52,10 @@ class ShoppingCart {
 	public function __construct() {
 		$this->order = Array();
 		$this->customer = Array();
+	}
+
+	public function priceOf($drink) {
+		return $this->$alltypes[$drink];
 	}
 
 	public function getOrder() {

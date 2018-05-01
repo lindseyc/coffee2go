@@ -35,7 +35,7 @@
 				print_r('adding to cart: ');
 				//display the post
 				print_r($_POST);
-				$type = $_POST["type"];
+				// $type = $_POST["type"];
 
 
 				echo "retrieve cart from model : ";
@@ -57,18 +57,17 @@
 				$phone . " carrier = " . $carrier . "<br /> <br />" ;
 
 				//DB. Add customer
-				$this->model->addCustomertoDb($name, $phone, $email, $carrier);
+				// $this->model->addCustomertoDb($name, $phone, $email, $carrier);
 
-				$result = $this->model->updateCart($quantity, $quantity);
+				// $result = $this->model->updateCart($quantity, $quantity);
 
 
-				$_SESSION['cart']->order($type, $quantity);
+				// $_SESSION['cart']->order($type, $quantity);
 				$post = $_POST;
 				unset($post['dropdown']);
 				unset($post['submit']);
 
-				//Initialize var.
-
+				$drinkList = array();
 				foreach($post as $key => $value) {
 					if($key == "name" || $key == "carrier" || $key == "phone" || $key == "email"){
 						echo "adding $key and $value to customer <br/>";
@@ -80,11 +79,14 @@
 						if($value > 0){
 							echo "adding $key and $value to drinkOrder <br/>";
 							$this->model->order($key, $value);
-							$this->model->addDrinktoDb($key, $value);
+							$drinkList[$key] = $value;
+							// $this->model->addDrinktoDb($key, $value);
 							//$_SESSION['cart']->order($key, $value);
 						}
 					}
 				}
+
+				// $this->model->addDrinktoDb($drinkList);
 				echo '<br/>';
 
 					//echo "adding $key and $value to model";
@@ -123,17 +125,26 @@
 				//DB. Add order
 
 				$mycust = $this->model->getCustomer();
-				echo "cust name is: " . $mycust['name'];
-				echo "cust email is " . $mycust['email'];
+				// $this->model->addCustomertoDb($mycust['name'], $mycust['phone'],
+				// $mycust['email'], $mycust['carrier']);
 
 				// $cId = $this->model->getCustId($mycust['name'], $mycust['email']);
-
-				$timedrop = $_POST['timeDrop'];
+				$name = $mycust['name'];
+				$phone = $mycust['phone'];
+				$email = $mycust['email'];
+				$carrier = $mycust['carrier'];
 				$date = $_POST['timestamp'];
-				$orderPrice = $totalPrice;
+				$timedrop = $_POST['timeDrop'];
+				// $orderPrice = $totalPrice;
 
-				$this->model->addOrdertoDb($customerId, $orderPrice, $date, $timedrop);
+				//DB actions
+				$this->model->addAlltoDb($name, $phone, $email, $carrier,
+							$date, $timedrop);
 
+
+
+
+				// $this->model->addOrdertoDb($customerId, $orderPrice, $date, $timedrop);
 
 				print_r($_POST);
 				$post = $_POST;
