@@ -130,10 +130,10 @@
 				// $mycust['email'], $mycust['carrier']);
 
 				// $cId = $this->model->getCustId($mycust['name'], $mycust['email']);
-				$name = $mycust['name'];
-				$phone = $mycust['phone'];
-				$email = $mycust['email'];
-				$carrier = $mycust['carrier'];
+				$name = $_POST['name'];
+				$phone = $_POST['phone'];
+				$email = $_POST['email'];
+				$carrier = $_POST['carrier'];
 				$date = $_POST['timestamp'];
 				$timedrop = $_POST['timeDrop'];
 				$email_text_orboth = $_POST['confirmtype'];
