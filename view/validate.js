@@ -4,7 +4,6 @@ var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
 	var text = $(fieldElem).val();
-	console.log(text);
     var status = validateFn(text);
     if (status===true){
         $(fieldElem).removeClass("info");
@@ -29,6 +28,7 @@ var validateField = function(fieldElem, infoMessage, validateFn) {
 };
 
 $(document).ready(function() {
+    console.log('hello');
     $("#name").focus(function(){info(this, usernameRequirements);});
     $("#name").keyup(function(){validateField(this, usernameRequirements, usernameFn);});
     $("#name").blur(function(){validateField(this, usernameRequirements, usernameFn);});
@@ -69,11 +69,18 @@ var email = function Email(text){
     else { return false; }
 };
 
+function ordercounts(){
+    var currentselection = $('#dropdown').val();
+    return sum($("." + currentselection).val());
+}
+
 var validateAll = function Submit(){
     //username = validateField(":text:first", usernameRequirements, name);
     var username = validateField("#name", usernameRequirements, usernameFn);
     var emailStatus = validateField("#email", emailReq, email);
     var phoneStatus = validateField("#phone", phoneReq, phone);
+    console.log(ordercounts())
+    console.log('hello')
     if (!(username && emailStatus && phoneStatus)){
         $("#submiterror").show();
         event.preventDefault();

@@ -34,7 +34,7 @@ include_once('./model/cart.php');
 
     <!-- javascript validation -->
 
-    <script src="./view/validate.js"></script>
+    <script src="view/validate.js"></script>
 
     <script>
     $(document).ready(function() {
@@ -49,8 +49,7 @@ include_once('./model/cart.php');
                 else {
                     $(current).hide();
                 }
-            }       
-            printTable(toDisplay);
+            }
         });
     });
     </script>
@@ -128,7 +127,7 @@ include_once('./model/cart.php');
                             echo "$" . number_format($price, '2');
                             echo "</td><td>";
                             echo "Add to Cart:
-                                <input type='number' value='0' id='quantity' name='$type' min='0' max='5'>";
+                                <input type='number' class='$drinkclass' value='0' id='quantity' name='$type' min='0' max='5'>";
 
                             echo "</td>";
                         echo "</tr>";
