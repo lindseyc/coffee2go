@@ -31,6 +31,13 @@ session_start();
         }
 	</style>
 	<link href="view/main.css" type="text/css" rel="stylesheet"/>
+
+    <!-- javascript validation -->
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/
+		jquery.min.js"></script>
+    <script src="./view/validate.js"></script>
 	<title> Checkout </title>
 </head>
 
@@ -58,13 +65,23 @@ session_start();
 	//print_r($postCust);
 	//print_r($postOrder);
 	foreach($postCust as $key => $value){
-		echo "Your " . $key . " is " . $value;
-		echo "<br>";
 		//all info is in the post, so need to break before it reaches
 		//the drinks and quantities
 		if($key == "carrier"){
+			echo "Your carrier is: ";
+			echo "<select class=\"carrier\" name=\"carrier\" value='$value'>";
+            foreach (CellCarriers::$carriers as $carrier => $v){
+					echo "<option value='$carrier'";
+					if ($carrier == $value){
+						echo "selected='selected'";
+					}
+					echo "> $carrier </option>";
+                };
+            echo '</select>';
 			break;
 		}
+		echo "Your $key is: <input class='$key' name ='$key' value='$value' placeholder='$value'></input><span></span>";
+		echo "<br>";
 	}
 
 	?>
@@ -148,15 +165,11 @@ session_start();
 
 	<!-- timestamp -->
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
-	<!-- naming of the $_POST as "confirm"  -->
-	<input type="hidden" name="email" value='<?php $postCust = $_SESSION["cart"]->getCustomer(); echo $postCust["email"]; ?>' />
-	<input type="hidden" name="phone" value='<?php echo $postCust["phone"]; ?>' />
-	<input type="hidden" name="carrier" value='<?php echo $postCust["carrier"]; ?>' />
-
+	
 	<input type="hidden" name="confirm"/>
 
 	</fieldset>
-	<button class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
+	<button id="submit" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
 	</form>
 
 </body>
