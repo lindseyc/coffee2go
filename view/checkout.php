@@ -48,25 +48,16 @@ session_start();
 	<?php
 	// iff post isset:
 	//print_r($_POST);
-<<<<<<< HEAD
-	$post = $_POST;
 
-	unset($post['submit']);
-	unset($post['dropdown']);
-	//print_r($post);
-
-	foreach($post as $key => $value){
-=======
 	//$post = $_POST;
 	//unset($post['submit']);
 	//unset($post['dropdown']);
 	//print_r($_SESSION['cart']);
 	$postCust = $_SESSION['cart']->getCustomer();
 	$postOrder = $_SESSION['cart']->getOrder();
-	//print_r($postCust); 
+	//print_r($postCust);
 	//print_r($postOrder);
 	foreach($postCust as $key => $value){
->>>>>>> master
 		echo "Your " . $key . " is " . $value;
 		echo "<br>";
 		//all info is in the post, so need to break before it reaches
@@ -83,7 +74,7 @@ session_start();
 	<legend> Your Order: </legend>
 	<!-- table for drink order -->
 	<?php
-	
+
 
 	echo '<table>';
 	echo '<tr>';
@@ -129,7 +120,7 @@ session_start();
 	?>
 	</fieldset>
 	<fieldset>
-<<<<<<< HEAD
+
 	<legend>In how many minutes would you like your drink to be ready?</legend>
 	<select id="timeDrop" name="timeDrop">
                 <option value="30">30</option>
@@ -143,7 +134,7 @@ session_start();
 
 
 	<br>
-=======
+
 	<legend>Confirmation</legend>
 	<p>
 		Have my drink ready in:
