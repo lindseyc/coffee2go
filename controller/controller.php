@@ -19,14 +19,6 @@
 			$this->view = new View($this->model);
 		}
 
-
-		// public function redirect($location){
-		// 	header("location: " . $location);
-
-		// 	exit;
-		// }
-
-
 		public function invoke() {
 
 			$drinktypes = Array(

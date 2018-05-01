@@ -37,6 +37,15 @@ if (!$insertOrder) {
 $insertOrder-> bind_param("iiddi", $orderid, $customerId,
             $orderPrice, $date, $timedrop);
 
+// Insert into drinks
+$query = "INSERT INTO drinks(name, orderId, quantity)
+          VALUES (?, ?, ?)";
+$insertDrink = $connection->prepare($query);
+if (!$insertDrink) {
+  print_r($connection->error);
+}
+$insertDrink-> bind_param("sii", $drinkName, $order, $quantity);
+
 
 // Select from drinktype
 // $query = "SELECT name FROM drinktype WHERE id=?";

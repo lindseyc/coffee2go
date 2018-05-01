@@ -157,7 +157,7 @@ session_start();
 			<option value="none">None</option>
 		</select>
 	</p>
->>>>>>> master
+
 	<!-- timestamp -->
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
 	<!-- naming of the $_POST as "confirm"  -->
