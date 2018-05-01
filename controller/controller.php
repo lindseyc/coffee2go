@@ -76,7 +76,11 @@
 	}
 */
 
+		// public function redirect($location){
+		// 	header("location: " . $location);
 
+		// 	exit;
+		// }
 
 		public function invoke() {
 
@@ -145,9 +149,12 @@
 					echo $result;
 				}
 				else {
+
 					$shoppingCart = $this->model->getCart();
 					//replace the view instead of rendering it at the bottom
 					$this->view->renderCart($shoppingCart);
+					//$this->view->renderCart("view/checkout.php");
+					//print_r(__DIR__);
 					//$this->_redirect('./view/checkout.php');
 				}
 			}
@@ -161,7 +168,7 @@
 		//want to edit the post if there have been updates in the cart
 		public function confirm() {
 			//$this->view->renderCart($shoppingCart);
-
+			echo "in confirm";
 			if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
 				echo "in the confirm";
 				print_r($_POST);
@@ -174,7 +181,10 @@
 				// form has been confirmed, send order to employee
 				//email customer
 				//store customer/order/drink info in db
-				$this->view->renderConfirmation($post);
+				//echo "redirecting...";
+				$this->view->renderConfirmation();
+				//$this->view->renderConfirmation("view/confirmation.php");
+				//echo "redirected...";
 				$this->model->clearCart();
 				//print_r($this->model->getCart());
 			}
