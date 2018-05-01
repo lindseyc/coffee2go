@@ -94,7 +94,7 @@ var validateAll = function Submit(){
     console.log(ordercounts())
     if (!(username && emailStatus && phoneStatus) || ordercounts() < 0 || ordercounts() > 30){
         $("#submiterror").show();
-        if ((ordercounts() <= 0) || (ordercounts() > 30)){ 
+        if ((ordercounts() <= 0) || (ordercounts() > 30)){
             $('#quantityerror').show();
         }
         event.preventDefault();

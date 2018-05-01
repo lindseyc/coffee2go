@@ -184,7 +184,7 @@ class Model {
       //lets close the connections here:
         mysqli_stmt_close($selectCustomer);
         mysqli_stmt_close($insertCustomer);
-        
+
         //needs to be here, to calculate total order price so it can be
         //given to the order table
         $myCart = $this->getCart();
@@ -205,7 +205,7 @@ class Model {
       echo "<p>Your order id is " . $orderid . ".</p>";
       mysqli_stmt_close($insertOrder);
 
-      //orderid doesnt work --- this is the key !!it's all about the order 
+      //orderid doesnt work --- this is the key !!it's all about the order
       //the variables need to be introcuced before the executes are called b/c they expect these variables with the correct names
           //insert $drinks : orderId, name, quantity, customerId, price
           //echo print_r($myCart);
@@ -222,8 +222,6 @@ class Model {
             mysqli_stmt_close($insertDrink);
           //echo "drinks inserted ";
 
-      
-    
 
   }//end
 
