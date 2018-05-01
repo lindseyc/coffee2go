@@ -165,9 +165,10 @@ session_start();
 	<input type="hidden" name="carrier" value='<?php echo $postCust["carrier"]; ?>' />
 
 	<input type="hidden" name="confirm"/>
-	</form>
+	
 	</fieldset>
 	<button class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
+	</form>
 
 </body>
 

@@ -124,8 +124,8 @@
 
 		public function confirm() {
 			//$this->view->renderCart($shoppingCart);
-			echo "in confirm";
 			if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
+
 				echo "in the confirm: <br />";
 
 				//DB. Add order
@@ -142,6 +142,7 @@
 
 				$this->model->addOrdertoDb($customerId, $orderPrice, $date, $timedrop);
 
+
 				print_r($_POST);
 				$post = $_POST;
 				unset($post['confirm']);
@@ -156,6 +157,8 @@
 				$this->view->renderConfirmation();
 				//$this->view->renderConfirmation("view/confirmation.php");
 				//echo "redirected...";
+
+				//clear the cart 
 				$this->model->clearCart();
 				//print_r($this->model->getCart());
 			}
