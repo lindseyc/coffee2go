@@ -27,7 +27,8 @@ else {
   $selectCustomer->bind_param("ss", $name, $email);
 }
 
-// Insert into order
+// Insert into order  //do we have an orderId to insert
+
 $query = "INSERT INTO orders(id, customer_id, price, dateCreated, timedrop)
           VALUES(?, ?, ?, ?, ?)";
 $insertOrder = $connection->prepare($query);
@@ -36,7 +37,8 @@ if (!$insertOrder) {
 }
 $insertOrder-> bind_param("iiddi", $orderid, $customerId,
             $orderPrice, $date, $timedrop);
-
+echo "order id is " . $orderid;
+echo "order price is " . $orderPrice;
 // Insert into drinks
 $query = "INSERT INTO drinks(orderId, name, quantity, customerId, price)
           VALUES (?, ?, ?, ?, ?)";
@@ -44,8 +46,9 @@ $insertDrink = $connection->prepare($query);
 if (!$insertDrink) {
   print_r($connection->error);
 }
-$insertDrink-> bind_param("isiid", $orderid, $drinkname,
-                    $quantity, $customerId, $drinkprice);
+echo "cid is " . $customerId;
+$insertDrink-> bind_param("isiid", $orderid, $name,
+                    $quantity, $customerId, $price);
 
 
 // Select from drinktype

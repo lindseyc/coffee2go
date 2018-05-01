@@ -145,8 +145,19 @@ class Model {
 //     mysqli_stmt_close($insertCustomer);
 //   }
 
-  public function addAlltoDb($name, $phone, $email, $carrier,
-        $date, $timedrop) {
+  public function addAlltoDb($name1, $phone1, $email1, $carrier1,
+        $date1, $timedrop1) {
+
+        echo "heeloo?";
+        $name = $name1;
+        $phone = $phone1;
+        $email = $email1;
+        $carrier = $carrier1;
+        $date = $date1;
+        $timedrop = $timedrop1;
+        $orderPrice = 15.00;
+        //need to put all of the variables that are going to be inserted into the table in this function
+        //
 
       //Add customer
       $connection = $_SESSION['conn'];
@@ -154,6 +165,7 @@ class Model {
       mysqli_stmt_execute($selectCustomer);
       print_r($connection->error);
 
+      //customer needs: name, phone, email, carrier
       $selectCustomer -> bind_result($customerId);
       // Existing customer in database
       if ($selectCustomer -> fetch() ) {
@@ -166,33 +178,53 @@ class Model {
         $customerId = mysqli_stmt_insert_id($insertCustomer);
         print_r($connection->error);
         echo "<br /><br />Thanks for being a new customer!
-        You are customer #$customerId. <br /><br />";
+        You are customer number $customerId. <br /><br />";
       }
 
+      //lets close the connections here:
+        mysqli_stmt_close($selectCustomer);
+        mysqli_stmt_close($insertCustomer);
+        echo $customerId;
+        
+        //needs to be here, to calculate total order price so it can be
+        //given to the order table
+        $myCart = $this->getCart();
+        $orderPrice = 0;
+        foreach ($myCart as $drink => $q) {
+            // $name = $drink;
+            //$quantity = $q;
+            // $drinkprice = priceOf($drinkname);
+            $price = ShoppingCart::$alltypes[$drink];
+            $orderPrice += $price;
+            mysqli_stmt_execute($insertDrink);
+          }
 
-      //insert order
+      //insert drink will have to go before the order..? or the other way around if we are to include the totalPrice
+      //insert order needs: $orderid, $customerId, $orderPrice, $date, $timedrop
       mysqli_stmt_execute($insertOrder);
       $orderid = mysqli_stmt_insert_id($insertOrder);
       echo "order id is " . $orderid . "<br>";
-      //orderid doesnt work --- this is the key
-        //need order price
-        $orderPrice = 0;
-          //insert $drinks
-          $myCart = $this->getCart();
-          foreach ($myCart as $drink => $q) {
-            mysqli_stmt_execute($insertDrink);
-            $drinkname = $drink;
-            $quantity = $q;
-            // $drinkprice = priceOf($drinkname);
-            $drinkprice = 4;
-            $orderPrice += $drinkprice;
-          }
-
-      // end statements
-      mysqli_stmt_close($insertDrink);
       mysqli_stmt_close($insertOrder);
-      mysqli_stmt_close($selectCustomer);
-      mysqli_stmt_close($insertCustomer);
+
+      //orderid doesnt work --- this is the key !!it's all about the order 
+      //the variables need to be introcuced before the executes are called b/c they expect these variables with the correct names
+          //insert $drinks : orderId, name, quantity, customerId, price
+          echo print_r($myCart);
+          foreach ($myCart as $drink => $q) {
+            $name = $drink;
+            $quantity = $q;
+            $price = ShoppingCart::$alltypes[$name];
+            echo "name: $name    quantity: $quantity   orderid: $orderid  customerid: $customerId   price: $price ";
+            //$orderPrice += $price;
+            mysqli_stmt_execute($insertDrink);
+            print_r("error" . $connection->error);
+          }
+          // end statements
+            mysqli_stmt_close($insertDrink);
+          echo "drinks inserted ";
+
+      
+    
 
   }//end
 
