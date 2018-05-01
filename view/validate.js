@@ -3,6 +3,8 @@ var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
+    $("#submiterror").hide();
+    $("#quantityerror").hide();
 	var text = $(fieldElem).val();
     var status = validateFn(text);
     if (status===true){
@@ -28,7 +30,6 @@ var validateField = function(fieldElem, infoMessage, validateFn) {
 };
 
 $(document).ready(function() {
-    console.log('hello');
     $("#name").focus(function(){info(this, usernameRequirements);});
     $("#name").keyup(function(){validateField(this, usernameRequirements, usernameFn);});
     $("#name").blur(function(){validateField(this, usernameRequirements, usernameFn);});
@@ -71,7 +72,18 @@ var email = function Email(text){
 
 function ordercounts(){
     var currentselection = $('#dropdown').val();
-    return sum($("." + currentselection).val());
+    total = 0
+    if (currentselection != 'all'){
+        var all = $('.drink.' + currentselection);
+    }
+    else {
+        var all = $('.drink');
+    }
+    for (var i = 0; i < all.length; i++){
+        var count = parseInt(all.slice(i, i+1).val())
+        total += count
+    }
+    return total
 }
 
 var validateAll = function Submit(){
@@ -80,9 +92,11 @@ var validateAll = function Submit(){
     var emailStatus = validateField("#email", emailReq, email);
     var phoneStatus = validateField("#phone", phoneReq, phone);
     console.log(ordercounts())
-    console.log('hello')
-    if (!(username && emailStatus && phoneStatus)){
+    if (!(username && emailStatus && phoneStatus) || ordercounts() < 0 || ordercounts() > 30){
         $("#submiterror").show();
+        if ((ordercounts() <= 0) || (ordercounts() > 30)){ 
+            $('#quantityerror').show();
+        }
         event.preventDefault();
     }
 };
