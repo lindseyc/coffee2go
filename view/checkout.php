@@ -145,8 +145,8 @@ session_start();
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
 	<!-- naming of the $_POST as "confirm"  -->
 	<input type="hidden" name="email" value='<?php $postCust = $_SESSION["cart"]->getCustomer(); echo $postCust["email"]; ?>' />
-	<input type="hidden" name="phone" value='<?php echo $postCust["phone"] ?>' />
-	<input type="hidden" name="carrier" value='<?php echo $postCust["carrier"] ?>' />
+	<input type="hidden" name="phone" value='<?php echo $postCust["phone"]; ?>' />
+	<input type="hidden" name="carrier" value='<?php echo $postCust["carrier"]; ?>' />
 
 	<input type="hidden" name="confirm"/>
 	</form>
