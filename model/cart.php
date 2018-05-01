@@ -55,11 +55,19 @@ class ShoppingCart {
 	}
 
 	public function getOrder() {
+<<<<<<< HEAD
 		if(isset($this->order)){
 			return $this->order;
 		}
 		else
 			echo "emptyyyy";
+=======
+		//if(isset($this->order)){
+		return $this->order;
+		//}
+		//else
+		//	echo "emptyyyy";
+>>>>>>> master
 	}
 
 	public function getCustomer() {

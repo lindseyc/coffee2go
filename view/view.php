@@ -7,8 +7,16 @@ class View {
 		$this->model = $model;
 	}
 
+
+	public function redirect($location){
+		header("location: " . $location);
+
+		exit;
+	}
+
 	//display the checkout
-	public function renderCart($shoppingCart){
+	public function renderCart($nextpage){
+		//$this->redirect($nextpage);
 		include_once("checkout.php");
 	}
 
@@ -17,7 +25,9 @@ class View {
 		include_once("orderpage.php");
 	}
 
-	public function renderConfirmation($postTime) {
+	public function renderConfirmation() {
+		//echo "in the render confirmation ";
+		//$this->redirect($nextpage);
 		include_once("confirmation.php");
 	}
 }

@@ -51,7 +51,6 @@ include_once('./model/cart.php');
                     $(current).hide();
                 }
             }
-            printTable(toDisplay);
         });
     });
     </script>
@@ -130,7 +129,7 @@ include_once('./model/cart.php');
                             echo "$" . number_format($price, '2');
                             echo "</td><td>";
                             echo "Add to Cart:
-                                <input type='number' value='0' id='quantity' name='$type' min='0' max='5'>";
+                                <input type='number' class='drink $drinkclass' value='0' id='quantity' name='$type' min='0' max='5'>";
 
                             echo "</td>";
                         echo "</tr>";
@@ -148,6 +147,9 @@ include_once('./model/cart.php');
         <span id="submiterror" style="color:red; display:none;">
             Error. Please make sure all elements are filled out correctly.
           </span>
+        <span id="quantityerror" style="color:red; display:none;">
+        Drink order cannot be zero; no bulk orders.
+        </span>
     </form>
 
 

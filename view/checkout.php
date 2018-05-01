@@ -1,7 +1,7 @@
 <?php
 
 
-require_once('model/cart.php');
+require_once('./model/cart.php');
 session_start();
 
 ?>
@@ -48,6 +48,7 @@ session_start();
 	<?php
 	// iff post isset:
 	//print_r($_POST);
+<<<<<<< HEAD
 	$post = $_POST;
 
 	unset($post['submit']);
@@ -55,6 +56,17 @@ session_start();
 	//print_r($post);
 
 	foreach($post as $key => $value){
+=======
+	//$post = $_POST;
+	//unset($post['submit']);
+	//unset($post['dropdown']);
+	//print_r($_SESSION['cart']);
+	$postCust = $_SESSION['cart']->getCustomer();
+	$postOrder = $_SESSION['cart']->getOrder();
+	//print_r($postCust); 
+	//print_r($postOrder);
+	foreach($postCust as $key => $value){
+>>>>>>> master
 		echo "Your " . $key . " is " . $value;
 		echo "<br>";
 		//all info is in the post, so need to break before it reaches
@@ -71,10 +83,7 @@ session_start();
 	<legend> Your Order: </legend>
 	<!-- table for drink order -->
 	<?php
-	unset($post['name']);
-	unset($post['email']);
-	unset($post['phone']);
-	unset($post['carrier']);
+	
 
 	echo '<table>';
 	echo '<tr>';
@@ -88,16 +97,18 @@ session_start();
 		//print_r($shoppingCart);
 		$totalPrice =  0;
 		$totalQuantity = 0;
-	foreach ($post as $drink => $quantity) {
+	foreach ($postOrder as $drink => $quantity) {
 		if($quantity > 0){
 			echo '<tr>';
 				echo '<td>';
-				echo ShoppingCart::$displaynames[$drink];
+				//echo ShoppingCart::$displaynames[$drink];
+				echo $drink;
 				echo '</td>';
 				echo '<td>';
 				//price
 				//need to get from $displaynames b/c irish bfast is irish_bfast in post array
-				$price = ShoppingCart::$alltypes[ShoppingCart::$displaynames[$drink]];
+				//$price = ShoppingCart::$alltypes[ShoppingCart::$displaynames[$drink]];
+				$price = ShoppingCart::$alltypes[$drink];
 				$price =  $quantity * $price;
 
 				echo '$' . number_format($price, '2', '.', ',');
@@ -118,6 +129,7 @@ session_start();
 	?>
 	</fieldset>
 	<fieldset>
+<<<<<<< HEAD
 	<legend>In how many minutes would you like your drink to be ready?</legend>
 	<select id="timeDrop" name="timeDrop">
                 <option value="30">30</option>
@@ -131,13 +143,42 @@ session_start();
 
 
 	<br>
+=======
+	<legend>Confirmation</legend>
+	<p>
+		Have my drink ready in:
+		<select id="timeDrop" name="timeDrop">
+			<option value="30">30</option>
+			<option value="45">45</option>
+			<option value="60">60</option>
+			<option value="75">75</option>
+			<option value="90">90</option>
+			<option value="105">105</option>
+			<option value="120">120</option>
+		</select> minutes.
+	</p>
+
+	<p>
+		Receive confirmation by: <select name="confirmtype">
+			<option value="email">Email</option>
+			<option value="text">Text</option>
+			<option value="both">Both</option>
+			<option value="none">None</option>
+		</select>
+	</p>
+>>>>>>> master
 	<!-- timestamp -->
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
 	<!-- naming of the $_POST as "confirm"  -->
+	<input type="hidden" name="email" value='<?php $postCust = $_SESSION["cart"]->getCustomer(); echo $postCust["email"]; ?>' />
+	<input type="hidden" name="phone" value='<?php echo $postCust["phone"] ?>' />
+	<input type="hidden" name="carrier" value='<?php echo $postCust["carrier"] ?>' />
+
 	<input type="hidden" name="confirm"/>
-	<button text-align="right" class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
 	</form>
 	</fieldset>
+	<button class="brown" name="confirm" type="confirm" value="confirm">Confirm</button>
+
 </body>
 
 </html>

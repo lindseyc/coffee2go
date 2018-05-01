@@ -3,8 +3,9 @@ var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
+    $("#submiterror").hide();
+    $("#quantityerror").hide();
 	var text = $(fieldElem).val();
-	console.log(text);
     var status = validateFn(text);
     if (status===true){
         $(fieldElem).removeClass("info");
@@ -69,13 +70,33 @@ var email = function Email(text){
     else { return false; }
 };
 
+function ordercounts(){
+    var currentselection = $('#dropdown').val();
+    var total = 0
+    if (currentselection != 'all'){
+        var all = $('.drink.' + currentselection);
+    }
+    else {
+        var all = $('.drink');
+    }
+    for (var i = 0; i < all.length; i++){
+        var count = parseInt(all.slice(i, i+1).val())
+        total += count
+    }
+    return total
+}
+
 var validateAll = function Submit(){
     //username = validateField(":text:first", usernameRequirements, name);
     var username = validateField("#name", usernameRequirements, usernameFn);
     var emailStatus = validateField("#email", emailReq, email);
     var phoneStatus = validateField("#phone", phoneReq, phone);
-    if (!(username && emailStatus && phoneStatus)){
+    console.log(ordercounts())
+    if (!(username && emailStatus && phoneStatus) || ordercounts() < 0 || ordercounts() > 30){
         $("#submiterror").show();
+        if ((ordercounts() <= 0) || (ordercounts() > 30)){ 
+            $('#quantityerror').show();
+        }
         event.preventDefault();
     }
 };
