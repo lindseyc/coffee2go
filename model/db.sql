@@ -4,11 +4,10 @@ USE motley;
 
 -- Create the tables
 
-CREATE TABLE employee (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(256)
-);
-
+-- CREATE TABLE employee (
+--   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   name VARCHAR(256)
+-- );
 
 CREATE TABLE customer (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -22,32 +21,41 @@ CREATE TABLE orders (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   customer_id INT UNSIGNED NOT NULL,
   price FLOAT NOT NULL,
-  dateCreated TIMESTAMP NOT NULL ,
+  dateCreated TIMESTAMP NOT NULL,
+  timedrop INT UNSIGNED NOT NULL,
   FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
-CREATE TABLE drinktype (
-  id INT UNSIGNED NOT NULL,
-  name VARCHAR(64),
-  price FLOAT NOT NULL
+
+-- CREATE TABLE drinktype (
+--   id INT UNSIGNED NOT NULL,
+--   name VARCHAR(64),
+--   price FLOAT NOT NULL,
+-- );
+
+CREATE TABLE drinks (
+  name VARCHAR(64) NOT NULL,
+  orderId INT UNSIGNED NOT NULL,
+  quantity INT NOT NULL,
+  FOREIGN KEY (orderId) REFERENCES orders(id)
 );
 
-CREATE TABLE customdrink (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  order_id INT UNSIGNED NOT NULL,
-  type_id INT UNSIGNED NOT NULL,
-  quantity INT UNSIGNED NOT NULL,
-  price FLOAT NOT NULL,
-  FOREIGN KEY (order_id) REFERENCES orders(id),
-);
+-- CREATE TABLE customdrink (
+--   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   order_id INT UNSIGNED NOT NULL,
+--   type_id INT UNSIGNED NOT NULL,
+--   quantity INT UNSIGNED NOT NULL,
+--   price FLOAT NOT NULL,
+--   FOREIGN KEY (order_id) REFERENCES orders(id),
+-- );
 
 
 -- Add drink data
-LOAD DATA LOCAL INFILE "model/initialize.csv"
-INTO TABLE drinktype
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
+-- LOAD DATA LOCAL INFILE "model/initialize.csv"
+-- INTO TABLE drinktype
+-- FIELDS TERMINATED BY ','
+-- ENCLOSED BY '"'
+-- LINES TERMINATED BY '\n'
+-- IGNORE 1 ROWS;
 
 
 -- /Applications/MAMP/Library/bin/mysql --host=localhost -u root -proot

@@ -1,5 +1,6 @@
 <?php
 // PDO statements
+
 // Insert into employee
 // $query = "INSERT INTO employee(id, name)
 //           VALUES(?, ?);";
@@ -8,7 +9,7 @@
 
 // Insert into customer
 $query = "INSERT INTO customer(name, phone, email, carrier)
-          VALUES( ?, ?, ?, ?)";
+          VALUES(?, ?, ?, ?)";
 $insertCustomer = $connection->prepare($query);
 if (!$insertCustomer) {
   print_r($connection->error);
@@ -17,22 +18,24 @@ $insertCustomer-> bind_param("siss", $name, $phone,
                               $email, $carrier);}
 
 // Select customer
-$query = "SELECT id FROM customer WHERE name=?";
+$query = "SELECT id FROM customer WHERE name=? AND email=?";
 $selectCustomer = $connection->prepare($query);
 if (!$selectCustomer) {
   print_r($connection->error);
 }
 else {
-  $selectCustomer->bind_param("s", $name);}
+  $selectCustomer->bind_param("ss", $name, $email);
+}
 
 // Insert into order
-$query = "INSERT INTO orders(id, customer_id, price, dateCreated)
-          VALUES(?, ?, ?, now())";
+$query = "INSERT INTO orders(id, customer_id, price, dateCreated, timedrop)
+          VALUES(?, ?, ?, ?, ?)";
 $insertOrder = $connection->prepare($query);
 if (!$insertOrder) {
   print_r($connection->error);
 }
-$insertOrder-> bind_param("iidd", $orderid, $customerId, $orderPrice, $date);
+$insertOrder-> bind_param("iiddi", $orderid, $customerId,
+            $orderPrice, $date, $timedrop);
 
 
 // Select from drinktype

@@ -40,7 +40,7 @@ class ShoppingCart {
 											"irish_breakfast" => "irish breakfast",
 											"earl_grey" => "earl grey",
 											"green_tea" => "green tea",
-											"latte" => "latte", 
+											"latte" => "latte",
 											"black_coffee" => "black coffee",
 											"espresso" => "espresso"
 									);
@@ -56,7 +56,7 @@ class ShoppingCart {
 
 	public function getOrder() {
 		if(isset($this->order)){
-		return $this->order;
+			return $this->order;
 		}
 		else
 			echo "emptyyyy";
@@ -68,7 +68,7 @@ class ShoppingCart {
 
 	public function order($type, $quantity) {
 		//the order already has this drink in it
-		$currentQuantity = 0; 
+		$currentQuantity = 0;
 		if(isset($this->order[$type])){
 			$currentQuantity = $this->order[$type];
 

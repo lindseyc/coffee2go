@@ -18,15 +18,13 @@ class Model {
 
     $_SESSION['conn'] = connect_to_db("motley");
 
-
   }
 
- 
+
   //public function  to clear Cart() (not unset)
   public function clearCart(){
     $_SESSION = Array();
   }
-
 
 
 	public function updateCart($type, $quantity) {
@@ -75,17 +73,14 @@ class Model {
             $currentQuantity += $quantity;
             $this->order[$type] = $currentQuantity;
         }
-
  	}
 
-  public function addCustomer($name,$phone,$email,$carrier ) {
-
-
+  public function addCustomertoDb($name, $phone, $email, $carrier) {
       $connection = $_SESSION['conn'];
       include("model/queries.php");
       mysqli_stmt_execute($selectCustomer);
       print_r($connection->error);
-      echo "---starting selectcustomer query--- <br />";
+
       $selectCustomer -> bind_result($customerId);
       // Existing customer in database
       if ($selectCustomer -> fetch() ) {
@@ -105,33 +100,38 @@ class Model {
       mysqli_stmt_close($insertCustomer);
 }
 
-public function addOrder($orderid, $customerId, $orderPrice, $date) {
+  public function addDrinktoDb() {
+    
+  }
 
+// public function getCustId ($name, $email) {
+//   $connection = $_SESSION['conn'];
+//   include("model/queries.php");
+//   mysqli_stmt_execute($selectCustomer);
+//   print_r($connection->error);
+//
+//   $selectCustomer -> bind_result($customerId);
+//
+//   mysqli_stmt_close($selectCustomer);
+//   return $customerId;
+// }
 
+public function addOrdertoDb($customerId, $orderPrice, $date, $timedrop) {
     $connection = $_SESSION['conn'];
     include("model/queries.php");
-    mysqli_stmt_execute($selectCustomer);
+    mysqli_stmt_execute($insertOrder);
     print_r($connection->error);
-    echo "---starting selectcustomer query--- <br />";
-    $selectCustomer -> bind_result($customerId);
-    // Existing customer in database
-    if ($selectCustomer -> fetch() ) {
-      echo "Thanks for shopping again customer $customerId! <br />";
-    }
-    else {
-      // Add to DB if new customer
-      mysqli_stmt_execute($insertCustomer);
-      $customerId = mysqli_stmt_insert_id($insertCustomer);
-      print_r($connection->error);
-      echo "Thanks for being a new customer!
-      You are customer #$customerId. <br />";
-    }
+    echo "---starting insertOrder query--- <br />";
+    $insertOrder -> bind_result($orderid);
+    // Add to DB if new customer
+    $orderid = mysqli_stmt_insert_id($insertOrder);
+    print_r($connection->error);
+    echo "Thanks for shopping! This is order #$orderid. <br />";
+
     // end statements
-    echo "---ending customer table---";
-    mysqli_stmt_close($selectCustomer);
     mysqli_stmt_close($insertCustomer);
 }
-
 }
+
 
 ?>
