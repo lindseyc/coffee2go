@@ -142,8 +142,6 @@
 							$date, $timedrop);
 
 
-
-
 				// $this->model->addOrdertoDb($customerId, $orderPrice, $date, $timedrop);
 
 				print_r($_POST);

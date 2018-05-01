@@ -173,8 +173,8 @@ class Model {
       //insert order
       mysqli_stmt_execute($insertOrder);
       $orderid = mysqli_stmt_insert_id($insertOrder);
-      echo "order id is " . $orderid;
-      echo "cust id is" . $customerId;
+      echo "order id is " . $orderid . "<br>";
+      //orderid doesnt work --- this is the key
         //need order price
         $orderPrice = 0;
           //insert $drinks

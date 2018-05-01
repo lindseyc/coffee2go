@@ -58,6 +58,10 @@ class ShoppingCart {
 		return $this->$alltypes[$drink];
 	}
 
+	public function getOrderPrice($order) {
+		
+	}
+
 	public function getOrder() {
 		if(isset($this->order)){
 			return $this->order;
