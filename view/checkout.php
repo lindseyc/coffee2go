@@ -138,8 +138,6 @@ session_start();
 	</fieldset>
 	<fieldset>
 
-	<br>
-
 	<legend>Confirmation</legend>
 	<p>
 		Have my drink ready in:
