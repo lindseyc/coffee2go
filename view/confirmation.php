@@ -24,9 +24,12 @@
 
 </head>
 <body>
-	<h1>Thank you for your order!</h1>
-<a href="reports.php">Reports</a>
+	<?php echo '<h1>Thank you for your order, ' .
+					explode(' ', trim($_POST['name']))[0] . '! </h1>'; ?>
 
+
+<h3><a href="reports.php">Employee View</a>
+</h3>
 
     <footer>
         <hr/>

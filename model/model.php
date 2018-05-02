@@ -168,16 +168,16 @@ class Model {
       $selectCustomer -> bind_result($customerId);
       // Existing customer in database
       if ($selectCustomer -> fetch() ) {
-        echo "<br />Thanks for shopping again customer $customerId!
-         <br />";
+        // echo "<br />Thanks for shopping again customer $customerId!
+        //  <br />";
       }
       else {
         // Add to DB if new customer
         mysqli_stmt_execute($insertCustomer);
         $customerId = mysqli_stmt_insert_id($insertCustomer);
         print_r($connection->error);
-        echo "<br /><br />Thanks for being a new customer!
-        You are customer number $customerId. <br /><br />";
+        // echo "<br /><br />Thanks for being a new customer!
+        // You are customer number $customerId. <br /><br />";
       }
 
       //lets close the connections here:
@@ -201,7 +201,7 @@ class Model {
       //insert order needs: $orderid, $customerId, $orderPrice, $date, $timedrop
       mysqli_stmt_execute($insertOrder);
       $orderid = mysqli_stmt_insert_id($insertOrder);
-      echo "<p>Your order id is " . $orderid . ".</p>";
+      // echo "<p>Your order id is " . $orderid . ".</p>";
       mysqli_stmt_close($insertOrder);
 
       //orderid doesnt work --- this is the key !!it's all about the order
