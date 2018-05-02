@@ -33,3 +33,12 @@ td, th {
 table {
 	border-collapse: collapse;
 }
+
+a {
+	text-decoration: none;
+	color:peru;
+}
+
+a:hover {
+	color:goldenrod;
+}

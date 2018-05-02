@@ -19,14 +19,12 @@
             font-family: "Palatino", "Garamond", "Times", serif
         }
 	</style>
+	<link href="view/main.css" type="text/css" rel="stylesheet"/>
 	<title> Reports Page </title>
 </head>
 
 <body>
   <h1>Coffee stats</h1>
-  <p>
-    <a href='index.php'> Order More coffee! </a>
-  </p>
 
 <?php
 include("dbconn.php");
@@ -135,10 +133,20 @@ if($result = mysqli_query($connection, $query)){
 // Close connection
 mysqli_close($connection);
 
-
-
-
 ?>
+
+
+  <p>
+    <a href='index.php'> Order more coffee! </a>
+  </p>
+
+    <footer>
+        <hr/>
+        <p class='motto' style="font-weight:bold;">The Motley Coffeehouse</p>
+        <p class="motto"> - an intersectional, political, and feminist coffeehouse run by the students of Scripps College - </p>
+        <p>345 E. 9th Street <br/> Scripps College <br/> Claremont, CA 91711</p>
+        <p>(909) 607-3967 </p>
+    </footer>
 
 </body>
 </html>
