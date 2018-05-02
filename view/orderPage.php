@@ -112,12 +112,12 @@ include_once('./model/cart.php');
                     <!-- hardcoded drinks array of coffee into orderpage
 										with add to cart button: -->
                 <?php
-                echo "the menu: ";
+                //echo "the menu: ";
                 $totalPrice = 0;
                 $merged = Array ('coffee' => ShoppingCart::$drinktypes,
                 'tea' => ShoppingCart::$teatypes,
                 'smoothie' => ShoppingCart::$smoovtypes);
-                print_r($merged);
+                //print_r($merged);
                 foreach ($merged as $drinkclass => $drinks){
                     foreach($drinks as $type => $price){
                         $totalPrice += $price;

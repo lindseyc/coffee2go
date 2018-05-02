@@ -9,7 +9,6 @@
 		session_start();
 	}
 
-	//if the cart is not there, call create cart function from model
 
 	class Controller {
 		public $model, $view;
@@ -20,6 +19,8 @@
 			$this->mail = new Mail();
 		}
 
+
+		//the order page has been submitted
 		public function invoke() {
 
 			$drinktypes = Array(
@@ -27,27 +28,10 @@
 								ShoppingCart::$teatypes,
 								ShoppingCart::$smoovtypes
 							);
+			//display the order form
 			$this->view->renderOrderForm($drinktypes);
-			//print_r($drinktypes);
-			//$drinkType = $this->model->getDrinkTypes();
 
 			if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
-
-				//print_r('adding to cart: ');
-				//display the post
-				//print_r($_POST);
-				// $type = $_POST["type"];
-
-
-				//echo "retrieve cart from model : ";
-				// print_r($this->model->getCart());
-				// echo "<br/>";
-
-
-				//display the post
-				// echo "<br /><br />(in controller) The post is: ";
-				// print_r($_POST);
-				// echo "<br/>";
 
 				$name = $_POST["name"];
 				$phone = $_POST["phone"];
@@ -71,32 +55,21 @@
 				$drinkList = array();
 				foreach($post as $key => $value) {
 					if($key == "name" || $key == "carrier" || $key == "phone" || $key == "email"){
-						// echo "adding $key and $value to customer <br/>";
+						// adding $key and $value to customer
 						$this->model->addCustomer($key,$value);
-						//$_SESSION['cart']->addCustomer($key, $value);
 					}
 					else {
 						$key = ShoppingCart::$displaynames[$key];
 						if($value > 0){
-							// echo "adding $key and $value to drinkOrder <br/>";
+							// adding $key and $value to drinkOrder
 							$this->model->order($key, $value);
 							$drinkList[$key] = $value;
-							// $this->model->addDrinktoDb($key, $value);
-							//$_SESSION['cart']->order($key, $value);
 						}
 					}
 				}
 
-				// $this->model->addDrinktoDb($drinkList);
-				// echo '<br/>';
-
-					//echo "adding $key and $value to model";
-					//$result = $this->model->updateCart($key, $value);
 					$result = "nothing right now";
 
-
-				// echo "retrieve cart from model : ";
-				// print_r($this->model->getCart());
 
 
 				if(preg_match('/invalid/', $result)) {
@@ -108,28 +81,23 @@
 					//replace the view instead of rendering it at the bottom
 					$this->view->renderCart($shoppingCart);
 					//$this->view->renderCart("view/checkout.php");
-					//print_r(__DIR__);
 					//$this->_redirect('./view/checkout.php');
 				}
 			}
-			//render it anyways (for testing)
+			//render it anyways (for testing):
 			//$this->view->renderCart($shoppingCart);
 
 		}
 
+		//the checkout page has been submitted/confirmed
 		public function confirm() {
 			//$this->view->renderCart($shoppingCart);
 			if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
 
-				//echo "in the confirm: <br />";
 
-				//DB. Add order
-
+				//get customer array from model
 				$mycust = $this->model->getCustomer();
-				// $this->model->addCustomertoDb($mycust['name'], $mycust['phone'],
-				// $mycust['email'], $mycust['carrier']);
-
-				// $cId = $this->model->getCustId($mycust['name'], $mycust['email']);
+				
 				$name = $_POST['name'];
 				$phone = $_POST['phone'];
 				$email = $_POST['email'];
@@ -137,16 +105,12 @@
 				$date = $_POST['timestamp'];
 				$timedrop = $_POST['timeDrop'];
 				$email_text_orboth = $_POST['confirmtype'];
-				// $orderPrice = $totalPrice;
 
-				//DB actions
+				//DB actions, add to db
 				$this->model->addAlltoDb($name, $phone, $email, $carrier,
 							$date, $timedrop);
 
 
-				// $this->model->addOrdertoDb($customerId, $orderPrice, $date, $timedrop);
-
-				//print_r($_POST);
 				$post = $_POST;
 				unset($post['confirm']);
 				//to be implemented
@@ -164,7 +128,6 @@
 
 				//clear the cart
 				$this->model->clearCart();
-				//print_r($this->model->getCart());
 			}
 		}
 	}
