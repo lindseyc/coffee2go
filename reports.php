@@ -24,6 +24,9 @@
 </head>
 
 <body>
+  <p style="position: absolute; right:10%;">
+    <a href='index.php'> <button class='brown'>Order more coffee! </button></a>
+  </p>
   <h1>Coffee stats</h1>
 
 <?php
@@ -136,9 +139,7 @@ mysqli_close($connection);
 ?>
 
 
-  <p>
-    <a href='index.php'> Order more coffee! </a>
-  </p>
+  
 
     <footer>
         <hr/>

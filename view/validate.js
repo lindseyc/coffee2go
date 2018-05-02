@@ -90,9 +90,9 @@ function ordercounts(){
 
 var validateAll = function Submit(){
     //username = validateField(":text:first", usernameRequirements, name);
-    var username = validateField("#name", usernameRequirements, usernameFn);
-    var emailStatus = validateField("#email", emailReq, email);
-    var phoneStatus = validateField("#phone", phoneReq, phone);
+    var username = validateField(".name", usernameRequirements, usernameFn);
+    var emailStatus = validateField(".email", emailReq, email);
+    var phoneStatus = validateField(".phone", phoneReq, phone);
     console.log(ordercounts())
     if (!(username && emailStatus && phoneStatus) || ordercounts() < 0 || ordercounts() > 30){
         $("#submiterror").show();
