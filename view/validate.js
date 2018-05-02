@@ -3,6 +3,8 @@ var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
+
+    console.log('heeeey')
     $("#submiterror").hide();
     $("#quantityerror").hide();
 	var text = $(fieldElem).val();
@@ -30,17 +32,17 @@ var validateField = function(fieldElem, infoMessage, validateFn) {
 };
 
 $(document).ready(function() {
-    $("#name").focus(function(){info(this, usernameRequirements);});
-    $("#name").keyup(function(){validateField(this, usernameRequirements, usernameFn);});
-    $("#name").blur(function(){validateField(this, usernameRequirements, usernameFn);});
+    $(".name").focus(function(){info(this, usernameRequirements);});
+    $(".name").keyup(function(){validateField(this, usernameRequirements, usernameFn);});
+    $(".name").blur(function(){validateField(this, usernameRequirements, usernameFn);});
 
-    $("#email").focus(function(){info(this,emailReq);});
-    $("#email").keyup(function(){validateField(this,emailReq, email);});
-    $("#email").blur(function(){validateField(this,emailReq, email);});
+    $(".email").focus(function(){info(this,emailReq);});
+    $(".email").keyup(function(){validateField(this,emailReq, email);});
+    $(".email").blur(function(){validateField(this,emailReq, email);});
 
-    $("#phone").focus(function(){info(this,phoneReq);});
-    $("#phone").keyup(function(){validateField(this,phoneReq, phone);});
-    $("#phone").blur(function(){validateField(this,phoneReq, phone);});
+    $(".phone").focus(function(){info(this,phoneReq);});
+    $(".phone").keyup(function(){validateField(this,phoneReq, phone);});
+    $(".phone").blur(function(){validateField(this,phoneReq, phone);});
 
     $("#submit").click(function(){validateAll();});
 });

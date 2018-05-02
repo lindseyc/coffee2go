@@ -63,21 +63,21 @@ include_once('./model/cart.php');
         <fieldset>
             <legend>Customer information</legend>
 
-             <legend for="name">Name: <input type="text" id="name" name="name" placeholder="First and Last"></input>
+             <legend for="name">Name: <input type="text" class="name" name="name" placeholder="First and Last"></input>
             <span></span>
             </legend>
 
-            <legend for="email">Email: <input type="email" id="email" name="email" placeholder="@scrippscollege.edu"></input>
+            <legend for="email">Email: <input type="email" class="email" name="email" placeholder="@scrippscollege.edu"></input>
             <span></span>
             </legend>
             <br/>        <!-- emailtextmessages.com -->
 
-            <legend for="phone">Phone number: <input type="tel" id="phone" name="phone" placeholder="xxxyyyzzzz"></input>
+            <legend for="phone">Phone number: <input type="tel" class="phone" name="phone" placeholder="xxxyyyzzzz"></input>
             <span></span>
             </legend>
 
             <legend for="carrier">Carrier:
-            <select id="carrier" name="carrier">
+            <select class="carrier" name="carrier">
             <?php
                 foreach (CellCarriers::$carriers as $carrier => $value){
                     echo "<option value=\"" . $carrier . "\">" . $carrier;
