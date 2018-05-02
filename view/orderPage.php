@@ -57,8 +57,10 @@ include_once('./model/cart.php');
 </head>
 
 <body>
-    <img src="logo.png" alt="Logo" style="width:200px;height:200px;">
-    <h1>Order some coffee!</h1>
+  <h1>Order some coffee!</h1>
+    <p style="text-align: center;">
+      <img src="motleylogo.png" alt="Logo" style="width:200px;height:200px;align:right">
+    </p>
     <!-- put the controller in the action? -->
     <form name="orderfrm" id="order" method="post">
         <fieldset>
