@@ -57,6 +57,7 @@ include_once('./model/cart.php');
 </head>
 
 <body>
+    <img src="logo.png" alt="Logo" style="width:200px;height:200px;">
     <h1>Order some coffee!</h1>
     <!-- put the controller in the action? -->
     <form name="orderfrm" id="order" method="post">
@@ -153,7 +154,7 @@ include_once('./model/cart.php');
     </form>
 
 
-    <footer>
+    <footer id="bottomtext">
         <hr/>
         <p class='motto' style="font-weight:bold;">The Motley Coffeehouse</p>
         <p class="motto"> - an intersectional, political, and
