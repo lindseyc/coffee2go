@@ -10,7 +10,7 @@ class Mail {
     public function sendMail ($email, $phone_number, $carrier, $email_text_orboth, $time){
         $carrier_url = CellCarriers::$carriers[$carrier]; 
         $headers = "From: noreply@scrippscollege.edu\r\n".
-        "Reply-To: noreply\r\n'" .
+        "Reply-To: noreply@scrippscollege.edu\r\n'" .
         "X-Mailer: PHP/" . phpversion();
         $email_subject="Order confirmation";
         $email_message="Your order is confirmed. It will be ready for pickup in " . $time . ' minutes.';
