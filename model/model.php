@@ -193,7 +193,7 @@ class Model {
             //$quantity = $q;
             // $drinkprice = priceOf($drinkname);
             $price = ShoppingCart::$alltypes[$drink];
-            $orderPrice += $price;
+            $orderPrice += $price * $q;
             mysqli_stmt_execute($insertDrink);
           }
 
