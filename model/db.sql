@@ -1,3 +1,5 @@
+-- Our database tables for the motley
+
 DROP DATABASE IF EXISTS motley;
 CREATE DATABASE motley;
 USE motley;
@@ -36,12 +38,6 @@ CREATE TABLE drinks (
   FOREIGN KEY (orderId) REFERENCES orders(id)
 );
 
-
--- CREATE TABLE drinktype (
---   id INT UNSIGNED NOT NULL,
---   name VARCHAR(64),
---   price FLOAT NOT NULL,
--- );
 
 -- CREATE TABLE customdrink (
 --   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
