@@ -30,3 +30,4 @@ The files are structured in model-view-controller style, where the controller ac
 
 ## Other information
 This project was created as a class project for CS135 at Claremont Mckenna College by LC, BK, and JB.
+How to run on your machine: You must start mysql.exe and also be running the MAMP servers for this code to load and function. Mail must be enabled through smtp on your device (different depending on Mac or Windows). 
