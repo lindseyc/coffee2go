@@ -134,14 +134,14 @@
 				$phone = $mycust['phone'];
 				$email = $mycust['email'];
 				$carrier = $mycust['carrier'];
-				$date = $_POST['timestamp'];
+				// $date = $_POST['timestamp'];
 				$timedrop = $_POST['timeDrop'];
 				$email_text_orboth = $_POST['confirmtype'];
 				// $orderPrice = $totalPrice;
 
 				//DB actions
 				$this->model->addAlltoDb($name, $phone, $email, $carrier,
-							$date, $timedrop);
+						 $timedrop);
 
 
 				// $this->model->addOrdertoDb($customerId, $orderPrice, $date, $timedrop);

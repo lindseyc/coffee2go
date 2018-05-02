@@ -147,15 +147,14 @@ class Model {
 //   }
 
   public function addAlltoDb($name1, $phone1, $email1, $carrier1,
-        $date1, $timedrop1) {
+        $timedrop1) {
 
         $name = $name1;
         $phone = $phone1;
         $email = $email1;
         $carrier = $carrier1;
-        $date = $date1;
+        // $date = $date1;
         $timedrop = $timedrop1;
-        $orderPrice = 15.00;
         //need to put all of the variables that are going to be inserted into the table in this function
         //
 
