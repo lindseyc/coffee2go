@@ -23,13 +23,17 @@
 </head>
 
 <body>
+  <h1>Coffee stats</h1>
+  <p>
+    <a href='index.php'> Order More coffee! </a>
+  </p>
 
 <?php
 include("dbconn.php");
 $connection = connect_to_db("motley");
 
 // Show drinks ordered within 30 minutes
-echo "<h1> Drinks ordered within 30 minutes:</h1>";
+echo "<h2> Drinks ordered within 30 minutes:</h2>";
 $query = "SELECT customer.name AS Name, drinks.name AS Drink,
           drinks.price AS Price, CAST(orders.dateCreated AS TIME) AS ordertime
           FROM drinks
@@ -66,7 +70,7 @@ if($result = mysqli_query($connection, $query)){
 }
 
 // Most popular drink
-echo "<h1> Most popular drink:</h1>";
+echo "<h2> Most popular drink:</h2>";
 $query = "SELECT name, SUM(quantity) AS 'Num Ordered' FROM drinks
           ORDER BY SUM(quantity)";
 
@@ -95,7 +99,7 @@ if($result = mysqli_query($connection, $query)){
 
 
 // Best customer
-echo "<h1> Best customer:</h1>";
+echo "<h2> Best customer:</h2>";
 $query = "SELECT customer.name, SUM(orders.price) AS Revenue
           FROM orders
           JOIN customer ON orders.customer_id=customer.id
