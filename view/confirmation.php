@@ -25,6 +25,7 @@
 </head>
 <body>
 	<h1>Thank you for your order!</h1>
+    <!-- link to page of queries -->
 <a href="reports.php">Reports</a>
 
 

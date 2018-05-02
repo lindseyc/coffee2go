@@ -1,10 +1,12 @@
+// this file is used to validate the user information fields
+//and make sure at least one drink is selected
+
 var usernameRequirements = "At least 4 characters separated by space";
 var emailReq = "Formatted in ***@***.edu/gov/com/org/net";
 var phoneReq = "Numbers only, no spaces or punctuation.";
 
 var validateField = function(fieldElem, infoMessage, validateFn) {
 
-    console.log('heeeey')
     $("#submiterror").hide();
     $("#quantityerror").hide();
 	var text = $(fieldElem).val();
@@ -88,6 +90,7 @@ function ordercounts(){
     return total
 }
 
+//execute the correct validation based on the input field
 var validateAll = function Submit(){
     //username = validateField(":text:first", usernameRequirements, name);
     var username = validateField(".name", usernameRequirements, usernameFn);

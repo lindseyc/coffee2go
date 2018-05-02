@@ -38,6 +38,8 @@ include_once('./model/cart.php');
     <script src="./view/validate.js"></script>
 
     <script>
+        //function for the dropdown selection so that the correct drinks
+        //will be displayed based on the category selected
     $(document).ready(function() {
         $('#dropdown').on("change", function() {
             var radiobutt = $('#dropdown').val();
@@ -58,7 +60,7 @@ include_once('./model/cart.php');
 
 <body>
     <h1>Order some coffee!</h1>
-    <!-- put the controller in the action? -->
+    <!-- order form with fields for customer/drink -->
     <form name="orderfrm" id="order" method="post">
         <fieldset>
             <legend>Customer information</legend>
@@ -70,7 +72,7 @@ include_once('./model/cart.php');
             <legend for="email">Email: <input type="email" class="email" name="email" placeholder="@scrippscollege.edu"></input>
             <span></span>
             </legend>
-            <br/>        <!-- emailtextmessages.com -->
+            <br/>        
 
             <legend for="phone">Phone number: <input type="tel" class="phone" name="phone" placeholder="xxxyyyzzzz"></input>
             <span></span>
@@ -79,6 +81,7 @@ include_once('./model/cart.php');
             <legend for="carrier">Carrier:
             <select class="carrier" name="carrier">
             <?php
+                //carrier list is to be selected from
                 foreach (CellCarriers::$carriers as $carrier => $value){
                     echo "<option value=\"" . $carrier . "\">" . $carrier;
                     echo "</option>";
@@ -97,7 +100,7 @@ include_once('./model/cart.php');
                 <option value="smoothie">Smoothie</option>
 
             </select>
-            <!-- add some space -->
+            <!-- adding some space -->
             <br/><br/>
 
             <table id="table">
@@ -112,17 +115,19 @@ include_once('./model/cart.php');
                     <!-- hardcoded drinks array of coffee into orderpage
 										with add to cart button: -->
                 <?php
-                //echo "the menu: ";
+                
                 $totalPrice = 0;
                 $merged = Array ('coffee' => ShoppingCart::$drinktypes,
                 'tea' => ShoppingCart::$teatypes,
                 'smoothie' => ShoppingCart::$smoovtypes);
-                //print_r($merged);
+                //iterate through array (nested) of drinks, display those which are of the
+                //correct class
                 foreach ($merged as $drinkclass => $drinks){
                     foreach($drinks as $type => $price){
                         $totalPrice += $price;
                         echo "<tr class='$drinkclass'>";
                             echo "<td>";
+                            //drink name
                             echo($type);
                             echo "</td><td>";
                             //price
@@ -141,8 +146,7 @@ include_once('./model/cart.php');
         </fieldset>
 
         <p></p>
-        <!-- send the info to the controller to validate? if not, stay on page but if all good then  -->
-        <!--  onclick="validateForm(orderfrm)" -->
+        
         <button id='submit' class="brown" name="submit" type="submit" value="submit">Go to cart</button>
         <span id="submiterror" style="color:red; display:none;">
             Error. Please make sure all elements are filled out correctly.

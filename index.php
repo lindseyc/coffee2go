@@ -6,7 +6,7 @@
 
 include('controller/controller.php');
 
-
+//instantiate a new controller and call its methods
 $controller = new Controller();
 $controller->invoke();
 $controller->confirm();

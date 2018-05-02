@@ -13,6 +13,7 @@
 	class Controller {
 		public $model, $view;
 
+		//create instance of the model and view and mail (automatic)
 		public function __construct() {
 			$this->model = new Model();
 			$this->view = new View($this->model);
@@ -38,21 +39,13 @@
 				$email = $_POST["email"];
 				$carrier = $_POST["carrier"];
 
-				// echo "name = " . $name . " email = " . $email . " phone = " .
-				$phone . " carrier = " . $carrier . "<br /> <br />" ;
-
-				//DB. Add customer
-				// $this->model->addCustomertoDb($name, $phone, $email, $carrier);
-
-				// $result = $this->model->updateCart($quantity, $quantity);
-
-
-				// $_SESSION['cart']->order($type, $quantity);
+								
 				$post = $_POST;
 				unset($post['dropdown']);
 				unset($post['submit']);
 
 				$drinkList = array();
+				//add customer and drink order to the model
 				foreach($post as $key => $value) {
 					if($key == "name" || $key == "carrier" || $key == "phone" || $key == "email"){
 						// adding $key and $value to customer
@@ -78,35 +71,21 @@
 				else {
 
 					$shoppingCart = $this->model->getCart();
-					//replace the view instead of rendering it at the bottom
+					//render the checkout page
 					$this->view->renderCart($shoppingCart);
-					//$this->view->renderCart("view/checkout.php");
-					//$this->_redirect('./view/checkout.php');
 				}
 			}
-			//render it anyways (for testing):
-			//$this->view->renderCart($shoppingCart);
+			
 
 		}
 
 		//the checkout page has been submitted/confirmed
 		public function confirm() {
-			//$this->view->renderCart($shoppingCart);
 			if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
 
 
 				//get customer array from model
-				$mycust = $this->model->getCustomer();
-
-				// $this->model->addCustomertoDb($mycust['name'], $mycust['phone'],
-				// $mycust['email'], $mycust['carrier']);
-
-				// $cId = $this->model->getCustId($mycust['name'], $mycust['email']);
-				// $name = $mycust['name'];
-				// $phone = $mycust['phone'];
-				// $email = $mycust['email'];
-				// $carrier = $mycust['carrier'];
-				// // $date = $_POST['timestamp'];
+				//$mycust = $this->model->getCustomer();
 
 
 				$name = $_POST['name'];
@@ -123,12 +102,7 @@
 						 $timedrop);
 
 
-				$post = $_POST;
-				unset($post['confirm']);
-				//to be implemented
-				/*
-
-				*/
+			
 				// form has been confirmed, send order to employee
 				//email customer
 				$this->mail->sendMail($email, $phone, $carrier, $email_text_orboth, $timedrop);

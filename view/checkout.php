@@ -1,6 +1,5 @@
 <?php
 
-
 require_once('./model/cart.php');
 session_start();
 
@@ -32,11 +31,11 @@ session_start();
 	</style>
 	<link href="view/main.css" type="text/css" rel="stylesheet"/>
 
-    <!-- javascript validation -->
-
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/
 		jquery.min.js"></script>
+
+	<!-- javascript validation -->
     <script src="./view/validate.js"></script>
 	<title> Checkout </title>
 </head>
@@ -51,21 +50,17 @@ session_start();
  	<!-- Display order and customer info -->
 	<fieldset>
 	<legend> Your Information: </legend>
-	<!-- customer info (can not edit, maybe in a later feature) -->
+	<!-- customer info  -->
 	<?php
-	// iff post isset:
-	//print_r($_POST);
-
-	//$post = $_POST;
-	//unset($post['submit']);
-	//unset($post['dropdown']);
-	//print_r($_SESSION['cart']);
+	
+	//the customer
 	$postCust = $_SESSION['cart']->getCustomer();
+	//the order
 	$postOrder = $_SESSION['cart']->getOrder();
-	//print_r($postCust);
-	//print_r($postOrder);
+	
 	foreach($postCust as $key => $value){
-		//all info is in the post, so need to break before it reaches
+		
+
 		//the drinks and quantities
 		if($key == "carrier"){
 			echo "Your carrier is: ";
@@ -80,6 +75,7 @@ session_start();
             echo '</select>';
 			break;
 		}
+		//allow user to edit their info
 		echo "Your $key is: <input class='$key' name ='$key' value='$value' placeholder='$value'></input><span></span>";
 		echo "<br>";
 	}
@@ -89,20 +85,15 @@ session_start();
 
 	<fieldset>
 	<legend> Your Order: </legend>
+
 	<!-- table for drink order -->
 	<?php
-
-
 	echo '<table>';
 	echo '<tr>';
 		echo '<td>Drink</td>';
 		echo '<td>Price</td>';
 		echo '<td>Quantity</td>';
-		//I DONT KNOW WHAT THESE ARE / where they came from??
-		//unset($shoppingCart['all']);
-		//unset($shoppingCart['']);
-		//print_r($post);
-		//print_r($shoppingCart);
+		
 		$totalPrice =  0;
 		$totalQuantity = 0;
 	foreach ($postOrder as $drink => $quantity) {
@@ -152,6 +143,7 @@ session_start();
 		</select> minutes.
 	</p>
 
+	<!-- how they would like to be notified -->
 	<p>
 		Receive confirmation by: <select name="confirmtype">
 			<option value="email">Email</option>
@@ -162,9 +154,6 @@ session_start();
 	</p>
 
 	<!-- timestamp -->
-
-
-
 	<input type="hidden" name="timestamp" value="<?php date_default_timezone_set('America/Los_Angeles');  echo date(DATE_RFC2822); ?>"/>
 
 
