@@ -193,9 +193,11 @@ class Model {
             //$quantity = $q;
             // $drinkprice = priceOf($drinkname);
             $price = ShoppingCart::$alltypes[$drink];
-            $orderPrice += $price;
+            echo "price of " . $drink . "is " . $price . "<br />";
+            $orderPrice += $price * $q;
             mysqli_stmt_execute($insertDrink);
           }
+          echo "total order price:" . $orderPrice;
 
       //insert drink will have to go before the order..? or the other way around if we are to include the totalPrice
       //insert order needs: $orderid, $customerId, $orderPrice, $date, $timedrop
