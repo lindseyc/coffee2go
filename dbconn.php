@@ -1,3 +1,4 @@
+<!-- functions to establish the db connection -->
 <?php
 function connect_to_db( $dbname ){
 

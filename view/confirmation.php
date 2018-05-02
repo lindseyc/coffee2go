@@ -26,8 +26,7 @@
 <body>
 	<?php echo '<h1>Thank you for your order, ' .
 					explode(' ', trim($_POST['name']))[0] . '! </h1>'; ?>
-
-
+    <!-- link to page of queries -->
 <h3><a href="reports.php">Employee View</a>
 </h3>
 

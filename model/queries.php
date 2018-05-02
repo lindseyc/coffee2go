@@ -1,3 +1,5 @@
+<!-- Employee side is not implemented yet same with customizing drink, commented out -->
+
 <?php
 // PDO statements
 
@@ -37,8 +39,7 @@ if (!$insertOrder) {
 }
 $insertOrder-> bind_param("iidi", $orderid, $customerId,
             $orderPrice, $timedrop);
-// echo "order id is " . $orderid;
-// echo "order price is " . $orderPrice;
+
 // Insert into drinks
 $query = "INSERT INTO drinks(orderId, name, quantity, customerId, price)
           VALUES (?, ?, ?, ?, ?)";
@@ -46,7 +47,7 @@ $insertDrink = $connection->prepare($query);
 if (!$insertDrink) {
   print_r($connection->error);
 }
-// echo "cid is " . $customerId;
+
 $insertDrink-> bind_param("isiid", $orderid, $name,
                     $quantity, $customerId, $price);
 
@@ -63,6 +64,5 @@ $insertDrink-> bind_param("isiid", $orderid, $name,
 // $insertCustomDrink->bind_param("iiiid", $customDrinkId, $orderid, $drinktypeid,
 //                                 $quantity, $price);
 
-// echo "<br /><br />queries pass<br /><br />";
 
 ?>
