@@ -147,15 +147,14 @@ class Model {
 //   }
 
   public function addAlltoDb($name1, $phone1, $email1, $carrier1,
-        $date1, $timedrop1) {
+        $timedrop1) {
 
         $name = $name1;
         $phone = $phone1;
         $email = $email1;
         $carrier = $carrier1;
-        $date = $date1;
+        // $date = $date1;
         $timedrop = $timedrop1;
-        $orderPrice = 15.00;
         //need to put all of the variables that are going to be inserted into the table in this function
         //
 
@@ -184,7 +183,7 @@ class Model {
       //lets close the connections here:
         mysqli_stmt_close($selectCustomer);
         mysqli_stmt_close($insertCustomer);
-        
+
         //needs to be here, to calculate total order price so it can be
         //given to the order table
         $myCart = $this->getCart();
@@ -194,7 +193,7 @@ class Model {
             //$quantity = $q;
             // $drinkprice = priceOf($drinkname);
             $price = ShoppingCart::$alltypes[$drink];
-            $orderPrice += $price;
+            $orderPrice += $price * $q;
             mysqli_stmt_execute($insertDrink);
           }
 
@@ -205,7 +204,7 @@ class Model {
       echo "<p>Your order id is " . $orderid . ".</p>";
       mysqli_stmt_close($insertOrder);
 
-      //orderid doesnt work --- this is the key !!it's all about the order 
+      //orderid doesnt work --- this is the key !!it's all about the order
       //the variables need to be introcuced before the executes are called b/c they expect these variables with the correct names
           //insert $drinks : orderId, name, quantity, customerId, price
           //echo print_r($myCart);
@@ -222,8 +221,6 @@ class Model {
             mysqli_stmt_close($insertDrink);
           //echo "drinks inserted ";
 
-      
-    
 
   }//end
 

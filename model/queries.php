@@ -30,13 +30,13 @@ else {
 // Insert into order  //do we have an orderId to insert
 
 $query = "INSERT INTO orders(id, customer_id, price, dateCreated, timedrop)
-          VALUES(?, ?, ?, ?, ?)";
+          VALUES(?, ?, ?, now(), ?)";
 $insertOrder = $connection->prepare($query);
 if (!$insertOrder) {
   print_r($connection->error);
 }
-$insertOrder-> bind_param("iiddi", $orderid, $customerId,
-            $orderPrice, $date, $timedrop);
+$insertOrder-> bind_param("iidi", $orderid, $customerId,
+            $orderPrice, $timedrop);
 echo "order id is " . $orderid;
 echo "order price is " . $orderPrice;
 // Insert into drinks
